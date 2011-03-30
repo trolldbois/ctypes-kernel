@@ -54,12 +54,14 @@ class Generator:
     return 0
 
   def run(self):
-    if self.makeXml() > 0:
-      return
-    if self.makePy() > 0:
-      return
+    ret = self.makeXml()
+    if  ret > 0:
+      return ret
+    ret = self.makePy()
+    if ret > 0:
+      return ret
     log.info('GENERATION Done. Enjoy %s'%(self.pyfile))
-    return
+    return 0
 
 def gen( cleaned, modulename):
   p = Generator(cleaned, modulename)
@@ -102,5 +104,5 @@ logging.basicConfig(level=logging.INFO)
 #generate.gen('ctypes_linux_generated_clean.c','ctypes_linux_generated')
 
 # generate.make('ctypes_linux.c','ctypes_linux_generated')
-
+make('ctypes_linux.c','ctypes_linux_generated')
 
