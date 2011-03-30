@@ -1,0 +1,56 @@
+
+
+
+  #include <linux/sched.h>
+
+INFO:generate:module ctypes_linux_generated has 398 members for 398 class
+
+
+
+  #include <linux/sched.h>
+  #include <linux/sock.h>
+
+INFO:generate:module ctypes_linux_generated has 399 members for 399 class
+
+>>> sched ^ schedsock
+set(['sa_family_t'])
+
+
+  #include <linux/sched.h>
+  #include <linux/sock.h>
+  #include <linux/mm.h>
+
+INFO:generate:module ctypes_linux_generated has 405 members for 405 class
+
+>>> schedsock ^ schedsockmm
+set(['N5pte_t4DOT_16E', 'pte_t', 'pte_fn_t', 'compound_page_dtor', 'work_fn_t', 'vm_fault'])
+
+
+  #include <linux/sched.h>
+  #include <linux/sock.h>
+  #include <linux/mm.h>
+  #include <linux/net.h>
+
+INFO:generate:module ctypes_linux_generated has 405 members for 405 class
+>>> schedsockmm ^ schedsockmmnet
+set([])
+
+
+
+
+import ctypes_linux_generated_sched
+import ctypes_linux_generated_schedsock
+sched = set(ctypes_linux_generated_sched.__dict__)
+schedsock = set(ctypes_linux_generated_schedsock.__dict__)
+sched ^ schedsock
+
+import ctypes_linux_generated_schedsockmm
+schedsockmm = set(ctypes_linux_generated_schedsockmm.__dict__)
+schedsock ^ schedsockmm
+
+import ctypes_linux_generated_schedsockmmnet
+schedsockmmnet = set(ctypes_linux_generated_schedsockmmnet.__dict__)
+schedsockmm ^ schedsockmmnet
+
+
+
