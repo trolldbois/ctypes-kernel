@@ -20,7 +20,7 @@ class HeaderCleaner:
   '''
   def __init__(self, preprocessed, out):
     self.preprocessed = file(preprocessed).read()
-    self.out = file(out,'w')
+    self.out = out
     
   def stripFunctions(self, data):
     REGEX_STR = r"""  # nice - ok for pointers
@@ -52,10 +52,11 @@ class HeaderCleaner:
     return data3
 
   def clean(self):
-    data2 = self.stripFunctions(fulldata)
+    data2 = self.stripFunctions(self.preprocessed)
     data3 = self.stripExterns(data2)
     data4 = self.changeReservedWords(data3)
-    return self.out.write(data4)
+    self.fout = file(self.out,'w')
+    return self.fout.write(data4)
 
 
 

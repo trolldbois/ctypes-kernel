@@ -3251,7 +3251,7 @@ void init_timer_deferrable_key(struct timer_list *timer,
 // supprimed extern
 // supprimed extern
 struct hrtimer;
-extern enum hrtimer_restart it_real_fn(struct hrtimer *);
+//extern enum hrtimer_restart it_real_fn(struct hrtimer *);
 unsigned long __round_jiffies(unsigned long j, int cpu);
 unsigned long __round_jiffies_relative(unsigned long j, int cpu);
 unsigned long round_jiffies(unsigned long j);
@@ -4963,7 +4963,11 @@ struct task_io_accounting {
 };
 struct kobject;
 struct module;
-enum kobj_ns_type;
+enum kobj_ns_type {
+ KOBJ_NS_TYPE_NONE = 0,
+ KOBJ_NS_TYPE_NET,
+ KOBJ_NS_TYPES
+};
 struct attribute {
  const char *name;
  struct module *owner;
@@ -5115,11 +5119,6 @@ struct kobj_attribute {
     const char *buf, size_t count);
 };
 // supprimed extern
-enum kobj_ns_type {
- KOBJ_NS_TYPE_NONE = 0,
- KOBJ_NS_TYPE_NET,
- KOBJ_NS_TYPES
-};
 struct sock;
 struct kobj_ns_type_operations {
  enum kobj_ns_type type;
@@ -5960,7 +5959,8 @@ extern struct ctl_table_header *__sysctl_head_next(struct nsproxy *namespaces,
 // supprimed extern
 // supprimed extern
 typedef struct ctl_table ctl_table;
-typedef int proc_handler_func; //(struct ctl_table *ctl, int write,     void *buffer, size_t *lenp, loff_t *ppos);
+typedef int proc_handler (struct ctl_table *ctl, int write,
+     void *buffer, size_t *lenp, loff_t *ppos);
 // supprimed extern
 // supprimed extern
 // supprimed extern
@@ -5978,7 +5978,7 @@ struct ctl_table
  mode_t mode;
  struct ctl_table *child;
  struct ctl_table *parent;
- proc_handler_func *proc_handler;
+ proc_handler *proc_handler_;
  void *extra1;
  void *extra2;
 };
