@@ -53,4 +53,7 @@ schedsockmmnet = set(ctypes_linux_generated_schedsockmmnet.__dict__)
 schedsockmm ^ schedsockmmnet
 
 
+have to disable CONFIG_STRICT_DEVMEM
+
+
 
