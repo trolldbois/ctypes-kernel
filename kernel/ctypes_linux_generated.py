@@ -231,6 +231,12 @@ class __key_reference_with_attributes(Structure):
     pass
 key_ref_t = POINTER(__key_reference_with_attributes)
 aio_context_t = c_ulong
+sa_family_t = c_ushort
+compound_page_dtor = CFUNCTYPE(None, POINTER(page))
+work_fn_t = CFUNCTYPE(c_int, c_ulong, c_ulong, c_void_p)
+class pte_t(Union):
+    pass
+pte_fn_t = CFUNCTYPE(c_int, POINTER(pte_t), pgtable_t, c_ulong, c_void_p)
 __kernel_fd_set._fields_ = [
     ('fds_bits', c_ulong * 32),
 ]
@@ -267,6 +273,18 @@ pt_regs._fields_ = [
     ('flags', c_ulong),
     ('sp', c_ulong),
     ('ss', c_ulong),
+]
+class N5pte_t4DOT_16E(Structure):
+    pass
+N5pte_t4DOT_16E._fields_ = [
+    ('pte_low', c_ulong),
+    ('pte_high', c_ulong),
+]
+pte_t._pack_ = 4
+pte_t._anonymous_ = ['_0']
+pte_t._fields_ = [
+    ('_0', N5pte_t4DOT_16E),
+    ('pte', pteval_t),
 ]
 pgprot._pack_ = 4
 pgprot._fields_ = [
@@ -384,7 +402,7 @@ N4page4DOT_46E._fields_ = [
     ('index', c_ulong),
     ('freelist', c_void_p),
 ]
-page._anonymous_ = ['_1', '_0', '_2']
+page._anonymous_ = ['_2', '_1', '_0']
 page._fields_ = [
     ('flags', c_ulong),
     ('_count', atomic_t),
@@ -590,7 +608,7 @@ ctl_table._fields_ = [
     ('mode', mode_t),
     ('child', POINTER(ctl_table)),
     ('parent', POINTER(ctl_table)),
-    ('proc_handler_', POINTER(proc_handler)),
+    ('proc_handler1', POINTER(proc_handler)),
     ('extra1', c_void_p),
     ('extra2', c_void_p),
 ]
@@ -1794,7 +1812,14 @@ class anon_vma(Structure):
     pass
 class vm_operations_struct(Structure):
     pass
+class vm_fault(Structure):
+    pass
 vm_operations_struct._fields_ = [
+    ('open', CFUNCTYPE(None, POINTER(vm_area_struct))),
+    ('close', CFUNCTYPE(None, POINTER(vm_area_struct))),
+    ('fault', CFUNCTYPE(c_int, POINTER(vm_area_struct), POINTER(vm_fault))),
+    ('page_mkwrite', CFUNCTYPE(c_int, POINTER(vm_area_struct), POINTER(vm_fault))),
+    ('access', CFUNCTYPE(c_int, POINTER(vm_area_struct), c_ulong, c_void_p, c_int, c_int)),
 ]
 vm_area_struct._fields_ = [
     ('vm_mm', POINTER(mm_struct)),
@@ -1892,6 +1917,12 @@ hrtimer_cpu_base._fields_ = [
     ('nr_hangs', c_ulong),
     ('max_hang_time', ktime_t),
 ]
+vm_fault._fields_ = [
+    ('flags', c_uint),
+    ('pgoff', c_ulong),
+    ('virtual_address', c_void_p),
+    ('page', POINTER(page)),
+]
 __all__ = ['__kernel_uid32_t', 'wait_queue_t', 'page_cgroup',
            'kmem_cache', 'N18i387_fxsave_struct4DOT_33E', '__s8',
            'sigval_t', 'uint8_t', '__sum16', 'N4page4DOT_424DOT_43E',
@@ -1919,21 +1950,21 @@ __all__ = ['__kernel_uid32_t', 'wait_queue_t', 'page_cgroup',
            '__kernel_gid_t', 'key_t', 'per_cpu_pages', 'uint',
            'rwsem_count_t', 's64', 'apm_eventinfo_t',
            '__sighandler_t', 'pg_data_t', 'atomic_long_t', 'ssize_t',
-           'key_perm_t', '__kernel_pid_t', 'N4page4DOT_444DOT_45E',
-           'size_t', 'rb_node', 'pudval_t', 'sigval', 'exec_domain',
-           'dma_addr_t', 'uid16_t', 'zonelist_cache', 'key_ref_t',
-           'cred', 'upid', 'N4page4DOT_46E', 'u_char', '__wsum',
-           'fs_struct', 'uid_t', 'u_int64_t', 'u_int16_t',
-           'old_uid_t', 'spinlock', 'fmode_t',
-           'N18i387_fxsave_struct4DOT_304DOT_31E', 'plist_node',
-           'sigset_t', 'N7siginfo5DOT_1215DOT_124E', 'pgprot_t',
-           '__be64', 'plist_head', 'restart_block', '__kernel_fd_set',
-           'sigevent', 'clock_t', 'hrtimer', 'rq', 'xsave_hdr_struct',
-           'N13restart_block3DOT_84DOT_10E', 'arch_spinlock',
-           'u_int32_t', 'hrtimer_restart', '__gnuc_va_list',
-           'sector_t', 'ktime_t', 'thread_xstate', 'sched_class',
-           'ctor_fn_t', 'ino_t', '__kernel_uid_t', 'cpu_itimer',
-           'atomic_t', 'old_gid_t', 'N3key5DOT_186E',
+           'key_perm_t', '__kernel_pid_t', 'sa_family_t',
+           'N4page4DOT_444DOT_45E', 'size_t', 'rb_node', 'pudval_t',
+           'sigval', 'exec_domain', 'dma_addr_t', 'pte_fn_t',
+           'uid16_t', 'zonelist_cache', 'key_ref_t', 'cred', 'upid',
+           'N4page4DOT_46E', 'u_char', '__wsum', 'fs_struct', 'uid_t',
+           'u_int64_t', 'u_int16_t', 'old_uid_t', 'spinlock',
+           'fmode_t', 'N18i387_fxsave_struct4DOT_304DOT_31E',
+           'plist_node', 'sigset_t', 'N7siginfo5DOT_1215DOT_124E',
+           'pgprot_t', '__be64', 'plist_head', 'restart_block',
+           '__kernel_fd_set', 'sigevent', 'clock_t', 'hrtimer', 'rq',
+           'xsave_hdr_struct', 'N13restart_block3DOT_84DOT_10E',
+           'arch_spinlock', 'u_int32_t', 'hrtimer_restart',
+           '__gnuc_va_list', 'sector_t', 'ktime_t', 'thread_xstate',
+           'sched_class', 'ctor_fn_t', 'ino_t', '__kernel_uid_t',
+           'cpu_itimer', 'atomic_t', 'old_gid_t', 'N3key5DOT_186E',
            'cap_user_header_t', 'pgdval_t', 'sigpending', 'stack_t',
            '__kernel_clockid_t', 'raw_spinlock', 'cap_user_data_t',
            '__be16', 's32', 'i387_soft_struct',
@@ -1950,23 +1981,24 @@ __all__ = ['__kernel_uid32_t', 'wait_queue_t', 'page_cgroup',
            'exitcall_t', '__kernel_old_dev_t', 'mem_cgroup',
            'tty_struct', 'irqaction', 'seqcount', 'backing_dev_info',
            '__s64', 'module', 'aio_context_t', 'mm_rss_stat',
-           'int16_t', 'siginfo_t', 'map_segment', '__kernel_gid32_t',
-           'wait_queue_head_t', 'address_space', 'mutex',
-           'sigaltstack', 'key_serial_t', 'physid_mask_t',
+           'int16_t', 'siginfo_t', 'vm_fault', 'map_segment',
+           '__kernel_gid32_t', 'wait_queue_head_t', 'address_space',
+           'mutex', 'sigaltstack', 'key_serial_t', 'physid_mask_t',
            'mm_segment_t', 'zone_lru', 'task_delay_info', '__u16',
            '__kernel_nlink_t', 'tss_desc', 'user_namespace',
            'sigaction', 'task_rss_stat', 'initcall_t', 'ushort',
            'clockid_t', 'N11desc_struct4DOT_21E', 'ldt_desc',
            'caddr_t', 'uint16_t', '__kernel_mqd_t', 'prio_tree_node',
            'key', 'N8sigevent5DOT_128E', 'int32_t', '__le32',
-           'latency_record', 'blkcnt_t', 'thread_group_cputimer',
-           'ctl_table', 'N4page4DOT_44E', 'key_user', 'u16',
-           'k_sigaction', 'perf_event', 'pm_message', 'pollfd',
-           'raw_prio_tree_node', 'physid_mask',
-           'N11desc_struct4DOT_214DOT_23E', 'u_long', 'nodemask_t',
-           'pm_message_t', 'int64_t', 'N8spinlock4DOT_37E',
-           'sched_rt_entity', 'pt_regs', 'N7siginfo5DOT_1215DOT_122E',
-           'time_t', 'u_short', 'hrtimer_cpu_base', 'cputime_t',
+           'latency_record', 'blkcnt_t', 'free_area',
+           'N5pte_t4DOT_16E', 'ctl_table', 'N4page4DOT_44E',
+           'key_user', 'u16', 'k_sigaction', 'perf_event',
+           'pm_message', 'pollfd', 'raw_prio_tree_node',
+           'physid_mask', 'N11desc_struct4DOT_214DOT_23E', 'u_long',
+           'nodemask_t', 'pte_t', 'pm_message_t', 'int64_t',
+           'N8spinlock4DOT_37E', 'sched_rt_entity', 'pt_regs',
+           'N7siginfo5DOT_1215DOT_122E', 'time_t', 'u_short',
+           'hrtimer_cpu_base', 'cputime_t',
            'N14vm_area_struct4DOT_474DOT_48E', 'bio_list',
            'desc_struct', 'io_context', 'rw_semaphore',
            'N3key5DOT_187E', 'sched_info', '__kernel_off_t',
@@ -1977,22 +2009,24 @@ __all__ = ['__kernel_uid32_t', 'wait_queue_t', 'page_cgroup',
            'N7siginfo5DOT_121E', 'pid_link', '__kernel_ino_t',
            'sem_undo_list', 'fd_set', 'kernel_vm86_regs', 'pteval_t',
            '__user_cap_data_struct', 'loff_t', '__kernel_time_t',
-           'cpumask_t', 'seqcount_t', '__sigrestore_t',
-           'N18i387_fxsave_struct4DOT_30E', 'thread_info', 'page',
-           'old_sigset_t', 'rt_rq', 'N13math_emu_info4DOT_13E',
-           '__kernel_ssize_t', '__kernel_suseconds_t',
-           'resource_size_t', 'list_head', 'sched_entity',
-           'gate_desc', '__restorefn_t', '__kernel_caddr_t',
-           '__key_reference_with_attributes', 'pmdval_t', 'rcu_head',
-           'audit_context', '__kernel_clock_t', 'kernel_cap_struct',
-           'sysv_sem', 'linux_binfmt', '__signalfn_t', 'cycles_t',
-           '__be32', 'core_state', 'keyring_list', 'free_area',
+           'cpumask_t', 'seqcount_t', 'compound_page_dtor',
+           '__sigrestore_t', 'N18i387_fxsave_struct4DOT_30E',
+           'thread_info', 'page', 'old_sigset_t', 'rt_rq',
+           'N13math_emu_info4DOT_13E', '__kernel_ssize_t',
+           '__kernel_suseconds_t', 'resource_size_t', 'list_head',
+           'sched_entity', 'gate_desc', '__restorefn_t',
+           '__kernel_caddr_t', '__key_reference_with_attributes',
+           'pmdval_t', 'rcu_head', 'audit_context',
+           '__kernel_clock_t', 'kernel_cap_struct', 'sysv_sem',
+           'linux_binfmt', '__signalfn_t', 'cycles_t', '__be32',
+           'core_state', 'keyring_list', 'thread_group_cputimer',
            'prop_local_single', 'zone_reclaim_stat',
            'arch_spinlock_t', 'N7siginfo5DOT_1215DOT_126E',
-           '__wait_queue_head', 'ptrdiff_t', '__kernel_key_t',
-           'css_set', 'load_weight', 'vm86_regs', 'apm_event_t',
-           'task_struct', 'u8', 'N14vm_area_struct4DOT_47E', 'rlimit',
-           'uintptr_t', 'u_int', 'mm_context_t', 'i387_fsave_struct',
+           'work_fn_t', '__wait_queue_head', 'ptrdiff_t',
+           '__kernel_key_t', 'css_set', 'load_weight', 'vm86_regs',
+           'apm_event_t', 'task_struct', 'u8',
+           'N14vm_area_struct4DOT_47E', 'rlimit', 'uintptr_t',
+           'u_int', 'mm_context_t', 'i387_fsave_struct',
            'task_io_accounting', 'pgtable_t', '__kernel_old_gid_t',
            'unchar', 'pcpu_fc_populate_pte_fn_t', 'cfs_rq', 'pid',
            'N11desc_struct4DOT_214DOT_22E', 'file', 'mm_struct',

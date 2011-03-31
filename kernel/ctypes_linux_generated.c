@@ -11720,3 +11720,1612 @@ static inline unsigned long rlimit_max(unsigned int limit)
 {
  return task_rlimit_max(get_current(), limit);
 }
+struct __kernel_sockaddr_storage {
+ unsigned short ss_family;
+ char __data[128 - sizeof(unsigned short)];
+} __attribute__ ((aligned((__alignof__ (struct sockaddr *)))));
+struct pid;
+struct cred;
+struct seq_file;
+extern void socket_seq_show(struct seq_file *seq);
+typedef unsigned short sa_family_t;
+struct sockaddr {
+ sa_family_t sa_family;
+ char sa_data[14];
+};
+struct linger {
+ int l_onoff;
+ int l_linger;
+};
+struct msghdr {
+ void * msg_name;
+ int msg_namelen;
+ struct iovec * msg_iov;
+ __kernel_size_t msg_iovlen;
+ void * msg_control;
+ __kernel_size_t msg_controllen;
+ unsigned msg_flags;
+};
+struct mmsghdr {
+ struct msghdr msg_hdr;
+ unsigned msg_len;
+};
+struct cmsghdr {
+ __kernel_size_t cmsg_len;
+        int cmsg_level;
+        int cmsg_type;
+};
+static inline struct cmsghdr * __cmsg_nxthdr(void *__ctl, __kernel_size_t __size,
+            struct cmsghdr *__cmsg)
+{
+ struct cmsghdr * __ptr;
+ __ptr = (struct cmsghdr*)(((unsigned char *) __cmsg) + ( ((__cmsg->cmsg_len)+sizeof(long)-1) & ~(sizeof(long)-1) ));
+ if ((unsigned long)((char*)(__ptr+1) - (char *) __ctl) > __size)
+  return (struct cmsghdr *)0;
+ return __ptr;
+}
+static inline struct cmsghdr * cmsg_nxthdr (struct msghdr *__msg, struct cmsghdr *__cmsg)
+{
+ return __cmsg_nxthdr(__msg->msg_control, __msg->msg_controllen, __cmsg);
+}
+struct ucred {
+ __u32 pid;
+ __u32 uid;
+ __u32 gid;
+};
+extern void cred_to_ucred(struct pid *pid, const struct cred *cred, struct ucred *ucred);
+extern int memcpy_fromiovec(unsigned char *kdata, struct iovec *iov, int len);
+extern int memcpy_fromiovecend(unsigned char *kdata, const struct iovec *iov,
+          int offset, int len);
+extern int csum_partial_copy_fromiovecend(unsigned char *kdata,
+       struct iovec *iov,
+       int offset,
+       unsigned int len, __wsum *csump);
+extern int verify_iovec(struct msghdr *m, struct iovec *iov, struct sockaddr *address, int mode);
+extern int memcpy_toiovec(struct iovec *v, unsigned char *kdata, int len);
+extern int memcpy_toiovecend(const struct iovec *v, unsigned char *kdata,
+        int offset, int len);
+extern int move_addr_to_user(struct sockaddr *kaddr, int klen, void *uaddr, int *ulen);
+extern int move_addr_to_kernel(void *uaddr, int ulen, struct sockaddr *kaddr);
+extern int put_cmsg(struct msghdr*, int level, int type, int len, void *data);
+struct timespec;
+extern int __sys_recvmmsg(int fd, struct mmsghdr *mmsg, unsigned int vlen,
+     unsigned int flags, struct timespec *timeout);
+struct vm_area_struct;
+static inline int allocflags_to_migratetype(gfp_t gfp_flags)
+{
+ ({ int __ret_warn_on = !!((gfp_flags & ((( gfp_t)0x80000u)|(( gfp_t)0x08u))) == ((( gfp_t)0x80000u)|(( gfp_t)0x08u))); if (__builtin_expect(!!(__ret_warn_on), 0)) warn_slowpath_null("/usr/src/linux-headers-2.6.35-28-generic-pae//include/linux/gfp.h", 123); __builtin_expect(!!(__ret_warn_on), 0); });
+ if (__builtin_expect(!!(page_group_by_mobility_disabled), 0))
+  return 0;
+ return (((gfp_flags & (( gfp_t)0x08u)) != 0) << 1) |
+  ((gfp_flags & (( gfp_t)0x80000u)) != 0);
+}
+static inline enum zone_type gfp_zone(gfp_t flags)
+{
+ enum zone_type z;
+ int bit = flags & ((( gfp_t)0x01u)|(( gfp_t)0x02u)|(( gfp_t)0x04u)|(( gfp_t)0x08u));
+ z = (( (ZONE_NORMAL << 0 * 2) | (ZONE_DMA << (( gfp_t)0x01u) * 2) | (ZONE_HIGHMEM << (( gfp_t)0x02u) * 2) | (ZONE_NORMAL << (( gfp_t)0x04u) * 2) | (ZONE_NORMAL << (( gfp_t)0x08u) * 2) | (ZONE_DMA << ((( gfp_t)0x08u) | (( gfp_t)0x01u)) * 2) | (ZONE_MOVABLE << ((( gfp_t)0x08u) | (( gfp_t)0x02u)) * 2) | (ZONE_NORMAL << ((( gfp_t)0x08u) | (( gfp_t)0x04u)) * 2)) >> (bit * 2)) &
+      ((1 << 2) - 1);
+ if (__builtin_constant_p(bit))
+  ((void)sizeof(char[1 - 2 * !!((( 1 << ((( gfp_t)0x01u) | (( gfp_t)0x02u)) | 1 << ((( gfp_t)0x01u) | (( gfp_t)0x04u)) | 1 << ((( gfp_t)0x04u) | (( gfp_t)0x02u)) | 1 << ((( gfp_t)0x01u) | (( gfp_t)0x04u) | (( gfp_t)0x02u)) | 1 << ((( gfp_t)0x08u) | (( gfp_t)0x02u) | (( gfp_t)0x01u)) | 1 << ((( gfp_t)0x08u) | (( gfp_t)0x04u) | (( gfp_t)0x01u)) | 1 << ((( gfp_t)0x08u) | (( gfp_t)0x04u) | (( gfp_t)0x02u)) | 1 << ((( gfp_t)0x08u) | (( gfp_t)0x04u) | (( gfp_t)0x01u) | (( gfp_t)0x02u))) >> bit) & 1)]));
+ else {
+ }
+ return z;
+}
+static inline int gfp_zonelist(gfp_t flags)
+{
+ if (0 && __builtin_expect(!!(flags & (( gfp_t)0x40000u)), 0))
+  return 1;
+ return 0;
+}
+static inline struct zonelist *node_zonelist(int nid, gfp_t flags)
+{
+ return (&contig_page_data)->node_zonelists + gfp_zonelist(flags);
+}
+static inline void arch_free_page(struct page *page, int order) { }
+static inline void arch_alloc_page(struct page *page, int order) { }
+struct page *
+__alloc_pages_nodemask(gfp_t gfp_mask, unsigned int order,
+         struct zonelist *zonelist, nodemask_t *nodemask);
+static inline struct page *
+__alloc_pages(gfp_t gfp_mask, unsigned int order,
+  struct zonelist *zonelist)
+{
+ return __alloc_pages_nodemask(gfp_mask, order, zonelist, 0);
+}
+static inline struct page *alloc_pages_node(int nid, gfp_t gfp_mask,
+      unsigned int order)
+{
+ if (nid < 0)
+  nid = numa_node_id();
+ return __alloc_pages(gfp_mask, order, node_zonelist(nid, gfp_mask));
+}
+static inline struct page *alloc_pages_exact_node(int nid, gfp_t gfp_mask,
+      unsigned int order)
+{
+ do { } while (0);
+ return __alloc_pages(gfp_mask, order, node_zonelist(nid, gfp_mask));
+}
+extern unsigned long __get_free_pages(gfp_t gfp_mask, unsigned int order);
+extern unsigned long get_zeroed_page(gfp_t gfp_mask);
+void *alloc_pages_exact(size_t size, gfp_t gfp_mask);
+void free_pages_exact(void *virt, size_t size);
+extern void __free_pages(struct page *page, unsigned int order);
+extern void free_pages(unsigned long addr, unsigned int order);
+extern void free_hot_cold_page(struct page *page, int cold);
+void page_alloc_init(void);
+void drain_zone_pages(struct zone *zone, struct per_cpu_pages *pcp);
+void drain_all_pages(void);
+void drain_local_pages(void *dummy);
+extern gfp_t gfp_allowed_mask;
+extern void pm_restrict_gfp_mask(void);
+extern void pm_restore_gfp_mask(void);
+struct task_struct;
+extern int debug_locks;
+extern int debug_locks_silent;
+static inline int __debug_locks_off(void)
+{
+ return ({ __typeof(*((&debug_locks))) __x = ((0)); switch (sizeof(*&debug_locks)) { case 1: asm volatile("xchgb %b0,%1" : "=q" (__x), "+m" (*((struct __xchg_dummy *)((&debug_locks)))) : "0" (__x) : "memory"); break; case 2: asm volatile("xchgw %w0,%1" : "=r" (__x), "+m" (*((struct __xchg_dummy *)((&debug_locks)))) : "0" (__x) : "memory"); break; case 4: asm volatile("xchgl %0,%1" : "=r" (__x), "+m" (*((struct __xchg_dummy *)((&debug_locks)))) : "0" (__x) : "memory"); break; default: __xchg_wrong_size(); } __x; });
+}
+extern int debug_locks_off(void);
+struct task_struct;
+static inline void debug_show_all_locks(void)
+{
+}
+static inline void __debug_show_held_locks(struct task_struct *task)
+{
+}
+static inline void debug_show_held_locks(struct task_struct *task)
+{
+}
+static inline void
+debug_check_no_locks_freed(const void *from, unsigned long len)
+{
+}
+static inline void
+debug_check_no_locks_held(struct task_struct *task)
+{
+}
+struct mempolicy;
+struct anon_vma;
+struct file_ra_state;
+struct user_struct;
+struct writeback_control;
+extern unsigned long max_mapnr;
+extern unsigned long num_physpages;
+extern unsigned long totalram_pages;
+extern void * high_memory;
+extern int page_cluster;
+extern int sysctl_legacy_va_layout;
+extern unsigned long empty_zero_page[((1UL) << 12) / sizeof(unsigned long)];
+extern spinlock_t pgd_lock;
+extern struct list_head pgd_list;
+static inline int pte_dirty(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 6);
+}
+static inline int pte_young(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 5);
+}
+static inline int pte_write(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 1);
+}
+static inline int pte_file(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 6);
+}
+static inline int pte_huge(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 7);
+}
+static inline int pte_global(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 8);
+}
+static inline int pte_exec(pte_t pte)
+{
+ return !(pte_flags(pte) & (((pteval_t)(1)) << 63));
+}
+static inline int pte_special(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(1)) << 9);
+}
+static inline unsigned long pte_pfn(pte_t pte)
+{
+ return (pte_val(pte) & ((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1)))) >> 12;
+}
+static inline unsigned long pmd_pfn(pmd_t pmd)
+{
+ return (pmd_val(pmd) & ((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1)))) >> 12;
+}
+static inline int pmd_large(pmd_t pte)
+{
+ return (pmd_flags(pte) & ((((pteval_t)(1)) << 7) | (((pteval_t)(1)) << 0))) ==
+  ((((pteval_t)(1)) << 7) | (((pteval_t)(1)) << 0));
+}
+static inline pte_t pte_set_flags(pte_t pte, pteval_t set)
+{
+ pteval_t v = native_pte_val(pte);
+ return native_make_pte(v | set);
+}
+static inline pte_t pte_clear_flags(pte_t pte, pteval_t clear)
+{
+ pteval_t v = native_pte_val(pte);
+ return native_make_pte(v & ~clear);
+}
+static inline pte_t pte_mkclean(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 6));
+}
+static inline pte_t pte_mkold(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 5));
+}
+static inline pte_t pte_wrprotect(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 1));
+}
+static inline pte_t pte_mkexec(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 63));
+}
+static inline pte_t pte_mkdirty(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 6));
+}
+static inline pte_t pte_mkyoung(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 5));
+}
+static inline pte_t pte_mkwrite(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 1));
+}
+static inline pte_t pte_mkhuge(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 7));
+}
+static inline pte_t pte_clrhuge(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 7));
+}
+static inline pte_t pte_mkglobal(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 8));
+}
+static inline pte_t pte_clrglobal(pte_t pte)
+{
+ return pte_clear_flags(pte, (((pteval_t)(1)) << 8));
+}
+static inline pte_t pte_mkspecial(pte_t pte)
+{
+ return pte_set_flags(pte, (((pteval_t)(1)) << 9));
+}
+static inline pgprotval_t massage_pgprot(pgprot_t pgprot)
+{
+ pgprotval_t protval = ((pgprot).pgprot);
+ if (protval & (((pteval_t)(1)) << 0))
+  protval &= __supported_pte_mask;
+ return protval;
+}
+static inline pte_t pfn_pte(unsigned long page_nr, pgprot_t pgprot)
+{
+ return __pte(((phys_addr_t)page_nr << 12) |
+       massage_pgprot(pgprot));
+}
+static inline pmd_t pfn_pmd(unsigned long page_nr, pgprot_t pgprot)
+{
+ return __pmd(((phys_addr_t)page_nr << 12) |
+       massage_pgprot(pgprot));
+}
+static inline pte_t pte_modify(pte_t pte, pgprot_t newprot)
+{
+ pteval_t val = pte_val(pte);
+ val &= (((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1))) | (((pteval_t)(1)) << 4) | (((pteval_t)(1)) << 3) | (((pteval_t)(1)) << 9) | (((pteval_t)(1)) << 5) | (((pteval_t)(1)) << 6));
+ val |= massage_pgprot(newprot) & ~(((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1))) | (((pteval_t)(1)) << 4) | (((pteval_t)(1)) << 3) | (((pteval_t)(1)) << 9) | (((pteval_t)(1)) << 5) | (((pteval_t)(1)) << 6));
+ return __pte(val);
+}
+static inline pgprot_t pgprot_modify(pgprot_t oldprot, pgprot_t newprot)
+{
+ pgprotval_t preservebits = ((oldprot).pgprot) & (((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1))) | (((pteval_t)(1)) << 4) | (((pteval_t)(1)) << 3) | (((pteval_t)(1)) << 9) | (((pteval_t)(1)) << 5) | (((pteval_t)(1)) << 6));
+ pgprotval_t addbits = ((newprot).pgprot);
+ return ((pgprot_t) { (preservebits | addbits) } );
+}
+static inline int is_new_memtype_allowed(u64 paddr, unsigned long size,
+      unsigned long flags,
+      unsigned long new_flags)
+{
+ if (x86_platform.is_untracked_pat_range(paddr, paddr + size))
+  return 1;
+ if ((flags == ((((pteval_t)(1)) << 4)) &&
+      new_flags == (0)) ||
+     (flags == ((((pteval_t)(1)) << 3)) &&
+      new_flags == (0))) {
+  return 0;
+ }
+ return 1;
+}
+pmd_t *populate_extra_pmd(unsigned long vaddr);
+pte_t *populate_extra_pte(unsigned long vaddr);
+struct mm_struct;
+struct vm_area_struct;
+extern pgd_t swapper_pg_dir[1024];
+extern pgd_t trampoline_pg_dir[1024];
+static inline void pgtable_cache_init(void) { }
+static inline void check_pgt_cache(void) { }
+void paging_init(void);
+extern void set_pmd_pfn(unsigned long, unsigned long, pgprot_t);
+static inline void native_set_pte(pte_t *ptep, pte_t pte)
+{
+ ptep->pte_high = pte.pte_high;
+ __asm__ __volatile__("": : :"memory");
+ ptep->pte_low = pte.pte_low;
+}
+static inline void native_set_pte_atomic(pte_t *ptep, pte_t pte)
+{
+ set_64bit((unsigned long long *)(ptep), native_pte_val(pte));
+}
+static inline void native_set_pmd(pmd_t *pmdp, pmd_t pmd)
+{
+ set_64bit((unsigned long long *)(pmdp), native_pmd_val(pmd));
+}
+static inline void native_set_pud(pud_t *pudp, pud_t pud)
+{
+ set_64bit((unsigned long long *)(pudp), native_pud_val(pud));
+}
+static inline void native_pte_clear(struct mm_struct *mm, unsigned long addr,
+        pte_t *ptep)
+{
+ ptep->pte_low = 0;
+ __asm__ __volatile__("": : :"memory");
+ ptep->pte_high = 0;
+}
+static inline void native_pmd_clear(pmd_t *pmd)
+{
+ u32 *tmp = (u32 *)pmd;
+ *tmp = 0;
+ __asm__ __volatile__("": : :"memory");
+ *(tmp + 1) = 0;
+}
+static inline void pud_clear(pud_t *pudp)
+{
+ unsigned long pgd;
+ set_pud(pudp, ((pud_t) { __pgd(0) } ));
+ pgd = read_cr3();
+ if ((((unsigned long)(pudp)) - ((unsigned long)(0xC0000000UL))) >= pgd && (((unsigned long)(pudp)) - ((unsigned long)(0xC0000000UL))) <
+     (pgd + sizeof(pgd_t)*4))
+  write_cr3(pgd);
+}
+static inline pte_t native_ptep_get_and_clear(pte_t *ptep)
+{
+ pte_t res;
+ res.pte_low = ({ __typeof(*((&ptep->pte_low))) __x = ((0)); switch (sizeof(*&ptep->pte_low)) { case 1: asm volatile("xchgb %b0,%1" : "=q" (__x), "+m" (*((struct __xchg_dummy *)((&ptep->pte_low)))) : "0" (__x) : "memory"); break; case 2: asm volatile("xchgw %w0,%1" : "=r" (__x), "+m" (*((struct __xchg_dummy *)((&ptep->pte_low)))) : "0" (__x) : "memory"); break; case 4: asm volatile("xchgl %0,%1" : "=r" (__x), "+m" (*((struct __xchg_dummy *)((&ptep->pte_low)))) : "0" (__x) : "memory"); break; default: __xchg_wrong_size(); } __x; });
+ res.pte_high = ptep->pte_high;
+ ptep->pte_high = 0;
+ return res;
+}
+static inline int pte_none(pte_t pte)
+{
+ return !pte.pte;
+}
+static inline int pte_same(pte_t a, pte_t b)
+{
+ return a.pte == b.pte;
+}
+static inline int pte_present(pte_t a)
+{
+ return pte_flags(a) & ((((pteval_t)(1)) << 0) | (((pteval_t)(1)) << 8));
+}
+static inline int pte_hidden(pte_t pte)
+{
+ return pte_flags(pte) & (((pteval_t)(0)));
+}
+static inline int pmd_present(pmd_t pmd)
+{
+ return pmd_flags(pmd) & (((pteval_t)(1)) << 0);
+}
+static inline int pmd_none(pmd_t pmd)
+{
+ return (unsigned long)native_pmd_val(pmd) == 0;
+}
+static inline unsigned long pmd_page_vaddr(pmd_t pmd)
+{
+ return (unsigned long)((void *)((unsigned long)(pmd_val(pmd) & ((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1))))+((unsigned long)(0xC0000000UL))));
+}
+static inline unsigned long pmd_index(unsigned long address)
+{
+ return (address >> 21) & (512 - 1);
+}
+static inline unsigned long pte_index(unsigned long address)
+{
+ return (address >> 12) & (512 - 1);
+}
+static inline pte_t *pte_offset_kernel(pmd_t *pmd, unsigned long address)
+{
+ return (pte_t *)pmd_page_vaddr(*pmd) + pte_index(address);
+}
+static inline int pmd_bad(pmd_t pmd)
+{
+ return (pmd_flags(pmd) & ~(((pteval_t)(1)) << 2)) != ((((pteval_t)(1)) << 0) | (((pteval_t)(1)) << 1) | (((pteval_t)(1)) << 5) | (((pteval_t)(1)) << 6));
+}
+static inline unsigned long pages_to_mb(unsigned long npg)
+{
+ return npg >> (20 - 12);
+}
+static inline int pud_none(pud_t pud)
+{
+ return native_pud_val(pud) == 0;
+}
+static inline int pud_present(pud_t pud)
+{
+ return pud_flags(pud) & (((pteval_t)(1)) << 0);
+}
+static inline unsigned long pud_page_vaddr(pud_t pud)
+{
+ return (unsigned long)((void *)((unsigned long)((unsigned long)(pgd_val((pud).pgd)) & ((pteval_t)(((signed long)(~(((1UL) << 12)-1))) & ((phys_addr_t)(1ULL << 44) - 1))))+((unsigned long)(0xC0000000UL))));
+}
+static inline pmd_t *pmd_offset(pud_t *pud, unsigned long address)
+{
+ return (pmd_t *)pud_page_vaddr(*pud) + pmd_index(address);
+}
+static inline int pud_large(pud_t pud)
+{
+ return ((pgd_val((pud).pgd)) & ((((pteval_t)(1)) << 7) | (((pteval_t)(1)) << 0))) ==
+  ((((pteval_t)(1)) << 7) | (((pteval_t)(1)) << 0));
+}
+static inline int pud_bad(pud_t pud)
+{
+ return (pud_flags(pud) & ~(((((pteval_t)(1)) << 0) | (((pteval_t)(1)) << 1) | (((pteval_t)(1)) << 5) | (((pteval_t)(1)) << 6)) | (((pteval_t)(1)) << 2))) != 0;
+}
+extern int direct_gbpages;
+static inline pte_t native_local_ptep_get_and_clear(pte_t *ptep)
+{
+ pte_t res = *ptep;
+ native_pte_clear(0, 0, ptep);
+ return res;
+}
+static inline void native_set_pte_at(struct mm_struct *mm, unsigned long addr,
+         pte_t *ptep , pte_t pte)
+{
+ native_set_pte(ptep, pte);
+}
+struct vm_area_struct;
+extern int ptep_set_access_flags(struct vm_area_struct *vma,
+     unsigned long address, pte_t *ptep,
+     pte_t entry, int dirty);
+extern int ptep_test_and_clear_young(struct vm_area_struct *vma,
+         unsigned long addr, pte_t *ptep);
+extern int ptep_clear_flush_young(struct vm_area_struct *vma,
+      unsigned long address, pte_t *ptep);
+static inline pte_t ptep_get_and_clear(struct mm_struct *mm, unsigned long addr,
+           pte_t *ptep)
+{
+ pte_t pte = native_ptep_get_and_clear(ptep);
+ pte_update(mm, addr, ptep);
+ return pte;
+}
+static inline pte_t ptep_get_and_clear_full(struct mm_struct *mm,
+         unsigned long addr, pte_t *ptep,
+         int full)
+{
+ pte_t pte;
+ if (full) {
+  pte = native_local_ptep_get_and_clear(ptep);
+ } else {
+  pte = ptep_get_and_clear(mm, addr, ptep);
+ }
+ return pte;
+}
+static inline void ptep_set_wrprotect(struct mm_struct *mm,
+          unsigned long addr, pte_t *ptep)
+{
+ clear_bit(1, (unsigned long *)&ptep->pte);
+ pte_update(mm, addr, ptep);
+}
+static inline void clone_pgd_range(pgd_t *dst, pgd_t *src, int count)
+{
+       __builtin_memcpy(dst, src, count * sizeof(pgd_t));
+}
+void pgd_clear_bad(pgd_t *);
+void pud_clear_bad(pud_t *);
+void pmd_clear_bad(pmd_t *);
+static inline int pgd_none_or_clear_bad(pgd_t *pgd)
+{
+ if (pgd_none(*pgd))
+  return 1;
+ if (__builtin_expect(!!(pgd_bad(*pgd)), 0)) {
+  pgd_clear_bad(pgd);
+  return 1;
+ }
+ return 0;
+}
+static inline int pud_none_or_clear_bad(pud_t *pud)
+{
+ if (pud_none(*pud))
+  return 1;
+ if (__builtin_expect(!!(pud_bad(*pud)), 0)) {
+  pud_clear_bad(pud);
+  return 1;
+ }
+ return 0;
+}
+static inline int pmd_none_or_clear_bad(pmd_t *pmd)
+{
+ if (pmd_none(*pmd))
+  return 1;
+ if (__builtin_expect(!!(pmd_bad(*pmd)), 0)) {
+  pmd_clear_bad(pmd);
+  return 1;
+ }
+ return 0;
+}
+static inline pte_t __ptep_modify_prot_start(struct mm_struct *mm,
+          unsigned long addr,
+          pte_t *ptep)
+{
+ return ptep_get_and_clear(mm, addr, ptep);
+}
+static inline void __ptep_modify_prot_commit(struct mm_struct *mm,
+          unsigned long addr,
+          pte_t *ptep, pte_t pte)
+{
+ set_pte_at(mm, addr, ptep, pte);
+}
+extern int track_pfn_vma_new(struct vm_area_struct *vma, pgprot_t *prot,
+    unsigned long pfn, unsigned long size);
+extern int track_pfn_vma_copy(struct vm_area_struct *vma);
+extern void untrack_pfn_vma(struct vm_area_struct *vma, unsigned long pfn,
+    unsigned long size);
+extern struct kmem_cache *vm_area_cachep;
+extern pgprot_t protection_map[16];
+static inline int is_linear_pfn_mapping(struct vm_area_struct *vma)
+{
+ return (vma->vm_flags & 0x40000000);
+}
+static inline int is_pfn_mapping(struct vm_area_struct *vma)
+{
+ return (vma->vm_flags & 0x00000400);
+}
+struct vm_fault {
+ unsigned int flags;
+ unsigned long pgoff;
+ void *virtual_address;
+ struct page *page;
+};
+struct vm_operations_struct {
+ void (*open)(struct vm_area_struct * area);
+ void (*close)(struct vm_area_struct * area);
+ int (*fault)(struct vm_area_struct *vma, struct vm_fault *vmf);
+ int (*page_mkwrite)(struct vm_area_struct *vma, struct vm_fault *vmf);
+ int (*access)(struct vm_area_struct *vma, unsigned long addr,
+        void *buf, int len, int write);
+};
+struct mmu_gather;
+struct inode;
+enum pageflags {
+ PG_locked,
+ PG_error,
+ PG_referenced,
+ PG_uptodate,
+ PG_dirty,
+ PG_lru,
+ PG_active,
+ PG_slab,
+ PG_owner_priv_1,
+ PG_arch_1,
+ PG_reserved,
+ PG_private,
+ PG_private_2,
+ PG_writeback,
+ PG_head,
+ PG_tail,
+ PG_swapcache,
+ PG_mappedtodisk,
+ PG_reclaim,
+ PG_buddy,
+ PG_swapbacked,
+ PG_unevictable,
+ PG_mlocked,
+ PG_uncached,
+ PG_hwpoison,
+ PG_readaheadunused,
+ __NR_PAGEFLAGS,
+ PG_checked = PG_owner_priv_1,
+ PG_fscache = PG_private_2,
+ PG_pinned = PG_owner_priv_1,
+ PG_savepinned = PG_dirty,
+ PG_slob_free = PG_private,
+ PG_slub_frozen = PG_active,
+ PG_slub_debug = PG_error,
+};
+struct page;
+static inline int PageLocked(struct page *page) { return (__builtin_constant_p((PG_locked)) ? constant_test_bit((PG_locked), (&page->flags)) : variable_test_bit((PG_locked), (&page->flags))); } static inline int TestSetPageLocked(struct page *page) { return test_and_set_bit(PG_locked, &page->flags); }
+static inline int PageError(struct page *page) { return (__builtin_constant_p((PG_error)) ? constant_test_bit((PG_error), (&page->flags)) : variable_test_bit((PG_error), (&page->flags))); } static inline void SetPageError(struct page *page) { set_bit(PG_error, &page->flags); } static inline void ClearPageError(struct page *page) { clear_bit(PG_error, &page->flags); }
+static inline int PageReferenced(struct page *page) { return (__builtin_constant_p((PG_referenced)) ? constant_test_bit((PG_referenced), (&page->flags)) : variable_test_bit((PG_referenced), (&page->flags))); } static inline void SetPageReferenced(struct page *page) { set_bit(PG_referenced, &page->flags); } static inline void ClearPageReferenced(struct page *page) { clear_bit(PG_referenced, &page->flags); } static inline int TestClearPageReferenced(struct page *page) { return test_and_clear_bit(PG_referenced, &page->flags); }
+static inline int PageDirty(struct page *page) { return (__builtin_constant_p((PG_dirty)) ? constant_test_bit((PG_dirty), (&page->flags)) : variable_test_bit((PG_dirty), (&page->flags))); } static inline void SetPageDirty(struct page *page) { set_bit(PG_dirty, &page->flags); } static inline void ClearPageDirty(struct page *page) { clear_bit(PG_dirty, &page->flags); } static inline int TestSetPageDirty(struct page *page) { return test_and_set_bit(PG_dirty, &page->flags); } static inline int TestClearPageDirty(struct page *page) { return test_and_clear_bit(PG_dirty, &page->flags); } static inline void __ClearPageDirty(struct page *page) { __clear_bit(PG_dirty, &page->flags); }
+static inline int PageLRU(struct page *page) { return (__builtin_constant_p((PG_lru)) ? constant_test_bit((PG_lru), (&page->flags)) : variable_test_bit((PG_lru), (&page->flags))); } static inline void SetPageLRU(struct page *page) { set_bit(PG_lru, &page->flags); } static inline void ClearPageLRU(struct page *page) { clear_bit(PG_lru, &page->flags); } static inline void __ClearPageLRU(struct page *page) { __clear_bit(PG_lru, &page->flags); }
+static inline int PageActive(struct page *page) { return (__builtin_constant_p((PG_active)) ? constant_test_bit((PG_active), (&page->flags)) : variable_test_bit((PG_active), (&page->flags))); } static inline void SetPageActive(struct page *page) { set_bit(PG_active, &page->flags); } static inline void ClearPageActive(struct page *page) { clear_bit(PG_active, &page->flags); } static inline void __ClearPageActive(struct page *page) { __clear_bit(PG_active, &page->flags); }
+ static inline int TestClearPageActive(struct page *page) { return test_and_clear_bit(PG_active, &page->flags); }
+static inline int PageSlab(struct page *page) { return (__builtin_constant_p((PG_slab)) ? constant_test_bit((PG_slab), (&page->flags)) : variable_test_bit((PG_slab), (&page->flags))); } static inline void __SetPageSlab(struct page *page) { __set_bit(PG_slab, &page->flags); } static inline void __ClearPageSlab(struct page *page) { __clear_bit(PG_slab, &page->flags); }
+static inline int PageChecked(struct page *page) { return (__builtin_constant_p((PG_checked)) ? constant_test_bit((PG_checked), (&page->flags)) : variable_test_bit((PG_checked), (&page->flags))); } static inline void SetPageChecked(struct page *page) { set_bit(PG_checked, &page->flags); } static inline void ClearPageChecked(struct page *page) { clear_bit(PG_checked, &page->flags); }
+static inline int PagePinned(struct page *page) { return (__builtin_constant_p((PG_pinned)) ? constant_test_bit((PG_pinned), (&page->flags)) : variable_test_bit((PG_pinned), (&page->flags))); } static inline void SetPagePinned(struct page *page) { set_bit(PG_pinned, &page->flags); } static inline void ClearPagePinned(struct page *page) { clear_bit(PG_pinned, &page->flags); } static inline int TestSetPagePinned(struct page *page) { return test_and_set_bit(PG_pinned, &page->flags); } static inline int TestClearPagePinned(struct page *page) { return test_and_clear_bit(PG_pinned, &page->flags); }
+static inline int PageSavePinned(struct page *page) { return (__builtin_constant_p((PG_savepinned)) ? constant_test_bit((PG_savepinned), (&page->flags)) : variable_test_bit((PG_savepinned), (&page->flags))); } static inline void SetPageSavePinned(struct page *page) { set_bit(PG_savepinned, &page->flags); } static inline void ClearPageSavePinned(struct page *page) { clear_bit(PG_savepinned, &page->flags); };
+static inline int PageReserved(struct page *page) { return (__builtin_constant_p((PG_reserved)) ? constant_test_bit((PG_reserved), (&page->flags)) : variable_test_bit((PG_reserved), (&page->flags))); } static inline void SetPageReserved(struct page *page) { set_bit(PG_reserved, &page->flags); } static inline void ClearPageReserved(struct page *page) { clear_bit(PG_reserved, &page->flags); } static inline void __ClearPageReserved(struct page *page) { __clear_bit(PG_reserved, &page->flags); }
+static inline int PageSwapBacked(struct page *page) { return (__builtin_constant_p((PG_swapbacked)) ? constant_test_bit((PG_swapbacked), (&page->flags)) : variable_test_bit((PG_swapbacked), (&page->flags))); } static inline void SetPageSwapBacked(struct page *page) { set_bit(PG_swapbacked, &page->flags); } static inline void ClearPageSwapBacked(struct page *page) { clear_bit(PG_swapbacked, &page->flags); } static inline void __ClearPageSwapBacked(struct page *page) { __clear_bit(PG_swapbacked, &page->flags); }
+static inline int PageSlobFree(struct page *page) { return (__builtin_constant_p((PG_slob_free)) ? constant_test_bit((PG_slob_free), (&page->flags)) : variable_test_bit((PG_slob_free), (&page->flags))); } static inline void __SetPageSlobFree(struct page *page) { __set_bit(PG_slob_free, &page->flags); } static inline void __ClearPageSlobFree(struct page *page) { __clear_bit(PG_slob_free, &page->flags); }
+static inline int PageSlubFrozen(struct page *page) { return (__builtin_constant_p((PG_slub_frozen)) ? constant_test_bit((PG_slub_frozen), (&page->flags)) : variable_test_bit((PG_slub_frozen), (&page->flags))); } static inline void __SetPageSlubFrozen(struct page *page) { __set_bit(PG_slub_frozen, &page->flags); } static inline void __ClearPageSlubFrozen(struct page *page) { __clear_bit(PG_slub_frozen, &page->flags); }
+static inline int PageSlubDebug(struct page *page) { return (__builtin_constant_p((PG_slub_debug)) ? constant_test_bit((PG_slub_debug), (&page->flags)) : variable_test_bit((PG_slub_debug), (&page->flags))); } static inline void __SetPageSlubDebug(struct page *page) { __set_bit(PG_slub_debug, &page->flags); } static inline void __ClearPageSlubDebug(struct page *page) { __clear_bit(PG_slub_debug, &page->flags); }
+static inline int PagePrivate(struct page *page) { return (__builtin_constant_p((PG_private)) ? constant_test_bit((PG_private), (&page->flags)) : variable_test_bit((PG_private), (&page->flags))); } static inline void SetPagePrivate(struct page *page) { set_bit(PG_private, &page->flags); } static inline void ClearPagePrivate(struct page *page) { clear_bit(PG_private, &page->flags); } static inline void __SetPagePrivate(struct page *page) { __set_bit(PG_private, &page->flags); }
+ static inline void __ClearPagePrivate(struct page *page) { __clear_bit(PG_private, &page->flags); }
+static inline int PagePrivate2(struct page *page) { return (__builtin_constant_p((PG_private_2)) ? constant_test_bit((PG_private_2), (&page->flags)) : variable_test_bit((PG_private_2), (&page->flags))); } static inline void SetPagePrivate2(struct page *page) { set_bit(PG_private_2, &page->flags); } static inline void ClearPagePrivate2(struct page *page) { clear_bit(PG_private_2, &page->flags); } static inline int TestSetPagePrivate2(struct page *page) { return test_and_set_bit(PG_private_2, &page->flags); } static inline int TestClearPagePrivate2(struct page *page) { return test_and_clear_bit(PG_private_2, &page->flags); }
+static inline int PageOwnerPriv1(struct page *page) { return (__builtin_constant_p((PG_owner_priv_1)) ? constant_test_bit((PG_owner_priv_1), (&page->flags)) : variable_test_bit((PG_owner_priv_1), (&page->flags))); } static inline void SetPageOwnerPriv1(struct page *page) { set_bit(PG_owner_priv_1, &page->flags); } static inline void ClearPageOwnerPriv1(struct page *page) { clear_bit(PG_owner_priv_1, &page->flags); } static inline int TestClearPageOwnerPriv1(struct page *page) { return test_and_clear_bit(PG_owner_priv_1, &page->flags); }
+static inline int PageWriteback(struct page *page) { return (__builtin_constant_p((PG_writeback)) ? constant_test_bit((PG_writeback), (&page->flags)) : variable_test_bit((PG_writeback), (&page->flags))); } static inline int TestSetPageWriteback(struct page *page) { return test_and_set_bit(PG_writeback, &page->flags); } static inline int TestClearPageWriteback(struct page *page) { return test_and_clear_bit(PG_writeback, &page->flags); }
+static inline int PageBuddy(struct page *page) { return (__builtin_constant_p((PG_buddy)) ? constant_test_bit((PG_buddy), (&page->flags)) : variable_test_bit((PG_buddy), (&page->flags))); } static inline void __SetPageBuddy(struct page *page) { __set_bit(PG_buddy, &page->flags); } static inline void __ClearPageBuddy(struct page *page) { __clear_bit(PG_buddy, &page->flags); }
+static inline int PageMappedToDisk(struct page *page) { return (__builtin_constant_p((PG_mappedtodisk)) ? constant_test_bit((PG_mappedtodisk), (&page->flags)) : variable_test_bit((PG_mappedtodisk), (&page->flags))); } static inline void SetPageMappedToDisk(struct page *page) { set_bit(PG_mappedtodisk, &page->flags); } static inline void ClearPageMappedToDisk(struct page *page) { clear_bit(PG_mappedtodisk, &page->flags); }
+static inline int PageReclaim(struct page *page) { return (__builtin_constant_p((PG_reclaim)) ? constant_test_bit((PG_reclaim), (&page->flags)) : variable_test_bit((PG_reclaim), (&page->flags))); } static inline void SetPageReclaim(struct page *page) { set_bit(PG_reclaim, &page->flags); } static inline void ClearPageReclaim(struct page *page) { clear_bit(PG_reclaim, &page->flags); } static inline int TestClearPageReclaim(struct page *page) { return test_and_clear_bit(PG_reclaim, &page->flags); }
+static inline int PageReadahead(struct page *page) { return (__builtin_constant_p((PG_reclaim)) ? constant_test_bit((PG_reclaim), (&page->flags)) : variable_test_bit((PG_reclaim), (&page->flags))); } static inline void SetPageReadahead(struct page *page) { set_bit(PG_reclaim, &page->flags); } static inline void ClearPageReadahead(struct page *page) { clear_bit(PG_reclaim, &page->flags); }
+static inline int PageReadaheadUnused(struct page *page) { return (__builtin_constant_p((PG_readaheadunused)) ? constant_test_bit((PG_readaheadunused), (&page->flags)) : variable_test_bit((PG_readaheadunused), (&page->flags))); } static inline void SetPageReadaheadUnused(struct page *page) { set_bit(PG_readaheadunused, &page->flags); } static inline void ClearPageReadaheadUnused(struct page *page) { clear_bit(PG_readaheadunused, &page->flags); }
+static inline int PageSwapCache(struct page *page) { return (__builtin_constant_p((PG_swapcache)) ? constant_test_bit((PG_swapcache), (&page->flags)) : variable_test_bit((PG_swapcache), (&page->flags))); } static inline void SetPageSwapCache(struct page *page) { set_bit(PG_swapcache, &page->flags); } static inline void ClearPageSwapCache(struct page *page) { clear_bit(PG_swapcache, &page->flags); }
+static inline int PageUnevictable(struct page *page) { return (__builtin_constant_p((PG_unevictable)) ? constant_test_bit((PG_unevictable), (&page->flags)) : variable_test_bit((PG_unevictable), (&page->flags))); } static inline void SetPageUnevictable(struct page *page) { set_bit(PG_unevictable, &page->flags); } static inline void ClearPageUnevictable(struct page *page) { clear_bit(PG_unevictable, &page->flags); } static inline void __ClearPageUnevictable(struct page *page) { __clear_bit(PG_unevictable, &page->flags); }
+ static inline int TestClearPageUnevictable(struct page *page) { return test_and_clear_bit(PG_unevictable, &page->flags); }
+static inline int PageMlocked(struct page *page) { return (__builtin_constant_p((PG_mlocked)) ? constant_test_bit((PG_mlocked), (&page->flags)) : variable_test_bit((PG_mlocked), (&page->flags))); } static inline void SetPageMlocked(struct page *page) { set_bit(PG_mlocked, &page->flags); } static inline void ClearPageMlocked(struct page *page) { clear_bit(PG_mlocked, &page->flags); } static inline void __ClearPageMlocked(struct page *page) { __clear_bit(PG_mlocked, &page->flags); }
+ static inline int TestSetPageMlocked(struct page *page) { return test_and_set_bit(PG_mlocked, &page->flags); } static inline int TestClearPageMlocked(struct page *page) { return test_and_clear_bit(PG_mlocked, &page->flags); } static inline int __TestClearPageMlocked(struct page *page) { return __test_and_clear_bit(PG_mlocked, &page->flags); }
+static inline int PageUncached(struct page *page) { return (__builtin_constant_p((PG_uncached)) ? constant_test_bit((PG_uncached), (&page->flags)) : variable_test_bit((PG_uncached), (&page->flags))); } static inline void SetPageUncached(struct page *page) { set_bit(PG_uncached, &page->flags); } static inline void ClearPageUncached(struct page *page) { clear_bit(PG_uncached, &page->flags); }
+static inline int PageHWPoison(struct page *page) { return (__builtin_constant_p((PG_hwpoison)) ? constant_test_bit((PG_hwpoison), (&page->flags)) : variable_test_bit((PG_hwpoison), (&page->flags))); } static inline void SetPageHWPoison(struct page *page) { set_bit(PG_hwpoison, &page->flags); } static inline void ClearPageHWPoison(struct page *page) { clear_bit(PG_hwpoison, &page->flags); }
+static inline int TestSetPageHWPoison(struct page *page) { return test_and_set_bit(PG_hwpoison, &page->flags); } static inline int TestClearPageHWPoison(struct page *page) { return test_and_clear_bit(PG_hwpoison, &page->flags); }
+u64 stable_page_flags(struct page *page);
+static inline int PageUptodate(struct page *page)
+{
+ int ret = (__builtin_constant_p((PG_uptodate)) ? constant_test_bit((PG_uptodate), (&(page)->flags)) : variable_test_bit((PG_uptodate), (&(page)->flags)));
+ if (ret)
+  asm volatile ("661:\n\t" "lock; addl $0,0(%%esp)" "\n662:\n" ".section .altinstructions,\"a\"\n" " " ".balign 4" " " "\n" " " ".long" " " "661b\n" " " ".long" " " "663f\n" "	 .byte " "(0*32+26)" "\n" "	 .byte 662b-661b\n" "	 .byte 664f-663f\n" "	 .byte 0xff + (664f-663f) - (662b-661b)\n" ".previous\n" ".section .altinstr_replacement, \"ax\"\n" "663:\n\t" "lfence" "\n664:\n" ".previous" : : : "memory");
+ return ret;
+}
+static inline void __SetPageUptodate(struct page *page)
+{
+ __asm__ __volatile__("": : :"memory");
+ __set_bit(PG_uptodate, &(page)->flags);
+}
+static inline void SetPageUptodate(struct page *page)
+{
+ __asm__ __volatile__("": : :"memory");
+ set_bit(PG_uptodate, &(page)->flags);
+}
+static inline void ClearPageUptodate(struct page *page) { clear_bit(PG_uptodate, &page->flags); }
+extern void cancel_dirty_page(struct page *page, unsigned int account_size);
+int test_clear_page_writeback(struct page *page);
+int test_set_page_writeback(struct page *page);
+static inline void set_page_writeback(struct page *page)
+{
+ test_set_page_writeback(page);
+}
+static inline int PageHead(struct page *page) { return (__builtin_constant_p((PG_head)) ? constant_test_bit((PG_head), (&page->flags)) : variable_test_bit((PG_head), (&page->flags))); } static inline void __SetPageHead(struct page *page) { __set_bit(PG_head, &page->flags); } static inline void __ClearPageHead(struct page *page) { __clear_bit(PG_head, &page->flags); }
+static inline int PageTail(struct page *page) { return (__builtin_constant_p((PG_tail)) ? constant_test_bit((PG_tail), (&page->flags)) : variable_test_bit((PG_tail), (&page->flags))); } static inline void __SetPageTail(struct page *page) { __set_bit(PG_tail, &page->flags); } static inline void __ClearPageTail(struct page *page) { __clear_bit(PG_tail, &page->flags); }
+static inline int PageCompound(struct page *page)
+{
+ return page->flags & ((1L << PG_head) | (1L << PG_tail));
+}
+static inline int page_has_private(struct page *page)
+{
+ return !!(page->flags & (1 << PG_private | 1 << PG_private_2));
+}
+static inline int put_page_testzero(struct page *page)
+{
+ do { } while (0);
+ return atomic_dec_and_test(&page->_count);
+}
+static inline int get_page_unless_zero(struct page *page)
+{
+ return atomic_add_unless((&page->_count), 1, 0);
+}
+extern int page_is_ram(unsigned long pfn);
+struct page *vmalloc_to_page(const void *addr);
+unsigned long vmalloc_to_pfn(const void *addr);
+static inline int is_vmalloc_addr(const void *x)
+{
+ unsigned long addr = (unsigned long)x;
+ return addr >= ((unsigned long)high_memory + (8 * 1024 * 1024)) && addr < ((((((unsigned long)__FIXADDR_TOP) - (__end_of_fixed_addresses << 12)) - ((1UL) << 12) * (512 + 1)) & (~((1UL << 21) - 1))) - 2 * ((1UL) << 12));
+}
+extern int is_vmalloc_or_module_addr(const void *x);
+static inline struct page *compound_head(struct page *page)
+{
+ if (__builtin_expect(!!(PageTail(page)), 0))
+  return page->first_page;
+ return page;
+}
+static inline int page_count(struct page *page)
+{
+ return atomic_read(&compound_head(page)->_count);
+}
+static inline void get_page(struct page *page)
+{
+ page = compound_head(page);
+ do { } while (0);
+ atomic_inc(&page->_count);
+}
+static inline struct page *virt_to_head_page(const void *x)
+{
+ struct page *page = (mem_map + (((((unsigned long)(x)) - ((unsigned long)(0xC0000000UL))) >> 12) - (0UL)));
+ return compound_head(page);
+}
+static inline void init_page_count(struct page *page)
+{
+ atomic_set(&page->_count, 1);
+}
+void put_page(struct page *page);
+void put_pages_list(struct list_head *pages);
+void split_page(struct page *page, unsigned int order);
+int split_free_page(struct page *page);
+typedef void compound_page_dtor(struct page *);
+static inline void set_compound_page_dtor(struct page *page,
+      compound_page_dtor *dtor)
+{
+ page[1].lru.next = (void *)dtor;
+}
+static inline compound_page_dtor *get_compound_page_dtor(struct page *page)
+{
+ return (compound_page_dtor *)page[1].lru.next;
+}
+static inline int compound_order(struct page *page)
+{
+ if (!PageHead(page))
+  return 0;
+ return (unsigned long)page[1].lru.prev;
+}
+static inline void set_compound_order(struct page *page, unsigned long order)
+{
+ page[1].lru.prev = (void *)order;
+}
+static inline enum zone_type page_zonenum(struct page *page)
+{
+ return (page->flags >> (((((sizeof(unsigned long)*8) - 0) - 0) - 2) * (2 != 0))) & ((1UL << 2) - 1);
+}
+static inline int page_zone_id(struct page *page)
+{
+ return (page->flags >> ((((((sizeof(unsigned long)*8) - 0) - 0) < ((((sizeof(unsigned long)*8) - 0) - 0) - 2))? (((sizeof(unsigned long)*8) - 0) - 0) : ((((sizeof(unsigned long)*8) - 0) - 0) - 2)) * ((0 + 2) != 0))) & ((1UL << (0 + 2)) - 1);
+}
+static inline int zone_to_nid(struct zone *zone)
+{
+ return 0;
+}
+static inline int page_to_nid(struct page *page)
+{
+ return (page->flags >> ((((sizeof(unsigned long)*8) - 0) - 0) * (0 != 0))) & ((1UL << 0) - 1);
+}
+static inline struct zone *page_zone(struct page *page)
+{
+ return &(&contig_page_data)->node_zones[page_zonenum(page)];
+}
+static inline void set_page_zone(struct page *page, enum zone_type zone)
+{
+ page->flags &= ~(((1UL << 2) - 1) << (((((sizeof(unsigned long)*8) - 0) - 0) - 2) * (2 != 0)));
+ page->flags |= (zone & ((1UL << 2) - 1)) << (((((sizeof(unsigned long)*8) - 0) - 0) - 2) * (2 != 0));
+}
+static inline void set_page_node(struct page *page, unsigned long node)
+{
+ page->flags &= ~(((1UL << 0) - 1) << ((((sizeof(unsigned long)*8) - 0) - 0) * (0 != 0)));
+ page->flags |= (node & ((1UL << 0) - 1)) << ((((sizeof(unsigned long)*8) - 0) - 0) * (0 != 0));
+}
+static inline void set_page_section(struct page *page, unsigned long section)
+{
+ page->flags &= ~(((1UL << 0) - 1) << (((sizeof(unsigned long)*8) - 0) * (0 != 0)));
+ page->flags |= (section & ((1UL << 0) - 1)) << (((sizeof(unsigned long)*8) - 0) * (0 != 0));
+}
+static inline void set_page_links(struct page *page, enum zone_type zone,
+ unsigned long node, unsigned long pfn)
+{
+ set_page_zone(page, zone);
+ set_page_node(page, node);
+ set_page_section(page, ((pfn) >> 0));
+}
+enum vm_event_item { PGPGIN, PGPGOUT, PSWPIN, PSWPOUT,
+  PGALLOC_DMA, PGALLOC_NORMAL , PGALLOC_HIGH , PGALLOC_MOVABLE,
+  PGFREE, PGACTIVATE, PGDEACTIVATE,
+  PGFAULT, PGMAJFAULT,
+  PGREFILL_DMA, PGREFILL_NORMAL , PGREFILL_HIGH , PGREFILL_MOVABLE,
+  PGSTEAL_DMA, PGSTEAL_NORMAL , PGSTEAL_HIGH , PGSTEAL_MOVABLE,
+  PGSCAN_KSWAPD_DMA, PGSCAN_KSWAPD_NORMAL , PGSCAN_KSWAPD_HIGH , PGSCAN_KSWAPD_MOVABLE,
+  PGSCAN_DIRECT_DMA, PGSCAN_DIRECT_NORMAL , PGSCAN_DIRECT_HIGH , PGSCAN_DIRECT_MOVABLE,
+  PGINODESTEAL, SLABS_SCANNED, KSWAPD_STEAL, KSWAPD_INODESTEAL,
+  KSWAPD_LOW_WMARK_HIT_QUICKLY, KSWAPD_HIGH_WMARK_HIT_QUICKLY,
+  KSWAPD_SKIP_CONGESTION_WAIT,
+  PAGEOUTRUN, ALLOCSTALL, PGROTATED,
+  HTLB_BUDDY_PGALLOC, HTLB_BUDDY_PGALLOC_FAIL,
+  UNEVICTABLE_PGCULLED,
+  UNEVICTABLE_PGSCANNED,
+  UNEVICTABLE_PGRESCUED,
+  UNEVICTABLE_PGMLOCKED,
+  UNEVICTABLE_PGMUNLOCKED,
+  UNEVICTABLE_PGCLEARED,
+  UNEVICTABLE_PGSTRANDED,
+  UNEVICTABLE_MLOCKFREED,
+  NR_VM_EVENT_ITEMS
+};
+extern int sysctl_stat_interval;
+struct vm_event_state {
+ unsigned long event[NR_VM_EVENT_ITEMS];
+};
+extern __attribute__((section(".data..percpu" ""))) __typeof__(struct vm_event_state) vm_event_states;
+static inline void __count_vm_event(enum vm_event_item item)
+{
+ do { do { const void *__vpp_verify = (typeof(&(((vm_event_states.event[item])))))0; (void)__vpp_verify; } while (0); switch(sizeof(((vm_event_states.event[item])))) { case 1: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 2: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 4: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 8: do { *({ do { const void *__vpp_verify = (typeof((&((((vm_event_states.event[item])))))))0; (void)__vpp_verify; } while (0); ({ unsigned long __ptr; __asm__ ("" : "=r"(__ptr) : "0"((typeof(*(&((((vm_event_states.event[item])))))) *)(&((((vm_event_states.event[item]))))))); (typeof((typeof(*(&((((vm_event_states.event[item])))))) *)(&((((vm_event_states.event[item]))))))) (__ptr + ((({ typeof(this_cpu_off) pfo_ret__; switch (sizeof(this_cpu_off)) { case 1: asm("mov" "b ""%%""fs"":%P" "1"",%0" : "=q" (pfo_ret__) : "m" (this_cpu_off)); break; case 2: asm("mov" "w ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 4: asm("mov" "l ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 8: asm("mov" "q ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; default: __bad_percpu_size(); } pfo_ret__; })))); }); }) += ((1)); } while (0);break; default: __bad_size_call_parameter();break; } } while (0);
+}
+static inline void count_vm_event(enum vm_event_item item)
+{
+ do { do { const void *__vpp_verify = (typeof(&(((vm_event_states.event[item])))))0; (void)__vpp_verify; } while (0); switch(sizeof(((vm_event_states.event[item])))) { case 1: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 2: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 4: do { typedef typeof((((vm_event_states.event[item])))) pao_T__; const int pao_ID__ = (__builtin_constant_p((1)) && (((1)) == 1 || ((1)) == -1)) ? ((1)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((1)); (void)pao_tmp__; } switch (sizeof((((vm_event_states.event[item]))))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "qi" ((pao_T__)((1)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "ri" ((pao_T__)((1)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item]))))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" ((((vm_event_states.event[item])))) : "re" ((pao_T__)((1)))); break; default: __bad_percpu_size(); } } while (0);break; case 8: do { do { } while (0); *({ do { const void *__vpp_verify = (typeof((&((((vm_event_states.event[item])))))))0; (void)__vpp_verify; } while (0); ({ unsigned long __ptr; __asm__ ("" : "=r"(__ptr) : "0"((typeof(*(&((((vm_event_states.event[item])))))) *)(&((((vm_event_states.event[item]))))))); (typeof((typeof(*(&((((vm_event_states.event[item])))))) *)(&((((vm_event_states.event[item]))))))) (__ptr + ((({ typeof(this_cpu_off) pfo_ret__; switch (sizeof(this_cpu_off)) { case 1: asm("mov" "b ""%%""fs"":%P" "1"",%0" : "=q" (pfo_ret__) : "m" (this_cpu_off)); break; case 2: asm("mov" "w ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 4: asm("mov" "l ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 8: asm("mov" "q ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; default: __bad_percpu_size(); } pfo_ret__; })))); }); }) += ((1)); do { } while (0); } while (0);break; default: __bad_size_call_parameter();break; } } while (0);
+}
+static inline void __count_vm_events(enum vm_event_item item, long delta)
+{
+ do { do { const void *__vpp_verify = (typeof(&((vm_event_states.event[item]))))0; (void)__vpp_verify; } while (0); switch(sizeof((vm_event_states.event[item]))) { case 1: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 2: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 4: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 8: do { *({ do { const void *__vpp_verify = (typeof((&(((vm_event_states.event[item]))))))0; (void)__vpp_verify; } while (0); ({ unsigned long __ptr; __asm__ ("" : "=r"(__ptr) : "0"((typeof(*(&(((vm_event_states.event[item]))))) *)(&(((vm_event_states.event[item])))))); (typeof((typeof(*(&(((vm_event_states.event[item]))))) *)(&(((vm_event_states.event[item])))))) (__ptr + ((({ typeof(this_cpu_off) pfo_ret__; switch (sizeof(this_cpu_off)) { case 1: asm("mov" "b ""%%""fs"":%P" "1"",%0" : "=q" (pfo_ret__) : "m" (this_cpu_off)); break; case 2: asm("mov" "w ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 4: asm("mov" "l ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 8: asm("mov" "q ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; default: __bad_percpu_size(); } pfo_ret__; })))); }); }) += ((delta)); } while (0);break; default: __bad_size_call_parameter();break; } } while (0);
+}
+static inline void count_vm_events(enum vm_event_item item, long delta)
+{
+ do { do { const void *__vpp_verify = (typeof(&((vm_event_states.event[item]))))0; (void)__vpp_verify; } while (0); switch(sizeof((vm_event_states.event[item]))) { case 1: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 2: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 4: do { typedef typeof(((vm_event_states.event[item]))) pao_T__; const int pao_ID__ = (__builtin_constant_p((delta)) && (((delta)) == 1 || ((delta)) == -1)) ? ((delta)) : 0; if (0) { pao_T__ pao_tmp__; pao_tmp__ = ((delta)); (void)pao_tmp__; } switch (sizeof(((vm_event_states.event[item])))) { case 1: if (pao_ID__ == 1) asm("incb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decb ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addb %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "qi" ((pao_T__)((delta)))); break; case 2: if (pao_ID__ == 1) asm("incw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decw ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addw %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 4: if (pao_ID__ == 1) asm("incl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decl ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addl %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "ri" ((pao_T__)((delta)))); break; case 8: if (pao_ID__ == 1) asm("incq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else if (pao_ID__ == -1) asm("decq ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item])))); else asm("addq %1, ""%%""fs"":%P" "0" : "+m" (((vm_event_states.event[item]))) : "re" ((pao_T__)((delta)))); break; default: __bad_percpu_size(); } } while (0);break; case 8: do { do { } while (0); *({ do { const void *__vpp_verify = (typeof((&(((vm_event_states.event[item]))))))0; (void)__vpp_verify; } while (0); ({ unsigned long __ptr; __asm__ ("" : "=r"(__ptr) : "0"((typeof(*(&(((vm_event_states.event[item]))))) *)(&(((vm_event_states.event[item])))))); (typeof((typeof(*(&(((vm_event_states.event[item]))))) *)(&(((vm_event_states.event[item])))))) (__ptr + ((({ typeof(this_cpu_off) pfo_ret__; switch (sizeof(this_cpu_off)) { case 1: asm("mov" "b ""%%""fs"":%P" "1"",%0" : "=q" (pfo_ret__) : "m" (this_cpu_off)); break; case 2: asm("mov" "w ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 4: asm("mov" "l ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; case 8: asm("mov" "q ""%%""fs"":%P" "1"",%0" : "=r" (pfo_ret__) : "m" (this_cpu_off)); break; default: __bad_percpu_size(); } pfo_ret__; })))); }); }) += ((delta)); do { } while (0); } while (0);break; default: __bad_size_call_parameter();break; } } while (0);
+}
+extern void all_vm_events(unsigned long *);
+extern void vm_events_fold_cpu(int cpu);
+extern atomic_long_t vm_stat[NR_VM_ZONE_STAT_ITEMS];
+static inline void zone_page_state_add(long x, struct zone *zone,
+     enum zone_stat_item item)
+{
+ atomic_long_add(x, &zone->vm_stat[item]);
+ atomic_long_add(x, &vm_stat[item]);
+}
+static inline unsigned long global_page_state(enum zone_stat_item item)
+{
+ long x = atomic_long_read(&vm_stat[item]);
+ if (x < 0)
+  x = 0;
+ return x;
+}
+static inline unsigned long zone_page_state(struct zone *zone,
+     enum zone_stat_item item)
+{
+ long x = atomic_long_read(&zone->vm_stat[item]);
+ if (x < 0)
+  x = 0;
+ return x;
+}
+static inline unsigned long zone_page_state_snapshot(struct zone *zone,
+     enum zone_stat_item item)
+{
+ long x = atomic_long_read(&zone->vm_stat[item]);
+ int cpu;
+ for (((cpu)) = -1; ((cpu)) = cpumask_next(((cpu)), (cpu_online_mask)), ((cpu)) < nr_cpu_ids;)
+  x += ({ do { const void *__vpp_verify = (typeof(((zone->pageset))))0; (void)__vpp_verify; } while (0); ({ unsigned long __ptr; __asm__ ("" : "=r"(__ptr) : "0"((typeof(*((zone->pageset))) *)((zone->pageset)))); (typeof((typeof(*((zone->pageset))) *)((zone->pageset)))) (__ptr + (((__per_cpu_offset[(cpu)])))); }); })->vm_stat_diff[item];
+ if (x < 0)
+  x = 0;
+ return x;
+}
+extern unsigned long global_reclaimable_pages(void);
+extern unsigned long zone_reclaimable_pages(struct zone *zone);
+static inline void zap_zone_vm_stats(struct zone *zone)
+{
+ __builtin_memset(zone->vm_stat, 0, sizeof(zone->vm_stat));
+}
+extern void inc_zone_state(struct zone *, enum zone_stat_item);
+void __mod_zone_page_state(struct zone *, enum zone_stat_item item, int);
+void __inc_zone_page_state(struct page *, enum zone_stat_item);
+void __dec_zone_page_state(struct page *, enum zone_stat_item);
+void mod_zone_page_state(struct zone *, enum zone_stat_item, int);
+void inc_zone_page_state(struct page *, enum zone_stat_item);
+void dec_zone_page_state(struct page *, enum zone_stat_item);
+extern void inc_zone_state(struct zone *, enum zone_stat_item);
+extern void __inc_zone_state(struct zone *, enum zone_stat_item);
+extern void dec_zone_state(struct zone *, enum zone_stat_item);
+extern void __dec_zone_state(struct zone *, enum zone_stat_item);
+void refresh_cpu_vm_stats(int);
+static inline __attribute__((always_inline)) void *lowmem_page_address(struct page *page)
+{
+ return ((void *)((unsigned long)(((phys_addr_t)(((unsigned long)((page) - mem_map) + (0UL))) << 12))+((unsigned long)(0xC0000000UL))));
+}
+void *page_address(struct page *page);
+void set_page_address(struct page *page, void *virtual);
+void page_address_init(void);
+extern struct address_space swapper_space;
+static inline struct address_space *page_mapping(struct page *page)
+{
+ struct address_space *mapping = page->mapping;
+ do { } while (0);
+ if (__builtin_expect(!!(PageSwapCache(page)), 0))
+  mapping = &swapper_space;
+ else if (__builtin_expect(!!((unsigned long)mapping & 1), 0))
+  mapping = 0;
+ return mapping;
+}
+static inline void *page_rmapping(struct page *page)
+{
+ return (void *)((unsigned long)page->mapping & ~(1 | 2));
+}
+static inline int PageAnon(struct page *page)
+{
+ return ((unsigned long)page->mapping & 1) != 0;
+}
+static inline unsigned long page_index(struct page *page)
+{
+ if (__builtin_expect(!!(PageSwapCache(page)), 0))
+  return ((page)->private);
+ return page->index;
+}
+static inline void reset_page_mapcount(struct page *page)
+{
+ atomic_set(&(page)->_mapcount, -1);
+}
+static inline int page_mapcount(struct page *page)
+{
+ return atomic_read(&(page)->_mapcount) + 1;
+}
+static inline int page_mapped(struct page *page)
+{
+ return atomic_read(&(page)->_mapcount) >= 0;
+}
+extern void pagefault_out_of_memory(void);
+extern void show_free_areas(void);
+int shmem_lock(struct file *file, int lock, struct user_struct *user);
+struct file *shmem_file_setup(const char *name, loff_t size, unsigned long flags);
+int shmem_zero_setup(struct vm_area_struct *);
+extern int can_do_mlock(void);
+extern int user_shm_lock(size_t, struct user_struct *);
+extern void user_shm_unlock(size_t, struct user_struct *);
+struct zap_details {
+ struct vm_area_struct *nonlinear_vma;
+ struct address_space *check_mapping;
+ unsigned long first_index;
+ unsigned long last_index;
+ spinlock_t *i_mmap_lock;
+ unsigned long truncate_count;
+};
+struct page *vm_normal_page(struct vm_area_struct *vma, unsigned long addr,
+  pte_t pte);
+int zap_vma_ptes(struct vm_area_struct *vma, unsigned long address,
+  unsigned long size);
+unsigned long zap_page_range(struct vm_area_struct *vma, unsigned long address,
+  unsigned long size, struct zap_details *);
+unsigned long unmap_vmas(struct mmu_gather **tlb,
+  struct vm_area_struct *start_vma, unsigned long start_addr,
+  unsigned long end_addr, unsigned long *nr_accounted,
+  struct zap_details *);
+struct mm_walk {
+ int (*pgd_entry)(pgd_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pud_entry)(pud_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pmd_entry)(pmd_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pte_entry)(pte_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pte_hole)(unsigned long, unsigned long, struct mm_walk *);
+ int (*hugetlb_entry)(pte_t *, unsigned long,
+        unsigned long, unsigned long, struct mm_walk *);
+ struct mm_struct *mm;
+ void *private;
+};
+int walk_page_range(unsigned long addr, unsigned long end,
+  struct mm_walk *walk);
+void free_pgd_range(struct mmu_gather *tlb, unsigned long addr,
+  unsigned long end, unsigned long floor, unsigned long ceiling);
+int copy_page_range(struct mm_struct *dst, struct mm_struct *src,
+   struct vm_area_struct *vma);
+void unmap_mapping_range(struct address_space *mapping,
+  loff_t const holebegin, loff_t const holelen, int even_cows);
+int follow_pfn(struct vm_area_struct *vma, unsigned long address,
+ unsigned long *pfn);
+int follow_phys(struct vm_area_struct *vma, unsigned long address,
+  unsigned int flags, unsigned long *prot, resource_size_t *phys);
+int generic_access_phys(struct vm_area_struct *vma, unsigned long addr,
+   void *buf, int len, int write);
+static inline void unmap_shared_mapping_range(struct address_space *mapping,
+  loff_t const holebegin, loff_t const holelen)
+{
+ unmap_mapping_range(mapping, holebegin, holelen, 0);
+}
+extern void truncate_pagecache(struct inode *inode, loff_t old, loff_t new);
+extern int vmtruncate(struct inode *inode, loff_t offset);
+extern int vmtruncate_range(struct inode *inode, loff_t offset, loff_t end);
+int truncate_inode_page(struct address_space *mapping, struct page *page);
+int generic_error_remove_page(struct address_space *mapping, struct page *page);
+int invalidate_inode_page(struct page *page);
+extern int handle_mm_fault(struct mm_struct *mm, struct vm_area_struct *vma,
+   unsigned long address, unsigned int flags);
+extern int make_pages_present(unsigned long addr, unsigned long end);
+extern int access_process_vm(struct task_struct *tsk, unsigned long addr, void *buf, int len, int write);
+int get_user_pages(struct task_struct *tsk, struct mm_struct *mm,
+   unsigned long start, int nr_pages, int write, int force,
+   struct page **pages, struct vm_area_struct **vmas);
+int get_user_pages_fast(unsigned long start, int nr_pages, int write,
+   struct page **pages);
+struct page *get_dump_page(unsigned long addr);
+extern int try_to_release_page(struct page * page, gfp_t gfp_mask);
+extern void do_invalidatepage(struct page *page, unsigned long offset);
+int __set_page_dirty_nobuffers(struct page *page);
+int __set_page_dirty_no_writeback(struct page *page);
+int redirty_page_for_writepage(struct writeback_control *wbc,
+    struct page *page);
+void account_page_dirtied(struct page *page, struct address_space *mapping);
+int set_page_dirty(struct page *page);
+int set_page_dirty_lock(struct page *page);
+int clear_page_dirty_for_io(struct page *page);
+static inline int vma_stack_continue(struct vm_area_struct *vma, unsigned long addr)
+{
+ return vma && (vma->vm_end == addr) && (vma->vm_flags & 0x00000100);
+}
+extern unsigned long move_page_tables(struct vm_area_struct *vma,
+  unsigned long old_addr, struct vm_area_struct *new_vma,
+  unsigned long new_addr, unsigned long len);
+extern unsigned long do_mremap(unsigned long addr,
+          unsigned long old_len, unsigned long new_len,
+          unsigned long flags, unsigned long new_addr);
+extern int mprotect_fixup(struct vm_area_struct *vma,
+     struct vm_area_struct **pprev, unsigned long start,
+     unsigned long end, unsigned long newflags);
+int __get_user_pages_fast(unsigned long start, int nr_pages, int write,
+     struct page **pages);
+static inline void set_mm_counter(struct mm_struct *mm, int member, long value)
+{
+ atomic_long_set(&mm->rss_stat.count[member], value);
+}
+unsigned long get_mm_counter(struct mm_struct *mm, int member);
+static inline void add_mm_counter(struct mm_struct *mm, int member, long value)
+{
+ atomic_long_add(value, &mm->rss_stat.count[member]);
+}
+static inline void inc_mm_counter(struct mm_struct *mm, int member)
+{
+ atomic_long_inc(&mm->rss_stat.count[member]);
+}
+static inline void dec_mm_counter(struct mm_struct *mm, int member)
+{
+ atomic_long_dec(&mm->rss_stat.count[member]);
+}
+static inline unsigned long get_mm_rss(struct mm_struct *mm)
+{
+ return get_mm_counter(mm, MM_FILEPAGES) +
+  get_mm_counter(mm, MM_ANONPAGES);
+}
+static inline unsigned long get_mm_hiwater_rss(struct mm_struct *mm)
+{
+ return ({ typeof(mm->hiwater_rss) _max1 = (mm->hiwater_rss); typeof(get_mm_rss(mm)) _max2 = (get_mm_rss(mm)); (void) (&_max1 == &_max2); _max1 > _max2 ? _max1 : _max2; });
+}
+static inline unsigned long get_mm_hiwater_vm(struct mm_struct *mm)
+{
+ return ({ typeof(mm->hiwater_vm) _max1 = (mm->hiwater_vm); typeof(mm->total_vm) _max2 = (mm->total_vm); (void) (&_max1 == &_max2); _max1 > _max2 ? _max1 : _max2; });
+}
+static inline void update_hiwater_rss(struct mm_struct *mm)
+{
+ unsigned long _rss = get_mm_rss(mm);
+ if ((mm)->hiwater_rss < _rss)
+  (mm)->hiwater_rss = _rss;
+}
+static inline void update_hiwater_vm(struct mm_struct *mm)
+{
+ if (mm->hiwater_vm < mm->total_vm)
+  mm->hiwater_vm = mm->total_vm;
+}
+static inline void setmax_mm_hiwater_rss(unsigned long *maxrss,
+      struct mm_struct *mm)
+{
+ unsigned long hiwater_rss = get_mm_hiwater_rss(mm);
+ if (*maxrss < hiwater_rss)
+  *maxrss = hiwater_rss;
+}
+void sync_mm_rss(struct task_struct *task, struct mm_struct *mm);
+struct shrinker {
+ int (*shrink)(struct shrinker *, int nr_to_scan, gfp_t gfp_mask);
+ int seeks;
+ struct list_head list;
+ long nr;
+};
+extern void register_shrinker(struct shrinker *);
+extern void unregister_shrinker(struct shrinker *);
+int vma_wants_writenotify(struct vm_area_struct *vma);
+extern pte_t *get_locked_pte(struct mm_struct *mm, unsigned long addr, spinlock_t **ptl);
+static inline int __pud_alloc(struct mm_struct *mm, pgd_t *pgd,
+      unsigned long address)
+{
+ return 0;
+}
+int __pmd_alloc(struct mm_struct *mm, pud_t *pud, unsigned long address);
+int __pte_alloc(struct mm_struct *mm, pmd_t *pmd, unsigned long address);
+int __pte_alloc_kernel(pmd_t *pmd, unsigned long address);
+static inline pud_t *pud_alloc(struct mm_struct *mm, pgd_t *pgd, unsigned long address)
+{
+ return (__builtin_expect(!!(pgd_none(*pgd)), 0) && __pud_alloc(mm, pgd, address))?
+  0: pud_offset(pgd, address);
+}
+static inline pmd_t *pmd_alloc(struct mm_struct *mm, pud_t *pud, unsigned long address)
+{
+ return (__builtin_expect(!!(pud_none(*pud)), 0) && __pmd_alloc(mm, pud, address))?
+  0: pmd_offset(pud, address);
+}
+static inline void pgtable_page_ctor(struct page *page)
+{
+ do { do { spinlock_check(&((page)->ptl)); do { *(&(&((page)->ptl))->rlock) = (raw_spinlock_t) { .raw_lock = { 0 }, }; } while (0); } while (0); } while (0);
+ inc_zone_page_state(page, NR_PAGETABLE);
+}
+static inline void pgtable_page_dtor(struct page *page)
+{
+ ((page)->mapping = 0);
+ dec_zone_page_state(page, NR_PAGETABLE);
+}
+extern void free_area_init(unsigned long * zones_size);
+extern void free_area_init_node(int nid, unsigned long * zones_size,
+  unsigned long zone_start_pfn, unsigned long *zholes_size);
+extern void free_area_init_nodes(unsigned long *max_zone_pfn);
+extern void add_active_range(unsigned int nid, unsigned long start_pfn,
+     unsigned long end_pfn);
+extern void remove_active_range(unsigned int nid, unsigned long start_pfn,
+     unsigned long end_pfn);
+extern void remove_all_active_ranges(void);
+void sort_node_map(void);
+unsigned long __absent_pages_in_range(int nid, unsigned long start_pfn,
+      unsigned long end_pfn);
+extern unsigned long absent_pages_in_range(unsigned long start_pfn,
+      unsigned long end_pfn);
+extern void get_pfn_range_for_nid(unsigned int nid,
+   unsigned long *start_pfn, unsigned long *end_pfn);
+extern unsigned long find_min_pfn_with_active_regions(void);
+extern void free_bootmem_with_active_regions(int nid,
+      unsigned long max_low_pfn);
+int add_from_early_node_map(struct range *range, int az,
+       int nr_range, int nid);
+void *__alloc_memory_core_early(int nodeid, u64 size, u64 align,
+     u64 goal, u64 limit);
+typedef int (*work_fn_t)(unsigned long, unsigned long, void *);
+extern void work_with_active_regions(int nid, work_fn_t work_fn, void *data);
+extern void sparse_memory_present_with_active_regions(int nid);
+extern int __attribute__ ((__section__(".meminit.text"))) __attribute__((__cold__)) early_pfn_to_nid(unsigned long pfn);
+extern void set_dma_reserve(unsigned long new_dma_reserve);
+extern void memmap_init_zone(unsigned long, int, unsigned long,
+    unsigned long, enum memmap_context);
+extern void setup_per_zone_wmarks(void);
+extern void calculate_zone_inactive_ratio(struct zone *zone);
+extern void mem_init(void);
+extern void __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) mmap_init(void);
+extern void show_mem(void);
+extern void si_meminfo(struct sysinfo * val);
+extern void si_meminfo_node(struct sysinfo *val, int nid);
+extern int after_bootmem;
+extern void setup_per_cpu_pageset(void);
+extern void zone_pcp_update(struct zone *zone);
+extern atomic_long_t mmap_pages_allocated;
+extern int nommu_shrink_inode_mappings(struct inode *, size_t, size_t);
+void vma_prio_tree_add(struct vm_area_struct *, struct vm_area_struct *old);
+void vma_prio_tree_insert(struct vm_area_struct *, struct prio_tree_root *);
+void vma_prio_tree_remove(struct vm_area_struct *, struct prio_tree_root *);
+struct vm_area_struct *vma_prio_tree_next(struct vm_area_struct *vma,
+ struct prio_tree_iter *iter);
+static inline void vma_nonlinear_insert(struct vm_area_struct *vma,
+     struct list_head *list)
+{
+ vma->shared.vm_set.parent = 0;
+ list_add_tail(&vma->shared.vm_set.list, list);
+}
+extern int __vm_enough_memory(struct mm_struct *mm, long pages, int cap_sys_admin);
+extern int vma_adjust(struct vm_area_struct *vma, unsigned long start,
+ unsigned long end, unsigned long pgoff, struct vm_area_struct *insert);
+extern struct vm_area_struct *vma_merge(struct mm_struct *,
+ struct vm_area_struct *prev, unsigned long addr, unsigned long end,
+ unsigned long vm_flags, struct anon_vma *, struct file *, unsigned long,
+ struct mempolicy *);
+extern struct anon_vma *find_mergeable_anon_vma(struct vm_area_struct *);
+extern int split_vma(struct mm_struct *,
+ struct vm_area_struct *, unsigned long addr, int new_below);
+extern int insert_vm_struct(struct mm_struct *, struct vm_area_struct *);
+extern void __vma_link_rb(struct mm_struct *, struct vm_area_struct *,
+ struct rb_node **, struct rb_node *);
+extern void unlink_file_vma(struct vm_area_struct *);
+extern struct vm_area_struct *copy_vma(struct vm_area_struct **,
+ unsigned long addr, unsigned long len, unsigned long pgoff);
+extern void exit_mmap(struct mm_struct *);
+extern int mm_take_all_locks(struct mm_struct *mm);
+extern void mm_drop_all_locks(struct mm_struct *mm);
+extern void added_exe_file_vma(struct mm_struct *mm);
+extern void removed_exe_file_vma(struct mm_struct *mm);
+extern int may_expand_vm(struct mm_struct *mm, unsigned long npages);
+extern int install_special_mapping(struct mm_struct *mm,
+       unsigned long addr, unsigned long len,
+       unsigned long flags, struct page **pages);
+extern unsigned long get_unmapped_area_prot(struct file *, unsigned long, unsigned long, unsigned long, unsigned long, int);
+static inline unsigned long get_unmapped_area(struct file *file, unsigned long addr,
+  unsigned long len, unsigned long pgoff, unsigned long flags)
+{
+ return get_unmapped_area_prot(file, addr, len, pgoff, flags, 0);
+}
+extern unsigned long do_mmap_pgoff(struct file *file, unsigned long addr,
+ unsigned long len, unsigned long prot,
+ unsigned long flag, unsigned long pgoff);
+extern unsigned long mmap_region(struct file *file, unsigned long addr,
+ unsigned long len, unsigned long flags,
+ unsigned int vm_flags, unsigned long pgoff);
+static inline unsigned long do_mmap(struct file *file, unsigned long addr,
+ unsigned long len, unsigned long prot,
+ unsigned long flag, unsigned long offset)
+{
+ unsigned long ret = -22;
+ if ((offset + ((((len)) + ((typeof((len)))((((1UL) << 12))) - 1)) & ~((typeof((len)))((((1UL) << 12))) - 1))) < offset)
+  goto out;
+ if (!(offset & ~(~(((1UL) << 12)-1))))
+  ret = do_mmap_pgoff(file, addr, len, prot, flag, offset >> 12);
+out:
+ return ret;
+}
+extern int do_munmap(struct mm_struct *, unsigned long, size_t);
+extern unsigned long do_brk(unsigned long, unsigned long);
+extern unsigned long page_unuse(struct page *);
+extern void truncate_inode_pages(struct address_space *, loff_t);
+extern void truncate_inode_pages_range(struct address_space *,
+           loff_t lstart, loff_t lend);
+extern int filemap_fault(struct vm_area_struct *, struct vm_fault *);
+int write_one_page(struct page *page, int wait);
+void task_dirty_inc(struct task_struct *tsk);
+int force_page_cache_readahead(struct address_space *mapping, struct file *filp,
+   unsigned long offset, unsigned long nr_to_read);
+void page_cache_sync_readahead(struct address_space *mapping,
+          struct file_ra_state *ra,
+          struct file *filp,
+          unsigned long offset,
+          unsigned long size);
+void page_cache_async_readahead(struct address_space *mapping,
+    struct file_ra_state *ra,
+    struct file *filp,
+    struct page *pg,
+    unsigned long offset,
+    unsigned long size);
+unsigned long max_sane_readahead(unsigned long nr);
+unsigned long ra_submit(struct file_ra_state *ra,
+   struct address_space *mapping,
+   struct file *filp);
+extern int expand_stack(struct vm_area_struct *vma, unsigned long address);
+extern int expand_stack_downwards(struct vm_area_struct *vma,
+      unsigned long address);
+extern struct vm_area_struct * find_vma(struct mm_struct * mm, unsigned long addr);
+extern struct vm_area_struct * find_vma_prev(struct mm_struct * mm, unsigned long addr,
+          struct vm_area_struct **pprev);
+static inline struct vm_area_struct * find_vma_intersection(struct mm_struct * mm, unsigned long start_addr, unsigned long end_addr)
+{
+ struct vm_area_struct * vma = find_vma(mm,start_addr);
+ if (vma && end_addr <= vma->vm_start)
+  vma = 0;
+ return vma;
+}
+static inline unsigned long vma_pages(struct vm_area_struct *vma)
+{
+ return (vma->vm_end - vma->vm_start) >> 12;
+}
+pgprot_t vm_get_page_prot(unsigned long vm_flags);
+struct vm_area_struct *find_extend_vma(struct mm_struct *, unsigned long addr);
+int remap_pfn_range(struct vm_area_struct *, unsigned long addr,
+   unsigned long pfn, unsigned long size, pgprot_t);
+int vm_insert_page(struct vm_area_struct *, unsigned long addr, struct page *);
+int vm_insert_pfn(struct vm_area_struct *vma, unsigned long addr,
+   unsigned long pfn);
+int vm_insert_mixed(struct vm_area_struct *vma, unsigned long addr,
+   unsigned long pfn);
+struct page *follow_page(struct vm_area_struct *, unsigned long address,
+   unsigned int foll_flags);
+typedef int (*pte_fn_t)(pte_t *pte, pgtable_t token, unsigned long addr,
+   void *data);
+extern int apply_to_page_range(struct mm_struct *mm, unsigned long address,
+          unsigned long size, pte_fn_t fn, void *data);
+void vm_stat_account(struct mm_struct *, unsigned long, struct file *, long);
+static inline void
+kernel_map_pages(struct page *page, int numpages, int enable) {}
+static inline void enable_debug_pagealloc(void)
+{
+}
+static inline bool kernel_page_present(struct page *page) { return true; }
+extern struct vm_area_struct *get_gate_vma(struct task_struct *tsk);
+int in_gate_area_no_task(unsigned long addr);
+int in_gate_area(struct task_struct *task, unsigned long addr);
+int drop_caches_sysctl_handler(struct ctl_table *, int,
+     void *, size_t *, loff_t *);
+unsigned long shrink_slab(unsigned long scanned, gfp_t gfp_mask,
+   unsigned long lru_pages);
+extern int randomize_va_space;
+const char * arch_vma_name(struct vm_area_struct *vma);
+void print_vma_addr(char *prefix, unsigned long rip);
+void sparse_mem_maps_populate_node(struct page **map_map,
+       unsigned long pnum_begin,
+       unsigned long pnum_end,
+       unsigned long map_count,
+       int nodeid);
+struct page *sparse_mem_map_populate(unsigned long pnum, int nid);
+pgd_t *vmemmap_pgd_populate(unsigned long addr, int node);
+pud_t *vmemmap_pud_populate(pgd_t *pgd, unsigned long addr, int node);
+pmd_t *vmemmap_pmd_populate(pud_t *pud, unsigned long addr, int node);
+pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node);
+void *vmemmap_alloc_block(unsigned long size, int node);
+void *vmemmap_alloc_block_buf(unsigned long size, int node);
+void vmemmap_verify(pte_t *, int, unsigned long, unsigned long);
+int vmemmap_populate_basepages(struct page *start_page,
+      unsigned long pages, int node);
+int vmemmap_populate(struct page *start_page, unsigned long pages, int node);
+void vmemmap_populate_print_last(void);
+enum mf_flags {
+ MF_COUNT_INCREASED = 1 << 0,
+};
+extern void memory_failure(unsigned long pfn, int trapno);
+extern int __memory_failure(unsigned long pfn, int trapno, int flags);
+extern int unpoison_memory(unsigned long pfn);
+extern int sysctl_memory_failure_early_kill;
+extern int sysctl_memory_failure_recovery;
+extern void shake_page(struct page *p, int access);
+extern atomic_long_t mce_bad_pages;
+extern int soft_offline_page(struct page *page, int flags);
+extern void dump_page(struct page *page);
+typedef enum {
+ SS_FREE = 0,
+ SS_UNCONNECTED,
+ SS_CONNECTING,
+ SS_CONNECTED,
+ SS_DISCONNECTING
+} socket_state;
+extern int nr_irqs;
+extern struct irq_desc *irq_to_desc(unsigned int irq);
+struct rand_pool_info {
+ int entropy_count;
+ int buf_size;
+ __u32 buf[0];
+};
+struct rnd_state {
+ __u32 s1, s2, s3;
+};
+extern void rand_initialize_irq(int irq);
+extern void add_input_randomness(unsigned int type, unsigned int code,
+     unsigned int value);
+extern void add_interrupt_randomness(int irq);
+extern void get_random_bytes(void *buf, int nbytes);
+void generate_random_uuid(unsigned char uuid_out[16]);
+extern __u32 secure_ip_id(__be32 daddr);
+extern u32 secure_ipv4_port_ephemeral(__be32 saddr, __be32 daddr, __be16 dport);
+extern u32 secure_ipv6_port_ephemeral(const __be32 *saddr, const __be32 *daddr,
+          __be16 dport);
+extern __u32 secure_tcp_sequence_number(__be32 saddr, __be32 daddr,
+     __be16 sport, __be16 dport);
+extern __u32 secure_tcpv6_sequence_number(__be32 *saddr, __be32 *daddr,
+       __be16 sport, __be16 dport);
+extern u64 secure_dccp_sequence_number(__be32 saddr, __be32 daddr,
+           __be16 sport, __be16 dport);
+extern const struct file_operations random_fops, urandom_fops;
+unsigned int get_random_int(void);
+unsigned long randomize_range(unsigned long start, unsigned long end, unsigned long len);
+u32 random32(void);
+void srandom32(u32 seed);
+u32 prandom32(struct rnd_state *);
+static inline u32 __seed(u32 x, u32 m)
+{
+ return (x < m) ? x + m : x;
+}
+static inline void prandom32_seed(struct rnd_state *state, u64 seed)
+{
+ u32 i = (seed >> 32) ^ (seed << 10) ^ seed;
+ state->s1 = __seed(i, 1);
+ state->s2 = __seed(i, 7);
+ state->s3 = __seed(i, 15);
+}
+struct f_owner_ex {
+ int type;
+ pid_t pid;
+};
+struct flock {
+ short l_type;
+ short l_whence;
+ __kernel_off_t l_start;
+ __kernel_off_t l_len;
+ __kernel_pid_t l_pid;
+
+};
+struct flock64 {
+ short l_type;
+ short l_whence;
+ __kernel_loff_t l_start;
+ __kernel_loff_t l_len;
+ __kernel_pid_t l_pid;
+
+};
+static inline void
+kmemcheck_alloc_shadow(struct page *page, int order, gfp_t flags, int node)
+{
+}
+static inline void
+kmemcheck_free_shadow(struct page *page, int order)
+{
+}
+static inline void
+kmemcheck_slab_alloc(struct kmem_cache *s, gfp_t gfpflags, void *object,
+       size_t size)
+{
+}
+static inline void kmemcheck_slab_free(struct kmem_cache *s, void *object,
+           size_t size)
+{
+}
+static inline void kmemcheck_pagealloc_alloc(struct page *p,
+ unsigned int order, gfp_t gfpflags)
+{
+}
+static inline bool kmemcheck_page_is_tracked(struct page *p)
+{
+ return false;
+}
+static inline void kmemcheck_mark_unallocated(void *address, unsigned int n)
+{
+}
+static inline void kmemcheck_mark_uninitialized(void *address, unsigned int n)
+{
+}
+static inline void kmemcheck_mark_initialized(void *address, unsigned int n)
+{
+}
+static inline void kmemcheck_mark_freed(void *address, unsigned int n)
+{
+}
+static inline void kmemcheck_mark_unallocated_pages(struct page *p,
+          unsigned int n)
+{
+}
+static inline void kmemcheck_mark_uninitialized_pages(struct page *p,
+            unsigned int n)
+{
+}
+static inline void kmemcheck_mark_initialized_pages(struct page *p,
+          unsigned int n)
+{
+}
+static inline bool kmemcheck_is_obj_initialized(unsigned long addr, size_t size)
+{
+ return true;
+}
+struct poll_table_struct;
+struct pipe_inode_info;
+struct inode;
+struct net;
+enum sock_type {
+ SOCK_STREAM = 1,
+ SOCK_DGRAM = 2,
+ SOCK_RAW = 3,
+ SOCK_RDM = 4,
+ SOCK_SEQPACKET = 5,
+ SOCK_DCCP = 6,
+ SOCK_PACKET = 10,
+};
+enum sock_shutdown_cmd {
+ SHUT_RD = 0,
+ SHUT_WR = 1,
+ SHUT_RDWR = 2,
+};
+struct socket_wq {
+ wait_queue_head_t wait;
+ struct fasync_struct *fasync_list;
+ struct rcu_head rcu;
+} __attribute__((__aligned__((1 << (6)))));
+struct socket {
+ socket_state state;
+ ;
+ short type;
+ ;
+ unsigned long flags;
+ struct socket_wq *wq;
+ struct file *file;
+ struct sock *sk;
+ const struct proto_ops *ops;
+};
+struct vm_area_struct;
+struct page;
+struct kiocb;
+struct sockaddr;
+struct msghdr;
+struct module;
+struct proto_ops {
+ int family;
+ struct module *owner;
+ int (*release) (struct socket *sock);
+ int (*bind) (struct socket *sock,
+          struct sockaddr *myaddr,
+          int sockaddr_len);
+ int (*connect) (struct socket *sock,
+          struct sockaddr *vaddr,
+          int sockaddr_len, int flags);
+ int (*socketpair)(struct socket *sock1,
+          struct socket *sock2);
+ int (*accept) (struct socket *sock,
+          struct socket *newsock, int flags);
+ int (*getname) (struct socket *sock,
+          struct sockaddr *addr,
+          int *sockaddr_len, int peer);
+ unsigned int (*poll) (struct file *file, struct socket *sock,
+          struct poll_table_struct *wait);
+ int (*ioctl) (struct socket *sock, unsigned int cmd,
+          unsigned long arg);
+ int (*listen) (struct socket *sock, int len);
+ int (*shutdown) (struct socket *sock, int flags);
+ int (*setsockopt)(struct socket *sock, int level,
+          int optname, char *optval, unsigned int optlen);
+ int (*getsockopt)(struct socket *sock, int level,
+          int optname, char *optval, int *optlen);
+ int (*sendmsg) (struct kiocb *iocb, struct socket *sock,
+          struct msghdr *m, size_t total_len);
+ int (*recvmsg) (struct kiocb *iocb, struct socket *sock,
+          struct msghdr *m, size_t total_len,
+          int flags);
+ int (*mmap) (struct file *file, struct socket *sock,
+          struct vm_area_struct * vma);
+ ssize_t (*sendpage) (struct socket *sock, struct page *page,
+          int offset, size_t size, int flags);
+ ssize_t (*splice_read)(struct socket *sock, loff_t *ppos,
+           struct pipe_inode_info *pipe, size_t len, unsigned int flags);
+};
+struct net_proto_family {
+ int family;
+ int (*create)(struct net *net, struct socket *sock,
+      int protocol, int kern);
+ struct module *owner;
+};
+struct iovec;
+struct kvec;
+enum {
+ SOCK_WAKE_IO,
+ SOCK_WAKE_WAITD,
+ SOCK_WAKE_SPACE,
+ SOCK_WAKE_URG,
+};
+extern int sock_wake_async(struct socket *sk, int how, int band);
+extern int sock_register(const struct net_proto_family *fam);
+extern void sock_unregister(int family);
+extern int sock_create(int family, int type, int proto,
+     struct socket **res);
+extern int sock_create_kern(int family, int type, int proto,
+          struct socket **res);
+extern int sock_create_lite(int family, int type, int proto,
+          struct socket **res);
+extern void sock_release(struct socket *sock);
+extern int sock_sendmsg(struct socket *sock, struct msghdr *msg,
+      size_t len);
+extern int sock_recvmsg(struct socket *sock, struct msghdr *msg,
+      size_t size, int flags);
+extern int sock_map_fd(struct socket *sock, int flags);
+extern struct socket *sockfd_lookup(int fd, int *err);
+extern int net_ratelimit(void);
+extern int kernel_sendmsg(struct socket *sock, struct msghdr *msg,
+        struct kvec *vec, size_t num, size_t len);
+extern int kernel_recvmsg(struct socket *sock, struct msghdr *msg,
+        struct kvec *vec, size_t num,
+        size_t len, int flags);
+extern int kernel_bind(struct socket *sock, struct sockaddr *addr,
+         int addrlen);
+extern int kernel_listen(struct socket *sock, int backlog);
+extern int kernel_accept(struct socket *sock, struct socket **newsock,
+    int flags);
+extern int kernel_connect(struct socket *sock, struct sockaddr *addr,
+     int addrlen, int flags);
+extern int kernel_getsockname(struct socket *sock, struct sockaddr *addr,
+         int *addrlen);
+extern int kernel_getpeername(struct socket *sock, struct sockaddr *addr,
+         int *addrlen);
+extern int kernel_getsockopt(struct socket *sock, int level, int optname,
+        char *optval, int *optlen);
+extern int kernel_setsockopt(struct socket *sock, int level, int optname,
+        char *optval, unsigned int optlen);
+extern int kernel_sendpage(struct socket *sock, struct page *page, int offset,
+      size_t size, int flags);
+extern int kernel_sock_ioctl(struct socket *sock, int cmd, unsigned long arg);
+extern int kernel_sock_shutdown(struct socket *sock,
+    enum sock_shutdown_cmd how);
+struct ratelimit_state {
+ spinlock_t lock;
+ int interval;
+ int burst;
+ int printed;
+ int missed;
+ unsigned long begin;
+};
+static inline void ratelimit_state_init(struct ratelimit_state *rs,
+     int interval, int burst)
+{
+ do { spinlock_check(&rs->lock); do { *(&(&rs->lock)->rlock) = (raw_spinlock_t) { .raw_lock = { 0 }, }; } while (0); } while (0);
+ rs->interval = interval;
+ rs->burst = burst;
+ rs->printed = 0;
+ rs->missed = 0;
+ rs->begin = 0;
+}
+extern int ___ratelimit(struct ratelimit_state *rs, const char *func);
+extern struct ratelimit_state net_ratelimit_state;

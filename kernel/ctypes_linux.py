@@ -43,11 +43,11 @@ if type(gen.STRING) != type(CString):
 
 # set expected values 
 gen.task_struct.expectedValues={
-  'pid': RangeValue(1,65535),
-  'tgid': RangeValue(1,65535),
-  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
-  'files': NotNull, # guessing
-  'fs': NotNull, # guessing
+#  'pid': RangeValue(1,65535),
+  #'tgid': RangeValue(1,65535),
+#  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
+#  'files': NotNull, # guessing
+#  'fs': NotNull, # guessing
   #'comm': NotNull, # process name
 }
 
@@ -57,13 +57,17 @@ import inspect,sys
 __my_module__ = sys.modules[__name__]
 _loaded=0
 for (name,klass) in inspect.getmembers(gen, inspect.isclass):
-  if type(klass) == type(ctypes.Structure) and klass.__module__ == 'ctypes_linux_generated' :
+  if type(klass) == type(ctypes.Structure) and 'ctypes_linux_generated' in klass.__module__ :
     setattr(__my_module__, name, klass)
     _loaded+=1
+  else:
+    #log.debug("%s - %s"%(name, klass))
+    pass
 log.debug('loaded %d C structs from Kernel structs'%(_loaded))
+log.debug('There is %d members in %s'%(len(gen.__dict__), gen.__name__))
 
 ''' Load all generateed classes to local classRef '''
-KernelStruct.classRef=dict([ (ctypes.POINTER( klass), klass) for (name,klass) in inspect.getmembers(sys.modules[__name__], inspect.isclass) if klass.__module__ == __name__ or klass.__module__ == 'ctypes_linux_generated'])
+KernelStruct.classRef=dict([ (ctypes.POINTER( klass), klass) for (name,klass) in inspect.getmembers(sys.modules[__name__], inspect.isclass) if klass.__module__ == __name__ or 'ctypes_linux_generated' in klass.__module__  ])
 
 ''' Load all model classes and create a similar non-ctypes Python class  
   thoses will be used to translate non pickable ctypes into POPOs.
@@ -74,20 +78,20 @@ for klass,typ in inspect.getmembers(sys.modules[__name__], inspect.isclass):
     setattr(sys.modules[__name__], '%s_py'%(klass), kpy )
     if typ.__module__ != __name__: # class is ctypes_xxx_generated
       setattr(sys.modules[typ.__module__], '%s_py'%(klass), kpy )
-    #log.info("Created %s_py"%klass)
+      #log.debug("Created %s_py"%klass)
 
 # copy classRef and methods, we have to wait after all class are loaded and in NSSStruct.classRef
 for (name,klass) in inspect.getmembers(gen, inspect.isclass):
-  if type(klass) == type(ctypes.Structure) and klass.__module__ == 'ctypes_linux_generated' :
+  if type(klass) == type(ctypes.Structure) and 'ctypes_linux_generated' in klass.__module__  :
     pasteKernelStructOver(klass)
-    #log.info("painted on %s"%klass)
+    #log.debug("painted on %s"%klass)
 
 
 
 
 def printSizeof(mini=-1):
   for (name,klass) in inspect.getmembers(sys.modules[__name__], inspect.isclass):
-    if type(klass) == type(ctypes.Structure) and klass.__module__ == 'ctypes_linux_generated' :
+    if type(klass) == type(ctypes.Structure) and 'ctypes_linux_generated' in klass.__module__  :
       if ctypes.sizeof(klass) > mini:
         print '%s:'%name,ctypes.sizeof(klass)
   #print 'SSLCipherSuiteInfo:',ctypes.sizeof(SSLCipherSuiteInfo)

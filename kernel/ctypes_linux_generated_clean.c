@@ -160,7 +160,7 @@ struct vfs_cap_data {
   __le32 inheritable;
  } data[2];
 };
-// supprimed extern
+/** // supprimed extern extern */
 typedef struct kernel_cap_struct {
  __u32 cap[2];
 } kernel_cap_t;
@@ -169,29 +169,29 @@ struct cpu_vfs_cap_data {
  kernel_cap_t permitted;
  kernel_cap_t inheritable;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct dentry;
-// supprimed extern
+/** // supprimed extern extern */
 typedef __builtin_va_list __gnuc_va_list;
 typedef __gnuc_va_list va_list;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct alt_instr {
  u8 *instr;
  u8 *replacement;
@@ -200,108 +200,107 @@ struct alt_instr {
  u8 replacementlen;
  u8 pad1;
 };
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct module;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct paravirt_patch_site;
-void apply_paravirt(struct paravirt_patch_site *start,
-      struct paravirt_patch_site *end);
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static __inline__ */
+/** // supprimed function b: static __inline__ */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct _ddebug {
  const char *modname;
  const char *function;
@@ -312,91 +311,90 @@ struct _ddebug {
  unsigned int lineno:24;
  unsigned int flags:8;
 } __attribute__((aligned(8)));
-int ddebug_add_module(struct _ddebug *tab, unsigned int n,
-    const char *modname);
-// supprimed function
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
 struct bug_entry {
  unsigned long bug_addr;
  const char *file;
  unsigned short line;
  unsigned short flags;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 struct completion;
 struct pt_regs;
 struct user;
-// supprimed extern
+/** // supprimed extern extern */
   static inline void __might_sleep(const char *file, int line,
        int preempt_offset) { }
-// supprimed function
+/** // supprimed function b: static inline */
 extern struct atomic_notifier_head panic_notifier_list;
-// supprimed extern
+/** // supprimed extern extern */
  void panic(const char * fmt, ...)
  __attribute__ ((noreturn, format (printf, 1, 2))) __attribute__((__cold__));
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
  void do_exit(long error_code)
  __attribute__((noreturn));
  void complete_and_exit(struct completion *, long)
  __attribute__((noreturn));
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct pid;
 extern struct pid *session_of_pgrp(struct pid *pgrp);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void log_buf_kexec_setup(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 unsigned long int_sqrt(unsigned long);
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern enum system_states {
  SYSTEM_BOOTING,
  SYSTEM_RUNNING,
@@ -405,43 +403,40 @@ extern enum system_states {
  SYSTEM_RESTART,
  SYSTEM_SUSPEND_DISK,
 } system_state;
-// supprimed extern
+/** // supprimed extern extern */
 enum {
  DUMP_PREFIX_NONE,
  DUMP_PREFIX_ADDRESS,
  DUMP_PREFIX_OFFSET
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-void tracing_on(void);
-void tracing_off(void);
-void tracing_off_permanent(void);
-int tracing_is_on(void);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
 enum ftrace_dump_mode {
  DUMP_NONE,
  DUMP_ALL,
  DUMP_ORIG,
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-static inline void __attribute__ ((format (printf, 1, 2)))
-____trace_printk_check_format(const char *fmt, ...)
-{
-}
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct sysinfo;
-// supprimed extern
+/** // supprimed extern extern */
 struct sysinfo {
  long uptime;
  unsigned long loads[3];
@@ -488,71 +483,71 @@ struct restart_block {
   } poll;
  };
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-void *memmove(void *dest, const void *src, size_t n);
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 size_t strlcpy(char *, const char *, size_t);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int vbin_printf(u32 *bin_buf, size_t size, const char *fmt, va_list args);
-int bstr_printf(char *buf, size_t size, const char *fmt, const u32 *bin_buf);
-int bprintf(u32 *bin_buf, size_t size, const char *fmt, ...) __attribute__((format(printf,3,4)));
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct page;
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct task_struct;
 struct exec_domain;
 struct task_struct;
@@ -608,7 +603,7 @@ struct vm86plus_struct {
  struct revectored_struct int21_revectored;
  struct vm86plus_info_struct vm86plus;
 };
-// supprimed extern
+/** // supprimed extern extern */
 struct pt_regs {
  unsigned long bx;
  unsigned long cx;
@@ -630,48 +625,48 @@ struct pt_regs {
 };
 typedef int (*initcall_t)(void);
 typedef void (*exitcall_t)(void);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef void (*ctor_fn_t)(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void setup_arch(char **);
-void prepare_namespace(void);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct obs_kernel_param {
  const char *str;
  int (*setup_func)(char *);
  int early;
 };
-void __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) parse_early_param(void);
-void __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) parse_early_options(char *cmdline);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 struct cpuinfo_x86;
 struct task_struct;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void signal_fault(struct pt_regs *regs, void *frame, char *where);
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct user_desc;
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct kernel_vm86_regs {
  struct pt_regs pt;
  unsigned short es, __esh;
@@ -689,11 +684,11 @@ struct kernel_vm86_struct {
  struct vm86plus_info_struct vm86plus;
  struct pt_regs *regs32;
 };
-void handle_vm86_fault(struct kernel_vm86_regs *, long);
-int handle_vm86_trap(struct kernel_vm86_regs *, long, int);
+/** // supprimed function sig void */
+/** // supprimed function sig int */
 struct pt_regs *save_v86_state(struct kernel_vm86_regs *);
 struct task_struct;
-void release_vm86_irqs(struct task_struct *);
+/** // supprimed function sig void */
 struct math_emu_info {
  long ___orig_eip;
  union {
@@ -779,27 +774,27 @@ struct _xstate {
  struct _xsave_hdr xstate_hdr;
  struct _ymmh_state ymmh;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct task_struct;
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 struct __xchg_dummy {
  unsigned long a[100];
 };
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef u64 pteval_t;
 typedef u64 pmdval_t;
 typedef u64 pudval_t;
@@ -811,38 +806,41 @@ typedef union {
  };
  pteval_t pte;
 } pte_t;
-// supprimed extern
+/** // supprimed extern extern */
 typedef struct pgprot { pgprotval_t pgprot; } pgprot_t;
 typedef struct { pgdval_t pgd; } pgd_t;
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct { pgd_t pgd; } pud_t;
-// supprimed function
-// supprimed function
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct { pmdval_t pmd; } pmd_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct page *pgtable_t;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct file;
 pgprot_t phys_mem_access_prot(struct file *file, unsigned long pfn,
                               unsigned long size, pgprot_t vma_prot);
-int phys_mem_access_prot_allowed(struct file *file, unsigned long pfn,
-                              unsigned long size, pgprot_t *vma_prot);
-void set_pte_vaddr(unsigned long vaddr, pte_t pte);
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct seq_file;
-// supprimed extern
+/** // supprimed extern extern */
 enum {
  PG_LEVEL_NONE,
  PG_LEVEL_4K,
@@ -850,8 +848,8 @@ enum {
  PG_LEVEL_1G,
  PG_LEVEL_NUM
 };
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct desc_struct {
  union {
   struct {
@@ -1106,18 +1104,18 @@ unsigned paravirt_patch_insns(void *insnbuf, unsigned len,
          const char *start, const char *end);
 unsigned native_patch(u8 type, u16 clobbers, void *ibuf,
         unsigned long addr, unsigned len);
-int paravirt_disable_iospace(void);
+/** // supprimed function sig int */
 enum paravirt_lazy_mode {
  PARAVIRT_LAZY_NONE,
  PARAVIRT_LAZY_MMU,
  PARAVIRT_LAZY_CPU,
 };
 enum paravirt_lazy_mode paravirt_get_lazy_mode(void);
-void paravirt_start_context_switch(struct task_struct *prev);
-void paravirt_end_context_switch(struct task_struct *next);
-void paravirt_enter_lazy_mmu(void);
-void paravirt_leave_lazy_mmu(void);
-void _paravirt_nop(void);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 u32 _paravirt_ident_32(u32);
 u64 _paravirt_ident_64(u64);
 struct paravirt_patch_site {
@@ -1128,261 +1126,260 @@ struct paravirt_patch_site {
 };
 extern struct paravirt_patch_site __parainstructions[],
  __parainstructions_end[];
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct cpumask { unsigned long bits[(((8) + (8 * sizeof(long)) - 1) / (8 * sizeof(long)))]; } cpumask_t;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-int cpumask_next_and(int n, const struct cpumask *, const struct cpumask *);
-int cpumask_any_but(const struct cpumask *mask, unsigned int cpu);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct cpumask cpumask_var_t[1];
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-void set_cpu_possible(unsigned int cpu, bool possible);
-void set_cpu_present(unsigned int cpu, bool present);
-void set_cpu_online(unsigned int cpu, bool online);
-void set_cpu_active(unsigned int cpu, bool active);
-void init_cpu_present(const struct cpumask *src);
-void init_cpu_possible(const struct cpumask *src);
-void init_cpu_online(const struct cpumask *src);
-// supprimed function
-// supprimed extern
-// supprimed function
-int __first_cpu(const cpumask_t *srcp);
-int __next_cpu(int n, const cpumask_t *srcp);
-int __any_online_cpu(const cpumask_t *mask);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-void arch_flush_lazy_mmu_mode(void);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct task_struct;
 struct task_struct *__switch_to(struct task_struct *prev,
     struct task_struct *next);
 struct tss_struct;
-void __switch_to_xtra(struct task_struct *prev_p, struct task_struct *next_p,
-        struct tss_struct *tss);
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 static unsigned long __force_order;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-void disable_hlt(void);
-void enable_hlt(void);
-void cpu_idle_wait(void);
-// supprimed extern
-// supprimed extern
-void default_idle(void);
-void stop_this_cpu(void *dummy);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct msr {
  union {
   struct {
@@ -1402,31 +1399,46 @@ struct msr_regs_info {
  u32 *regs;
  int err;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function c: static inline int native_write_msr_safe(unsigned int msr,
+     unsigned low, unsigned high)
+{
+ int err;
+ asm volatile("2: wrmsr ; xor %[err],%[err]\n"
+       "1:\n\t"
+       ".section .fixup,\"ax\"\n\t"
+       "3:  mov %[fault],%[err] ; jmp 1b\n\t"
+       ".previous\n\t"
+       " .section __ex_table,\"a\"\n" " " ".balign 4" " " "\n" " " ".long" " " "2b" "," "3b" "\n" " .previous\n"
+       : [err] "=a" (err)
+       : "c" (msr), "0" (low), "d" (high),
+         [fault] "i" (-5)
+       : "memory");
+ return err;
+} */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct msr *msrs_alloc(void);
-void msrs_free(struct msr *msrs);
-int rdmsr_on_cpu(unsigned int cpu, u32 msr_no, u32 *l, u32 *h);
-int wrmsr_on_cpu(unsigned int cpu, u32 msr_no, u32 l, u32 h);
-void rdmsr_on_cpus(const struct cpumask *mask, u32 msr_no, struct msr *msrs);
-void wrmsr_on_cpus(const struct cpumask *mask, u32 msr_no, struct msr *msrs);
-int rdmsr_safe_on_cpu(unsigned int cpu, u32 msr_no, u32 *l, u32 *h);
-int wrmsr_safe_on_cpu(unsigned int cpu, u32 msr_no, u32 l, u32 h);
-int rdmsr_safe_regs_on_cpu(unsigned int cpu, u32 regs[8]);
-int wrmsr_safe_regs_on_cpu(unsigned int cpu, u32 regs[8]);
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
 struct exec_domain;
 struct pt_regs;
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum {
  ADDR_NO_RANDOMIZE = 0x0040000,
  FDPIC_FUNCPTRS = 0x0080000,
@@ -1480,18 +1492,18 @@ struct exec_domain {
  struct module *module;
  struct exec_domain *next;
 };
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 u32 iter_div_u64_rem(u64 dividend, u32 divisor, u64 *remainder);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct cpuinfo_x86 {
  __u8 x86;
  __u8 x86_vendor;
@@ -1530,24 +1542,24 @@ struct cpuinfo_x86 {
 extern struct cpuinfo_x86 boot_cpu_data;
 extern struct cpuinfo_x86 new_cpu_data;
 extern struct tss_struct doublefault_tss;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct pt_regs *idle_regs(struct pt_regs *);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct x86_hw_tss {
  unsigned short back_link, __blh;
  unsigned long sp0;
@@ -1582,7 +1594,7 @@ struct tss_struct {
  unsigned long io_bitmap[((65536/8)/sizeof(long)) + 1];
  unsigned long stack[64];
 } __attribute__((__aligned__((1 << (6)))));
-// supprimed extern
+/** // supprimed extern extern */
 struct orig_ist {
  unsigned long ist[7];
 };
@@ -1668,9 +1680,9 @@ struct stack_canary {
  char __pad[20];
  unsigned long canary;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct kmem_cache *task_xstate_cachep;
 struct perf_event;
 struct thread_struct {
@@ -1698,126 +1710,126 @@ struct thread_struct {
  unsigned long iopl;
  unsigned io_bitmap_max;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct {
  unsigned long seg;
 } mm_segment_t;
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 unsigned long get_wchan(struct task_struct *p);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct desc_ptr early_gdt_descr;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct aperfmperf {
  u64 aperf, mperf;
 };
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct dyn_arch_ftrace {
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct {
  u64 __attribute__((aligned(8))) counter;
 } atomic64_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef atomic_t atomic_long_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct thread_info {
  struct task_struct *task;
  struct exec_domain *exec_domain;
@@ -1833,59 +1845,59 @@ struct thread_info {
  int uaccess_err;
 };
 register unsigned long current_stack_pointer asm("esp") __attribute__((__used__));
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct list_head {
  struct list_head *next, *prev;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct hlist_head {
  struct hlist_node *first;
 };
 struct hlist_node {
  struct hlist_node *next, **pprev;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct preempt_notifier;
 struct preempt_ops {
  void (*sched_in)(struct preempt_notifier *notifier, int cpu);
@@ -1896,13 +1908,13 @@ struct preempt_notifier {
  struct hlist_node link;
  struct preempt_ops *ops;
 };
-void preempt_notifier_register(struct preempt_notifier *notifier);
-void preempt_notifier_unregister(struct preempt_notifier *notifier);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef struct arch_spinlock {
  unsigned int slock;
 } arch_spinlock_t;
@@ -1911,15 +1923,15 @@ typedef struct {
 } arch_rwlock_t;
 struct task_struct;
 struct lockdep_map;
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct lock_class_key { };
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct raw_spinlock {
  arch_spinlock_t raw_lock;
 } raw_spinlock_t;
@@ -1931,133 +1943,123 @@ typedef struct spinlock {
 typedef struct {
  arch_rwlock_t raw_lock;
 } rwlock_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-int in_lock_functions(unsigned long addr);
-void __attribute__((section(".spinlock.text"))) _raw_spin_lock(raw_spinlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_spin_lock_nested(raw_spinlock_t *lock, int subclass)
-        ;
-void __attribute__((section(".spinlock.text")))
-_raw_spin_lock_nest_lock(raw_spinlock_t *lock, struct lockdep_map *map)
-        ;
-void __attribute__((section(".spinlock.text"))) _raw_spin_lock_bh(raw_spinlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_spin_lock_irq(raw_spinlock_t *lock)
-        ;
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 unsigned long __attribute__((section(".spinlock.text"))) _raw_spin_lock_irqsave(raw_spinlock_t *lock)
         ;
 unsigned long __attribute__((section(".spinlock.text")))
 _raw_spin_lock_irqsave_nested(raw_spinlock_t *lock, int subclass)
         ;
-int __attribute__((section(".spinlock.text"))) _raw_spin_trylock(raw_spinlock_t *lock);
-int __attribute__((section(".spinlock.text"))) _raw_spin_trylock_bh(raw_spinlock_t *lock);
-void __attribute__((section(".spinlock.text"))) _raw_spin_unlock(raw_spinlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_spin_unlock_bh(raw_spinlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_spin_unlock_irq(raw_spinlock_t *lock) ;
-void __attribute__((section(".spinlock.text")))
-_raw_spin_unlock_irqrestore(raw_spinlock_t *lock, unsigned long flags)
-        ;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-void __attribute__((section(".spinlock.text"))) _raw_read_lock(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_lock(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_read_lock_bh(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_lock_bh(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_read_lock_irq(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_lock_irq(rwlock_t *lock) ;
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 unsigned long __attribute__((section(".spinlock.text"))) _raw_read_lock_irqsave(rwlock_t *lock)
        ;
 unsigned long __attribute__((section(".spinlock.text"))) _raw_write_lock_irqsave(rwlock_t *lock)
        ;
-int __attribute__((section(".spinlock.text"))) _raw_read_trylock(rwlock_t *lock);
-int __attribute__((section(".spinlock.text"))) _raw_write_trylock(rwlock_t *lock);
-void __attribute__((section(".spinlock.text"))) _raw_read_unlock(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_unlock(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_read_unlock_bh(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_unlock_bh(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_read_unlock_irq(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text"))) _raw_write_unlock_irq(rwlock_t *lock) ;
-void __attribute__((section(".spinlock.text")))
-_raw_read_unlock_irqrestore(rwlock_t *lock, unsigned long flags)
-       ;
-void __attribute__((section(".spinlock.text")))
-_raw_write_unlock_irqrestore(rwlock_t *lock, unsigned long flags)
-       ;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 typedef struct {
  unsigned sequence;
  spinlock_t lock;
 } seqlock_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 typedef struct seqcount {
  unsigned sequence;
 } seqcount_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct timespec {
  __kernel_time_t tv_sec;
  long tv_nsec;
@@ -2071,32 +2073,63 @@ struct timezone {
  int tz_dsttime;
 };
 extern struct timezone sys_tz;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct timespec timespec_add_safe(const struct timespec lhs,
       const struct timespec rhs);
-// supprimed function
+/** // supprimed function b: static inline */
 extern struct timespec xtime;
 extern struct timespec wall_to_monotonic;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void timekeeping_init(void);
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
 unsigned long get_seconds(void);
 struct timespec current_kernel_time(void);
 struct timespec __current_kernel_time(void);
 struct timespec get_monotonic_coarse(void);
-// supprimed function
-// supprimed function
+/** // supprimed function a: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct itimerval;
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct timespec timespec_trunc(struct timespec t, unsigned gran);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct tms;
+/** // supprimed extern extern */
+struct tm {
+ int tm_sec;
+ int tm_min;
+ int tm_hour;
+ int tm_mday;
+ int tm_mon;
+ long tm_year;
+ int tm_wday;
+ int tm_yday;
+};
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct timespec ns_to_timespec(const s64 nsec);
 extern struct timeval ns_to_timeval(const s64 nsec);
-// supprimed function
+/** // supprimed function b: static inline */
 struct itimerspec {
  struct timespec it_interval;
  struct timespec it_value;
@@ -2131,49 +2164,49 @@ struct timex {
  int :32; int :32; int :32;
 };
 typedef unsigned long long cycles_t;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int read_current_timer(unsigned long *timer_val);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 u64 get_jiffies_64(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct rb_node
 {
  unsigned long rb_parent_color;
@@ -2184,52 +2217,52 @@ struct rb_root
 {
  struct rb_node *rb_node;
 };
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef void (*rb_augment_f)(struct rb_node *node, void *data);
-// supprimed extern
+/** // supprimed extern extern */
 extern struct rb_node *rb_augment_erase_begin(struct rb_node *node);
-// supprimed extern
+/** // supprimed extern extern */
 extern struct rb_node *rb_next(const struct rb_node *);
 extern struct rb_node *rb_prev(const struct rb_node *);
 extern struct rb_node *rb_first(const struct rb_root *);
 extern struct rb_node *rb_last(const struct rb_root *);
-// supprimed extern
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 typedef struct { unsigned long bits[((((1 << 0)) + (8 * sizeof(long)) - 1) / (8 * sizeof(long)))]; } nodemask_t;
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 enum node_states {
  N_POSSIBLE,
  N_ONLINE,
@@ -2238,11 +2271,11 @@ enum node_states {
  N_CPU,
  NR_NODE_STATES
 };
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct nodemask_scratch {
  nodemask_t mask1;
  nodemask_t mask2;
@@ -2273,51 +2306,51 @@ struct prio_tree_iter {
  unsigned long r_index;
  unsigned long h_index;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct prio_tree_node *prio_tree_replace(struct prio_tree_root *root,
                 struct prio_tree_node *old, struct prio_tree_node *node);
 struct prio_tree_node *prio_tree_insert(struct prio_tree_root *root,
                 struct prio_tree_node *node);
-void prio_tree_remove(struct prio_tree_root *root, struct prio_tree_node *node);
+/** // supprimed function sig void */
 struct prio_tree_node *prio_tree_next(struct prio_tree_iter *iter);
 struct rw_semaphore;
 struct rwsem_waiter;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef signed long rwsem_count_t;
 struct rw_semaphore {
  rwsem_count_t count;
  spinlock_t wait_lock;
  struct list_head wait_list;
 };
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef struct __wait_queue wait_queue_t;
 typedef int (*wait_queue_func_t)(wait_queue_t *wait, unsigned mode, int flags, void *key);
-int default_wake_function(wait_queue_t *wait, unsigned mode, int flags, void *key);
+/** // supprimed function sig int */
 struct __wait_queue {
  unsigned int flags;
  void *private1;
@@ -2338,59 +2371,57 @@ struct __wait_queue_head {
 };
 typedef struct __wait_queue_head wait_queue_head_t;
 struct task_struct;
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-void __wake_up(wait_queue_head_t *q, unsigned int mode, int nr, void *key);
-void __wake_up_locked_key(wait_queue_head_t *q, unsigned int mode, void *key);
-void __wake_up_sync_key(wait_queue_head_t *q, unsigned int mode, int nr,
-   void *key);
-void __wake_up_locked(wait_queue_head_t *q, unsigned int mode);
-void __wake_up_sync(wait_queue_head_t *q, unsigned int mode, int nr);
-void __wake_up_bit(wait_queue_head_t *, void *, int);
-int __wait_on_bit(wait_queue_head_t *, struct wait_bit_queue *, int (*)(void *), unsigned);
-int __wait_on_bit_lock(wait_queue_head_t *, struct wait_bit_queue *, int (*)(void *), unsigned);
-void wake_up_bit(void *, int);
-int out_of_line_wait_on_bit(void *, int, int (*)(void *), unsigned);
-int out_of_line_wait_on_bit_lock(void *, int, int (*)(void *), unsigned);
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
 wait_queue_head_t *bit_waitqueue(void *, int);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void prepare_to_wait(wait_queue_head_t *q, wait_queue_t *wait, int state);
-void prepare_to_wait_exclusive(wait_queue_head_t *q, wait_queue_t *wait, int state);
-void finish_wait(wait_queue_head_t *q, wait_queue_t *wait);
-void abort_exclusive_wait(wait_queue_head_t *q, wait_queue_t *wait,
-   unsigned int mode, void *key);
-int autoremove_wake_function(wait_queue_t *wait, unsigned mode, int sync, void *key);
-int wake_bit_function(wait_queue_t *wait, unsigned mode, int sync, void *key);
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct completion {
  unsigned int done;
  wait_queue_head_t wait;
 };
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum page_debug_flags {
  PAGE_DEBUG_FLAG_POISON,
 };
@@ -2404,14 +2435,14 @@ struct mutex_waiter {
  struct list_head list;
  struct task_struct *task;
 };
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef struct {
  void *ldt;
  int size;
@@ -2420,7 +2451,7 @@ typedef struct {
  struct desc_struct user_cs;
  unsigned long exec_limit;
 } mm_context_t;
-void leave_mm(int cpu);
+/** // supprimed function sig void */
 struct address_space;
 struct page {
  unsigned long flags;
@@ -2552,7 +2583,7 @@ struct mm_struct {
 };
 typedef unsigned long cputime_t;
 typedef u64 cputime64_t;
-// supprimed extern
+/** // supprimed extern extern */
 struct call_single_data {
  struct list_head list;
  void (*func) (void *info);
@@ -2560,9 +2591,8 @@ struct call_single_data {
  u16 flags;
  u16 priv;
 };
-// supprimed extern
-int smp_call_function_single(int cpuid, void (*func) (void *info), void *info,
-    int wait);
+/** // supprimed extern extern */
+/** // supprimed function sig int */
 struct mpf_intel {
  char signature[4];
  unsigned int physptr;
@@ -2833,31 +2863,31 @@ struct e820map {
 };
 extern struct e820map e820;
 extern struct e820map e820_saved;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct setup_data;
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void free_early_partial(u64 start, u64 end);
-// supprimed extern
-void reserve_early_without_check(u64 start, u64 end, char *name);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
 u64 find_early_area(u64 ei_start, u64 ei_last, u64 start, u64 end,
     u64 size, u64 align);
 u64 find_early_area_size(u64 ei_start, u64 ei_last, u64 start,
@@ -2868,26 +2898,24 @@ struct range {
  u64 start;
  u64 end;
 };
-int add_range(struct range *range, int az, int nr_range,
-  u64 start, u64 end);
-int add_range_with_merge(struct range *range, int az, int nr_range,
-    u64 start, u64 end);
-void subtract_range(struct range *range, int az, u64 start, u64 end);
-int clean_sort_range(struct range *range, int az);
-void sort_range(struct range *range, int nr_range);
-// supprimed function
-int get_free_all_memory_range(struct range **rangep, int nodeid);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct resource {
  resource_size_t start;
  resource_size_t end;
@@ -2903,34 +2931,33 @@ struct resource_list {
 extern struct resource ioport_resource;
 extern struct resource iomem_resource;
 extern struct resource *request_resource_conflict(struct resource *root, struct resource *new1);
-// supprimed extern
-// supprimed extern
-void release_child_resources(struct resource *new1);
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
 extern struct resource *insert_resource_conflict(struct resource *parent, struct resource *new1);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int adjust_resource(struct resource *res, resource_size_t start,
-      resource_size_t size);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
 resource_size_t resource_alignment(struct resource *res);
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct resource * __request_region(struct resource *,
      resource_size_t start,
      resource_size_t n,
      const char *name, int flags);
-// supprimed extern
-// supprimed extern
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct device;
 extern struct resource * __devm_request_region(struct device *dev,
     struct resource *parent, resource_size_t start,
     resource_size_t n, const char *name);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct ist_info {
  __u32 signature;
  __u32 command;
@@ -3102,74 +3129,74 @@ struct x86_platform_ops {
 extern struct x86_init_ops x86_init;
 extern struct x86_cpuinit_ops x86_cpuinit;
 extern struct x86_platform_ops x86_platform;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void __attribute__ ((__section__(".cpuinit.text"))) __attribute__((__cold__)) generic_processor_info(int apicid, int version);
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct device;
-// supprimed extern
+/** // supprimed extern extern */
 struct physid_mask {
  unsigned long mask[(((256) + (8 * sizeof(long)) - 1) / (8 * sizeof(long)))];
 };
 typedef struct physid_mask physid_mask_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void use_tsc_delay(void);
-// supprimed extern
-void calibrate_delay(void);
-void msleep(unsigned int msecs);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 unsigned long msleep_interruptible(unsigned int msecs);
-// supprimed function
+/** // supprimed function b: static inline */
 union ktime {
  s64 tv64;
 };
 typedef union ktime ktime_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 enum debug_obj_state {
  ODEBUG_STATE_NONE,
  ODEBUG_STATE_INIT,
@@ -3194,19 +3221,15 @@ struct debug_obj_descr {
  int (*fixup_destroy) (void *addr, enum debug_obj_state state);
  int (*fixup_free) (void *addr, enum debug_obj_state state);
 };
-static inline void
-debug_object_init (void *addr, struct debug_obj_descr *descr) { }
-// supprimed function
-static inline void
-debug_object_activate (void *addr, struct debug_obj_descr *descr) { }
-// supprimed function
-static inline void
-debug_object_destroy (void *addr, struct debug_obj_descr *descr) { }
-static inline void
-debug_object_free (void *addr, struct debug_obj_descr *descr) { }
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
 struct tvec_base;
 struct timer_list {
  struct list_head entry;
@@ -3220,36 +3243,32 @@ struct timer_list {
  int start_pid;
 };
 extern struct tvec_base boot_tvec_bases;
-void init_timer_key(struct timer_list *timer,
-      const char *name,
-      struct lock_class_key *key);
-void init_timer_deferrable_key(struct timer_list *timer,
-          const char *name,
-          struct lock_class_key *key);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
   extern int try_to_del_timer_sync(struct timer_list *timer);
   extern int del_timer_sync(struct timer_list *timer);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct hrtimer;
 //extern enum hrtimer_restart it_real_fn(struct hrtimer *);
 unsigned long __round_jiffies(unsigned long j, int cpu);
@@ -3272,44 +3291,44 @@ struct delayed_work {
  struct work_struct work;
  struct timer_list timer;
 };
-// supprimed function
+/** // supprimed function b: static inline */
 struct execute_work {
  struct work_struct work;
 };
-// supprimed function
-// supprimed function
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
 extern struct workqueue_struct *
 __create_workqueue_key(const char *name, int singlethread,
          int freezeable, int rt, struct lock_class_key *key,
          const char *lock_name);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int execute_in_process_context(work_func_t fn, struct execute_work *);
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
-long work_on_cpu(unsigned int cpu, long (*fn)(void *), void *arg);
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig long */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct device;
 typedef struct pm_message {
  int event;
@@ -3384,24 +3403,24 @@ struct dev_pm_info {
  unsigned long suspended_jiffies;
  unsigned long accounting_timestamp;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum dpm_order {
  DPM_ORDER_NONE,
  DPM_ORDER_DEV_AFTER_PARENT,
  DPM_ORDER_PARENT_BEFORE_DEV,
  DPM_ORDER_DEV_LAST,
 };
-// supprimed extern
+/** // supprimed extern extern */
 struct local_apic {
         struct { unsigned int __reserved[4]; } __reserved_01;
         struct { unsigned int __reserved[4]; } __reserved_02;
@@ -3605,35 +3624,36 @@ struct local_apic {
  } timer_dcr;
         struct { unsigned int __reserved[4]; } __reserved_20;
 } __attribute__ ((packed));
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int __acpi_acquire_global_lock(unsigned int *lock);
-int __acpi_release_global_lock(unsigned int *lock);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void acpi_pic_sci_set_trigger(unsigned int, u16);
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct bootnode;
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 enum fixed_addresses {
  FIX_HOLE,
  FIX_VDSO,
@@ -3660,63 +3680,62 @@ enum fixed_addresses {
  FIX_WP_TEST,
  __end_of_fixed_addresses
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void __native_set_fixmap(enum fixed_addresses idx, pte_t pte);
-void native_set_fixmap(enum fixed_addresses idx,
-         phys_addr_t phys, pgprot_t flags);
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct apic {
  char *name;
  int (*probe)(void);
@@ -3769,40 +3788,40 @@ struct apic {
  u32 (*safe_wait_icr_idle)(void);
 };
 extern struct apic *apic;
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct apic apic_noop;
 extern struct apic apic_default;
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 union IO_APIC_reg_00 {
  u32 raw;
  struct {
@@ -3874,55 +3893,55 @@ struct IR_IO_APIC_route_entry {
   format : 1,
   index : 15;
 } __attribute__ ((packed));
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct mpc_ioapic mp_ioapics[64];
-// supprimed extern
+/** // supprimed extern extern */
 extern struct mpc_intsrc mp_irqs[256];
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct io_apic_irq_attr;
-// supprimed extern
-void setup_IO_APIC_irq_extra(u32 gsi);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct IO_APIC_route_entry **alloc_ioapic_entries(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct mp_ioapic_gsi{
  u32 gsi_base;
  u32 gsi_end;
 };
 extern struct mp_ioapic_gsi mp_gsi_routing[];
-// supprimed extern
-int mp_find_ioapic(u32 gsi);
-int mp_find_ioapic_pin(int ioapic, u32 gsi);
-void __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) mp_register_ioapic(int id, u32 address, u32 gsi_base);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct {
  void *sp;
  unsigned short ss;
@@ -3940,62 +3959,59 @@ struct smp_ops {
  void (*send_call_func_ipi)(const struct cpumask *mask);
  void (*send_call_func_single_ipi)(int cpu);
 };
-// supprimed extern
+/** // supprimed extern extern */
 extern struct smp_ops smp_ops;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-void cpu_disable_common(void);
-void native_smp_prepare_boot_cpu(void);
-void native_smp_prepare_cpus(unsigned int max_cpus);
-void native_smp_cpus_done(unsigned int max_cpus);
-int native_cpu_up(unsigned int cpunum);
-int native_cpu_disable(void);
-void native_cpu_die(unsigned int cpu);
-void native_play_dead(void);
-void play_dead_common(void);
-void wbinvd_on_cpu(int cpu);
-int wbinvd_on_all_cpus(void);
-void native_send_call_func_ipi(const struct cpumask *mask);
-void native_send_call_func_single_ipi(int cpu);
-void smp_store_cpu_info(int id);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int smp_call_function(void(*func)(void *info), void *info, int wait);
-void smp_call_function_many(const struct cpumask *mask,
-       void (*func)(void *info), void *info, bool wait);
-void __smp_call_function_single(int cpuid, struct call_single_data *data,
-    int wait);
-int smp_call_function_any(const struct cpumask *mask,
-     void (*func)(void *info), void *info, int wait);
-void generic_smp_call_function_single_interrupt(void);
-void generic_smp_call_function_interrupt(void);
-void ipi_call_lock(void);
-void ipi_call_unlock(void);
-void ipi_call_lock_irq(void);
-void ipi_call_unlock_irq(void);
-int on_each_cpu(void (*func) (void *info), void *info, int wait);
-void smp_prepare_boot_cpu(void);
-// supprimed extern
-// supprimed extern
-void smp_setup_processor_id(void);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
 struct ipc_perm
 {
  __kernel_key_t key;
@@ -4085,60 +4101,60 @@ struct rcu_head {
  struct rcu_head *next;
  void (*func)(struct rcu_head *head);
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct notifier_block;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-void rcu_enter_nohz(void);
-void rcu_exit_nohz(void);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct rcu_synchronize {
  struct rcu_head head;
  struct completion completion;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct task_struct;
 struct sem {
  int semval;
@@ -4183,8 +4199,8 @@ struct sem_undo_list {
 struct sysv_sem {
  struct sem_undo_list *undo_list;
 };
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct siginfo;
 typedef unsigned long old_sigset_t;
 typedef struct {
@@ -4194,7 +4210,7 @@ typedef void __signalfn_t(int);
 typedef __signalfn_t *__sighandler_t;
 typedef void __restorefn_t(void);
 typedef __restorefn_t *__sigrestore_t;
-// supprimed extern
+/** // supprimed extern extern */
 struct old_sigaction {
  __sighandler_t sa_handler;
  old_sigset_t sa_mask;
@@ -4215,13 +4231,13 @@ typedef struct sigaltstack {
  int ss_flags;
  size_t ss_size;
 } stack_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct pt_regs;
 typedef union sigval {
  int sival_int;
@@ -4280,10 +4296,10 @@ typedef struct sigevent {
  } _sigev_un;
 } sigevent_t;
 struct siginfo;
-void do_schedule_next_timer(struct siginfo *info);
-// supprimed function
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct sigqueue {
  struct list_head list;
  int flags;
@@ -4294,39 +4310,43 @@ struct sigpending {
  struct list_head list;
  sigset_t signal;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct pt_regs;
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct kmem_cache *sighand_cachep;
-int unhandled_signal(struct task_struct *tsk, int sig);
-void signals_init(void);
+/** // supprimed function sig int */
+/** // supprimed function sig void */
 struct dentry;
 struct vfsmount;
 struct path {
  struct vfsmount *mnt;
  struct dentry *dentry;
 };
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum pid_type
 {
  PIDTYPE_PID,
@@ -4353,30 +4373,30 @@ struct pid_link
  struct hlist_node node;
  struct pid *pid;
 };
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct task_struct *pid_task(struct pid *pid, enum pid_type);
 extern struct task_struct *get_pid_task(struct pid *pid, enum pid_type);
 extern struct pid *get_task_pid(struct task_struct *task, enum pid_type type);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct pid_namespace;
 extern struct pid_namespace init_pid_ns;
 extern struct pid *find_pid_ns(int nr, struct pid_namespace *ns);
 extern struct pid *find_vpid(int nr);
 extern struct pid *find_get_pid(int nr);
 extern struct pid *find_ge_pid(int nr, struct pid_namespace *);
-int next_pidmap(struct pid_namespace *pid_ns, int last);
+/** // supprimed function sig int */
 extern struct pid *alloc_pid(struct pid_namespace *ns);
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 pid_t pid_nr_ns(struct pid *pid, struct pid_namespace *ns);
 pid_t pid_vnr(struct pid *pid);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct pcpu_group_info {
  int nr_units;
  unsigned long base_offset;
@@ -4399,7 +4419,7 @@ enum pcpu_fc {
  PCPU_FC_PAGE,
  PCPU_FC_NR,
 };
-// supprimed extern
+/** // supprimed extern extern */
 extern enum pcpu_fc pcpu_chosen_fc;
 typedef void * (*pcpu_fc_alloc_fn_t)(unsigned int cpu, size_t size,
          size_t align);
@@ -4408,20 +4428,20 @@ typedef void (*pcpu_fc_populate_pte_fn_t)(unsigned long addr);
 typedef int (pcpu_fc_cpu_distance_fn_t)(unsigned int from, unsigned int to);
 extern struct pcpu_alloc_info * __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) pcpu_alloc_alloc_info(int nr_groups,
             int nr_units);
-// supprimed extern
+/** // supprimed extern extern */
 extern struct pcpu_alloc_info * __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) pcpu_build_alloc_info(
     size_t reserved_size, ssize_t dyn_size,
     size_t atom_size,
     pcpu_fc_cpu_distance_fn_t cpu_distance_fn);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum pageblock_bits {
  PB_migrate,
  PB_migrate_end = PB_migrate + 3 - 1,
@@ -4430,10 +4450,9 @@ enum pageblock_bits {
 struct page;
 unsigned long get_pageblock_flags_group(struct page *page,
      int start_bitidx, int end_bitidx);
-void set_pageblock_flags_group(struct page *page, unsigned long flags,
-     int start_bitidx, int end_bitidx);
-// supprimed extern
-// supprimed function
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct free_area {
  struct list_head free_list[5];
  unsigned long nr_free;
@@ -4476,9 +4495,9 @@ enum lru_list {
  LRU_UNEVICTABLE,
  NR_LRU_LISTS
 };
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 enum zone_watermarks {
  WMARK_MIN,
  WMARK_LOW,
@@ -4542,11 +4561,11 @@ typedef enum {
  ZONE_RECLAIM_LOCKED,
  ZONE_OOM_LOCKED,
 } zone_flags_t;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 unsigned long zone_nr_free_pages(struct zone *zone);
 struct zonelist_cache;
 struct zoneref {
@@ -4586,16 +4605,16 @@ struct srcu_struct {
  struct srcu_struct_array *per_cpu_ref;
  struct mutex mutex;
 };
-int init_srcu_struct(struct srcu_struct *sp);
-void cleanup_srcu_struct(struct srcu_struct *sp);
-int __srcu_read_lock(struct srcu_struct *sp) ;
-void __srcu_read_unlock(struct srcu_struct *sp, int idx) ;
-void synchronize_srcu(struct srcu_struct *sp);
-void synchronize_srcu_expedited(struct srcu_struct *sp);
-long srcu_batches_completed(struct srcu_struct *sp);
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig long */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct notifier_block {
  int (*notifier_call)(struct notifier_block *, unsigned long, void *);
  struct notifier_block *next;
@@ -4617,126 +4636,127 @@ struct srcu_notifier_head {
  struct srcu_struct srcu;
  struct notifier_block *head;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct blocking_notifier_head reboot_notifier_list;
 struct page;
 struct zone;
 struct pglist_data;
 struct mem_section;
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct page *sparse_decode_mem_map(unsigned long coded_mem_map,
        unsigned long pnum);
 extern struct mutex zonelists_mutex;
-void get_zone_counts(unsigned long *active, unsigned long *inactive,
-   unsigned long *free);
-void build_all_zonelists(void *data);
-void wakeup_kswapd(struct zone *zone, int order);
-int zone_watermark_ok(struct zone *z, int order, unsigned long mark,
-  int classzone_idx, int alloc_flags);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
 enum memmap_context {
  MEMMAP_EARLY,
  MEMMAP_HOTPLUG,
 };
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct ctl_table;
-int min_free_kbytes_sysctl_handler(struct ctl_table *, int,
-     void *, size_t *, loff_t *);
-// supprimed extern
-int lowmem_reserve_ratio_sysctl_handler(struct ctl_table *, int,
-     void *, size_t *, loff_t *);
-int percpu_pagelist_fraction_sysctl_handler(struct ctl_table *, int,
-     void *, size_t *, loff_t *);
-int sysctl_min_unmapped_ratio_sysctl_handler(struct ctl_table *, int,
-   void *, size_t *, loff_t *);
-int sysctl_min_slab_ratio_sysctl_handler(struct ctl_table *, int,
-   void *, size_t *, loff_t *);
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct pglist_data contig_page_data;
 extern struct pglist_data *first_online_pgdat(void);
 extern struct pglist_data *next_online_pgdat(struct pglist_data *pgdat);
 extern struct zone *next_zone(struct zone *zone);
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct zoneref *next_zones_zonelist(struct zoneref *z,
      enum zone_type highest_zoneidx,
      nodemask_t *nodes,
      struct zone **zone);
-// supprimed function
-void memory_present(int nid, unsigned long start, unsigned long end);
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
 unsigned long __attribute__ ((__section__(".init.text"))) __attribute__((__cold__)) __attribute__((no_instrument_function)) node_memmap_size_bytes(int, unsigned long, unsigned long);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
 struct pci_bus;
-void x86_pci_root_bus_res_quirks(struct pci_bus *b);
-// supprimed function
-// supprimed function
-int arch_update_cpu_topology(void);
-// supprimed function
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
 struct percpu_counter {
  spinlock_t lock;
  s64 count;
  struct list_head list;
  s32 *counters;
 };
-// supprimed extern
-int __percpu_counter_init(struct percpu_counter *fbc, s64 amount,
-     struct lock_class_key *key);
-void percpu_counter_destroy(struct percpu_counter *fbc);
-void percpu_counter_set(struct percpu_counter *fbc, s64 amount);
-void __percpu_counter_add(struct percpu_counter *fbc, s64 amount, s32 batch);
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 s64 __percpu_counter_sum(struct percpu_counter *fbc);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct prop_global {
  int shift;
  struct percpu_counter events;
@@ -4746,51 +4766,48 @@ struct prop_descriptor {
  struct prop_global pg[2];
  struct mutex mutex;
 };
-int prop_descriptor_init(struct prop_descriptor *pd, int shift);
-void prop_change_shift(struct prop_descriptor *pd, int new_shift);
+/** // supprimed function sig int */
+/** // supprimed function sig void */
 struct prop_local_percpu {
  struct percpu_counter events;
  int shift;
  unsigned long period;
  spinlock_t lock;
 };
-int prop_local_init_percpu(struct prop_local_percpu *pl);
-void prop_local_destroy_percpu(struct prop_local_percpu *pl);
-void __prop_inc_percpu(struct prop_descriptor *pd, struct prop_local_percpu *pl);
-void prop_fraction_percpu(struct prop_descriptor *pd, struct prop_local_percpu *pl,
-  long *numerator, long *denominator);
-// supprimed function
-void __prop_inc_percpu_max(struct prop_descriptor *pd,
-      struct prop_local_percpu *pl, long frac);
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
 struct prop_local_single {
  unsigned long events;
  unsigned long period;
  int shift;
  spinlock_t lock;
 };
-int prop_local_init_single(struct prop_local_single *pl);
-void prop_local_destroy_single(struct prop_local_single *pl);
-void __prop_inc_single(struct prop_descriptor *pd, struct prop_local_single *pl);
-void prop_fraction_single(struct prop_descriptor *pd, struct prop_local_single *pl,
-  long *numerator, long *denominator);
-// supprimed function
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
 typedef struct { int mode; } seccomp_t;
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct plist_head {
  struct list_head prio_list;
  struct list_head node_list;
@@ -4799,15 +4816,15 @@ struct plist_node {
  int prio;
  struct plist_head plist;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 struct rt_mutex {
  raw_spinlock_t wait_lock;
  struct plist_head wait_list;
@@ -4820,14 +4837,14 @@ struct hrtimer_sleeper;
  {
  return 0;
  }
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct rusage {
  struct timeval ru_utime;
  struct timeval ru_stime;
@@ -4851,7 +4868,7 @@ struct rlimit {
  unsigned long rlim_max;
 };
 struct task_struct;
-int getrusage(struct task_struct *p, int who, struct rusage *ru);
+/** // supprimed function sig int */
 struct hrtimer_clock_base;
 struct hrtimer_cpu_base;
 enum hrtimer_mode {
@@ -4901,57 +4918,57 @@ struct hrtimer_cpu_base {
  unsigned long nr_hangs;
  ktime_t max_hang_time;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct clock_event_device;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct task_io_accounting {
  u64 rchar;
  u64 wchar;
@@ -4997,63 +5014,46 @@ struct sysfs_ops {
  ssize_t (*store)(struct kobject *,struct attribute *,const char *, size_t);
 };
 struct sysfs_dirent;
-int sysfs_schedule_callback(struct kobject *kobj, void (*func)(void *),
-       void *data, struct module *owner);
-int sysfs_create_dir(struct kobject *kobj);
-void sysfs_remove_dir(struct kobject *kobj);
-int sysfs_rename_dir(struct kobject *kobj, const char *new_name);
-int sysfs_move_dir(struct kobject *kobj,
-    struct kobject *new_parent_kobj);
-int sysfs_create_file(struct kobject *kobj,
-       const struct attribute *attr);
-int sysfs_create_files(struct kobject *kobj,
-       const struct attribute **attr);
-int sysfs_chmod_file(struct kobject *kobj, struct attribute *attr,
-      mode_t mode);
-void sysfs_remove_file(struct kobject *kobj, const struct attribute *attr);
-void sysfs_remove_files(struct kobject *kobj, const struct attribute **attr);
-int sysfs_create_bin_file(struct kobject *kobj,
-           const struct bin_attribute *attr);
-void sysfs_remove_bin_file(struct kobject *kobj,
-      const struct bin_attribute *attr);
-int sysfs_create_link(struct kobject *kobj, struct kobject *target,
-       const char *name);
-int sysfs_create_link_nowarn(struct kobject *kobj,
-       struct kobject *target,
-       const char *name);
-void sysfs_remove_link(struct kobject *kobj, const char *name);
-int sysfs_rename_link(struct kobject *kobj, struct kobject *target,
-   const char *old_name, const char *new_name);
-void sysfs_delete_link(struct kobject *dir, struct kobject *targ,
-   const char *name);
-int sysfs_create_group(struct kobject *kobj,
-        const struct attribute_group *grp);
-int sysfs_update_group(struct kobject *kobj,
-         const struct attribute_group *grp);
-void sysfs_remove_group(struct kobject *kobj,
-   const struct attribute_group *grp);
-int sysfs_add_file_to_group(struct kobject *kobj,
-   const struct attribute *attr, const char *group);
-void sysfs_remove_file_from_group(struct kobject *kobj,
-   const struct attribute *attr, const char *group);
-void sysfs_notify(struct kobject *kobj, const char *dir, const char *attr);
-void sysfs_notify_dirent(struct sysfs_dirent *sd);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 struct sysfs_dirent *sysfs_get_dirent(struct sysfs_dirent *parent_sd,
           const void *ns,
           const unsigned char *name);
 struct sysfs_dirent *sysfs_get(struct sysfs_dirent *sd);
-void sysfs_put(struct sysfs_dirent *sd);
-void sysfs_printk_last_file(void);
-void sysfs_exit_ns(enum kobj_ns_type type, const void *tag);
-int sysfs_init(void);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
 struct kref {
  atomic_t refcount;
 };
-void kref_init(struct kref *kref);
-void kref_get(struct kref *kref);
-int kref_put(struct kref *kref, void (*release) (struct kref *kref));
-// supprimed extern
-// supprimed extern
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum kobject_action {
  KOBJ_ADD,
  KOBJ_REMOVE,
@@ -5077,21 +5077,21 @@ struct kobject {
  unsigned int state_remove_uevent_sent:1;
  unsigned int uevent_suppress:1;
 };
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct kobject * kobject_create(void);
 extern struct kobject * kobject_create_and_add(const char *name,
       struct kobject *parent);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct kobject *kobject_get(struct kobject *kobj);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct kobj_type {
  void (*release)(struct kobject *kobj);
  const struct sysfs_ops *sysfs_ops;
@@ -5118,7 +5118,7 @@ struct kobj_attribute {
  ssize_t (*store)(struct kobject *kobj, struct kobj_attribute *attr,
     const char *buf, size_t count);
 };
-// supprimed extern
+/** // supprimed extern extern */
 struct sock;
 struct kobj_ns_type_operations {
  enum kobj_ns_type type;
@@ -5126,43 +5126,40 @@ struct kobj_ns_type_operations {
  const void *(*netlink_ns)(struct sock *sk);
  const void *(*initial_ns)(void);
 };
-int kobj_ns_type_register(const struct kobj_ns_type_operations *ops);
-int kobj_ns_type_registered(enum kobj_ns_type type);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
 const struct kobj_ns_type_operations *kobj_child_ns_ops(struct kobject *parent);
 const struct kobj_ns_type_operations *kobj_ns_ops(struct kobject *kobj);
 const void *kobj_ns_current(enum kobj_ns_type type);
 const void *kobj_ns_netlink(enum kobj_ns_type type, struct sock *sk);
 const void *kobj_ns_initial(enum kobj_ns_type type);
-void kobj_ns_exit(enum kobj_ns_type type, const void *ns);
+/** // supprimed function sig void */
 struct kset {
  struct list_head list;
  spinlock_t list_lock;
  struct kobject kobj;
  const struct kset_uevent_ops *uevent_ops;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct kset * kset_create_and_add(const char *name,
       const struct kset_uevent_ops *u,
       struct kobject *parent_kobj);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct kobject *kset_find_obj(struct kset *, const char *);
 extern struct kobject *kernel_kobj;
 extern struct kobject *mm_kobj;
 extern struct kobject *hypervisor_kobj;
 extern struct kobject *power_kobj;
 extern struct kobject *firmware_kobj;
-int kobject_uevent(struct kobject *kobj, enum kobject_action action);
-int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
-   char *envp[]);
-int add_uevent_var(struct kobj_uevent_env *env, const char *format, ...)
- __attribute__((format (printf, 2, 3)));
-int kobject_action_type(const char *buf, size_t count,
-   enum kobject_action *type);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
 struct latency_record {
  unsigned long backtrace[12];
  unsigned int count;
@@ -5170,10 +5167,10 @@ struct latency_record {
  unsigned long max;
 };
 struct task_struct;
-// supprimed extern
-void __account_scheduler_latency(struct task_struct *task, int usecs, int inter);
-// supprimed function
-void clear_all_latency_tracing(struct task_struct *p);
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
 struct completion;
 struct __sysctl_args {
  int *name;
@@ -5947,29 +5944,29 @@ struct ctl_table_set {
  struct ctl_table_set *parent;
  int (*is_seen)(struct ctl_table_set *);
 };
-// supprimed extern
+/** // supprimed extern extern */
 struct ctl_table_header;
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct ctl_table_header *sysctl_head_grab(struct ctl_table_header *);
 extern struct ctl_table_header *sysctl_head_next(struct ctl_table_header *prev);
 extern struct ctl_table_header *__sysctl_head_next(struct nsproxy *namespaces,
       struct ctl_table_header *prev);
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 typedef struct ctl_table ctl_table;
 typedef int proc_handler (struct ctl_table *ctl, int write,
      void *buffer, size_t *lenp, loff_t *ppos);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct ctl_table
 {
  const char *procname;
@@ -5978,7 +5975,7 @@ struct ctl_table
  mode_t mode;
  struct ctl_table *child;
  struct ctl_table *parent;
- proc_handler *proc_handler_;
+ proc_handler *proc_handler1;
  void *extra1;
  void *extra2;
 };
@@ -6007,15 +6004,15 @@ struct ctl_table_header
 struct ctl_path {
  const char *procname;
 };
-void register_sysctl_root(struct ctl_table_root *root);
+/** // supprimed function sig void */
 struct ctl_table_header *__register_sysctl_paths(
  struct ctl_table_root *root, struct nsproxy *namespaces,
  const struct ctl_path *path, struct ctl_table *table);
 struct ctl_table_header *register_sysctl_table(struct ctl_table * table);
 struct ctl_table_header *register_sysctl_paths(const struct ctl_path *path,
       struct ctl_table *table);
-void unregister_sysctl_table(struct ctl_table_header * table);
-int sysctl_check_table(struct nsproxy *namespaces, struct ctl_table *table);
+/** // supprimed function sig void */
+/** // supprimed function sig int */
 typedef int32_t key_serial_t;
 typedef uint32_t key_perm_t;
 struct key;
@@ -6028,9 +6025,9 @@ struct key_owner;
 struct keyring_list;
 struct keyring_name;
 typedef struct __key_reference_with_attributes *key_ref_t;
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct key {
  atomic_t usage;
  key_serial_t serial;
@@ -6067,10 +6064,10 @@ extern struct key *key_alloc(struct key_type *type,
         const struct cred *cred,
         key_perm_t perm,
         unsigned long flags);
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct key *request_key(struct key_type *type,
           const char *description,
           const char *callout_info);
@@ -6088,34 +6085,34 @@ extern struct key *request_key_async_with_auxdata(struct key_type *type,
         const void *callout_info,
         size_t callout_len,
         void *aux);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct key *keyring_alloc(const char *description, uid_t uid, gid_t gid,
      const struct cred *cred,
      unsigned long flags,
      struct key *dest);
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct key *key_lookup(key_serial_t id);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct selinux_audit_rule;
 struct audit_context;
 struct kern_ipc_perm;
-int selinux_string_to_sid(char *str, u32 *sid);
-int selinux_secmark_relabel_packet_permission(u32 sid);
-void selinux_secmark_refcount_inc(void);
-void selinux_secmark_refcount_dec(void);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
 bool selinux_is_enabled(void);
 struct user_struct;
 struct cred;
@@ -6127,15 +6124,15 @@ struct group_info {
  gid_t small_block[32];
  gid_t *blocks[0];
 };
-// supprimed function
+/** // supprimed function b: static inline */
 extern struct group_info *groups_alloc(int);
 extern struct group_info init_groups;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct thread_group_cred {
  atomic_t usage;
  pid_t tgid;
@@ -6168,103 +6165,103 @@ struct cred {
  struct group_info *group_info;
  struct rcu_head rcu;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct cred *cred_alloc_blank(void);
 extern struct cred *prepare_creds(void);
 extern struct cred *prepare_exec_creds(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct cred *prepare_kernel_cred(struct task_struct *);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct exec_domain;
 struct futex_pi_state;
 struct robust_list_head;
 struct bio_list;
 struct fs_struct;
 struct perf_event_context;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct seq_file;
 struct cfs_rq;
 struct task_group;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct task_struct;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-void io_schedule(void);
-long io_schedule_timeout(long timeout);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig long */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct nsproxy;
 struct user_namespace;
-// supprimed extern
+/** // supprimed extern extern */
 typedef unsigned long aio_context_t;
 enum {
  IOCB_CMD_PREAD = 0,
@@ -6303,7 +6300,7 @@ struct kvec {
  void *iov_base;
  size_t iov_len;
 };
-// supprimed function
+/** // supprimed function b: static inline */
 unsigned long iov_shorten(struct iovec *iov, unsigned long nr_segs, size_t to);
 struct kioctx;
 struct kiocb {
@@ -6370,25 +6367,25 @@ struct kioctx {
  struct delayed_work wq;
  struct rcu_head rcu_head;
 };
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct mm_struct;
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct sighand_struct {
  atomic_t count;
  struct k_sigaction action[64];
@@ -6458,7 +6455,7 @@ struct signal_struct {
  struct tty_audit_buf *tty_audit_buf;
  int oom_adj;
 };
-// supprimed function
+/** // supprimed function b: static inline */
 struct user_struct {
  atomic_t __count;
  atomic_t processes;
@@ -6476,7 +6473,7 @@ struct user_struct {
  struct user_namespace *user_ns;
  atomic_long_t locked_vm;
 };
-// supprimed extern
+/** // supprimed extern extern */
 extern struct user_struct *find_user(uid_t);
 extern struct user_struct root_user;
 struct backing_dev_info;
@@ -6500,7 +6497,7 @@ struct task_delay_info {
  u64 freepages_delay;
  u32 freepages_count;
 };
-// supprimed function
+/** // supprimed function b: static inline */
 enum cpu_idle_type {
  CPU_IDLE,
  CPU_NOT_IDLE,
@@ -6513,16 +6510,16 @@ enum powersavings_balance_level {
  POWERSAVINGS_BALANCE_WAKEUP,
  MAX_POWERSAVINGS_BALANCE_LEVELS
 };
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct sched_group {
  struct sched_group *next;
  unsigned int cpu_power;
  unsigned long cpumask[0];
 };
-// supprimed function
+/** // supprimed function b: static inline */
 enum sched_domain_level {
  SD_LV_NONE = 0,
  SD_LV_SIBLING,
@@ -6580,15 +6577,15 @@ struct sched_domain {
  unsigned int span_weight;
  unsigned long span[0];
 };
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 cpumask_var_t *alloc_sched_domains(unsigned int ndoms);
-void free_sched_domains(cpumask_var_t doms[], unsigned int ndoms);
-// supprimed function
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
 unsigned long default_scale_freq_power(struct sched_domain *sd, int cpu);
 unsigned long default_scale_smt_power(struct sched_domain *sd, int cpu);
 struct io_context;
-// supprimed function
+/** // supprimed function a: static inline */
 struct audit_context;
 struct mempolicy;
 struct pipe_inode_info;
@@ -6818,61 +6815,61 @@ struct task_struct {
   unsigned long memsw_bytes;
  } memcg_batch;
 };
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 struct pid_namespace;
 pid_t __task_pid_nr_ns(struct task_struct *task, enum pid_type type,
    struct pid_namespace *ns);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 pid_t task_tgid_nr_ns(struct task_struct *tsk, struct pid_namespace *ns);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct pid *cad_pid;
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 enum sched_tunable_scaling {
  SCHED_TUNABLESCALING_NONE,
  SCHED_TUNABLESCALING_LOG,
@@ -6880,182 +6877,981 @@ enum sched_tunable_scaling {
  SCHED_TUNABLESCALING_END,
 };
 extern enum sched_tunable_scaling sysctl_sched_tunable_scaling;
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-int sched_proc_update_handler(struct ctl_table *table, int write,
-  void *buffer, size_t *length,
-  loff_t *ppos);
-// supprimed function
-// supprimed extern
-// supprimed extern
-int sched_rt_handler(struct ctl_table *table, int write,
-  void *buffer, size_t *lenp,
-  loff_t *ppos);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct task_struct *idle_task(int cpu);
 extern struct task_struct *curr_task(int cpu);
-// supprimed extern
-void yield(void);
+/** // supprimed extern extern */
+/** // supprimed function sig void */
 extern struct exec_domain default_exec_domain;
 union thread_union {
  struct thread_info thread_info;
  unsigned long stack[(((1UL) << 12) << 1)/sizeof(long)];
 };
-// supprimed function
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct task_struct init_task;
 extern struct mm_struct init_mm;
 extern struct pid_namespace init_pid_ns;
 extern struct task_struct *find_task_by_vpid(pid_t nr);
 extern struct task_struct *find_task_by_pid_ns(pid_t nr,
   struct pid_namespace *ns);
-// supprimed extern
+/** // supprimed extern extern */
 extern struct user_struct * alloc_uid(struct user_namespace *, uid_t);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
  extern void kick_process(struct task_struct *tsk);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct sigqueue *sigqueue_alloc(void);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct mm_struct * mm_alloc(void);
-// supprimed extern
-// supprimed function
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
 extern struct mm_struct *get_task_mm(struct task_struct *task);
-// supprimed extern
+/** // supprimed extern extern */
 extern struct mm_struct *dup_mm(struct task_struct *tsk);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 struct task_struct *fork_idle(int);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
 extern struct sighand_struct *lock_task_sighand(struct task_struct *tsk,
        unsigned long *flags);
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-void thread_group_cputime(struct task_struct *tsk, struct task_cputime *times);
-void thread_group_cputimer(struct task_struct *tsk, struct task_cputime *times);
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
 extern struct task_group init_task_group;
 extern struct task_group *sched_create_group(struct task_group *parent);
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed extern
-// supprimed extern
-// supprimed extern
-// supprimed function
-// supprimed function
-// supprimed function
-// supprimed function
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct __kernel_sockaddr_storage {
+ unsigned short ss_family;
+ char __data[128 - sizeof(unsigned short)];
+} __attribute__ ((aligned((__alignof__ (struct sockaddr *)))));
+struct pid;
+struct cred;
+struct seq_file;
+/** // supprimed extern extern */
+typedef unsigned short sa_family_t;
+struct sockaddr {
+ sa_family_t sa_family;
+ char sa_data[14];
+};
+struct linger {
+ int l_onoff;
+ int l_linger;
+};
+struct msghdr {
+ void * msg_name;
+ int msg_namelen;
+ struct iovec * msg_iov;
+ __kernel_size_t msg_iovlen;
+ void * msg_control;
+ __kernel_size_t msg_controllen;
+ unsigned msg_flags;
+};
+struct mmsghdr {
+ struct msghdr msg_hdr;
+ unsigned msg_len;
+};
+struct cmsghdr {
+ __kernel_size_t cmsg_len;
+        int cmsg_level;
+        int cmsg_type;
+};
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct ucred {
+ __u32 pid;
+ __u32 uid;
+ __u32 gid;
+};
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct timespec;
+/** // supprimed extern extern */
+struct vm_area_struct;
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+struct page *
+__alloc_pages_nodemask(gfp_t gfp_mask, unsigned int order,
+         struct zonelist *zonelist, nodemask_t *nodemask);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct task_struct;
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+struct task_struct;
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct mempolicy;
+struct anon_vma;
+struct file_ra_state;
+struct user_struct;
+struct writeback_control;
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct list_head pgd_list;
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+pmd_t *populate_extra_pmd(unsigned long vaddr);
+pte_t *populate_extra_pte(unsigned long vaddr);
+struct mm_struct;
+struct vm_area_struct;
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct vm_area_struct;
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct kmem_cache *vm_area_cachep;
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct vm_fault {
+ unsigned int flags;
+ unsigned long pgoff;
+ void *virtual_address;
+ struct page *page;
+};
+struct vm_operations_struct {
+ void (*open)(struct vm_area_struct * area);
+ void (*close)(struct vm_area_struct * area);
+ int (*fault)(struct vm_area_struct *vma, struct vm_fault *vmf);
+ int (*page_mkwrite)(struct vm_area_struct *vma, struct vm_fault *vmf);
+ int (*access)(struct vm_area_struct *vma, unsigned long addr,
+        void *buf, int len, int write);
+};
+struct mmu_gather;
+struct inode;
+enum pageflags {
+ PG_locked,
+ PG_error,
+ PG_referenced,
+ PG_uptodate,
+ PG_dirty,
+ PG_lru,
+ PG_active,
+ PG_slab,
+ PG_owner_priv_1,
+ PG_arch_1,
+ PG_reserved,
+ PG_private,
+ PG_private_2,
+ PG_writeback,
+ PG_head,
+ PG_tail,
+ PG_swapcache,
+ PG_mappedtodisk,
+ PG_reclaim,
+ PG_buddy,
+ PG_swapbacked,
+ PG_unevictable,
+ PG_mlocked,
+ PG_uncached,
+ PG_hwpoison,
+ PG_readaheadunused,
+ __NR_PAGEFLAGS,
+ PG_checked = PG_owner_priv_1,
+ PG_fscache = PG_private_2,
+ PG_pinned = PG_owner_priv_1,
+ PG_savepinned = PG_dirty,
+ PG_slob_free = PG_private,
+ PG_slub_frozen = PG_active,
+ PG_slub_debug = PG_error,
+};
+struct page;
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+// static inline int TestClearPageActive(struct page *page) { return test_and_clear_bit(PG_active, &page->flags); }
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+struct page *vmalloc_to_page(const void *addr);
+unsigned long vmalloc_to_pfn(const void *addr);
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+typedef void compound_page_dtor(struct page *);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+enum vm_event_item { PGPGIN, PGPGOUT, PSWPIN, PSWPOUT,
+  PGALLOC_DMA, PGALLOC_NORMAL , PGALLOC_HIGH , PGALLOC_MOVABLE,
+  PGFREE, PGACTIVATE, PGDEACTIVATE,
+  PGFAULT, PGMAJFAULT,
+  PGREFILL_DMA, PGREFILL_NORMAL , PGREFILL_HIGH , PGREFILL_MOVABLE,
+  PGSTEAL_DMA, PGSTEAL_NORMAL , PGSTEAL_HIGH , PGSTEAL_MOVABLE,
+  PGSCAN_KSWAPD_DMA, PGSCAN_KSWAPD_NORMAL , PGSCAN_KSWAPD_HIGH , PGSCAN_KSWAPD_MOVABLE,
+  PGSCAN_DIRECT_DMA, PGSCAN_DIRECT_NORMAL , PGSCAN_DIRECT_HIGH , PGSCAN_DIRECT_MOVABLE,
+  PGINODESTEAL, SLABS_SCANNED, KSWAPD_STEAL, KSWAPD_INODESTEAL,
+  KSWAPD_LOW_WMARK_HIT_QUICKLY, KSWAPD_HIGH_WMARK_HIT_QUICKLY,
+  KSWAPD_SKIP_CONGESTION_WAIT,
+  PAGEOUTRUN, ALLOCSTALL, PGROTATED,
+  HTLB_BUDDY_PGALLOC, HTLB_BUDDY_PGALLOC_FAIL,
+  UNEVICTABLE_PGCULLED,
+  UNEVICTABLE_PGSCANNED,
+  UNEVICTABLE_PGRESCUED,
+  UNEVICTABLE_PGMLOCKED,
+  UNEVICTABLE_PGMUNLOCKED,
+  UNEVICTABLE_PGCLEARED,
+  UNEVICTABLE_PGSTRANDED,
+  UNEVICTABLE_MLOCKFREED,
+  NR_VM_EVENT_ITEMS
+};
+/** // supprimed extern extern */
+struct vm_event_state {
+ unsigned long event[NR_VM_EVENT_ITEMS];
+};
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+extern struct address_space swapper_space;
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+struct file *shmem_file_setup(const char *name, loff_t size, unsigned long flags);
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct zap_details {
+ struct vm_area_struct *nonlinear_vma;
+ struct address_space *check_mapping;
+ unsigned long first_index;
+ unsigned long last_index;
+ spinlock_t *i_mmap_lock;
+ unsigned long truncate_count;
+};
+struct page *vm_normal_page(struct vm_area_struct *vma, unsigned long addr,
+  pte_t pte);
+/** // supprimed function sig int */
+unsigned long zap_page_range(struct vm_area_struct *vma, unsigned long address,
+  unsigned long size, struct zap_details *);
+unsigned long unmap_vmas(struct mmu_gather **tlb,
+  struct vm_area_struct *start_vma, unsigned long start_addr,
+  unsigned long end_addr, unsigned long *nr_accounted,
+  struct zap_details *);
+struct mm_walk {
+ int (*pgd_entry)(pgd_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pud_entry)(pud_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pmd_entry)(pmd_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pte_entry)(pte_t *, unsigned long, unsigned long, struct mm_walk *);
+ int (*pte_hole)(unsigned long, unsigned long, struct mm_walk *);
+ int (*hugetlb_entry)(pte_t *, unsigned long,
+        unsigned long, unsigned long, struct mm_walk *);
+ struct mm_struct *mm;
+ void *private1;
+};
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+struct page *get_dump_page(unsigned long addr);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+unsigned long get_mm_counter(struct mm_struct *mm, int member);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function sig void */
+struct shrinker {
+ int (*shrink)(struct shrinker *, int nr_to_scan, gfp_t gfp_mask);
+ int seeks;
+ struct list_head list;
+ long nr;
+};
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+unsigned long __absent_pages_in_range(int nid, unsigned long start_pfn,
+      unsigned long end_pfn);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+typedef int (*work_fn_t)(unsigned long, unsigned long, void *);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+struct vm_area_struct *vma_prio_tree_next(struct vm_area_struct *vma,
+ struct prio_tree_iter *iter);
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct vm_area_struct *vma_merge(struct mm_struct *,
+ struct vm_area_struct *prev, unsigned long addr, unsigned long end,
+ unsigned long vm_flags, struct anon_vma *, struct file *, unsigned long,
+ struct mempolicy *);
+extern struct anon_vma *find_mergeable_anon_vma(struct vm_area_struct *);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct vm_area_struct *copy_vma(struct vm_area_struct **,
+ unsigned long addr, unsigned long len, unsigned long pgoff);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+unsigned long max_sane_readahead(unsigned long nr);
+unsigned long ra_submit(struct file_ra_state *ra,
+   struct address_space *mapping,
+   struct file *filp);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct vm_area_struct * find_vma(struct mm_struct * mm, unsigned long addr);
+extern struct vm_area_struct * find_vma_prev(struct mm_struct * mm, unsigned long addr,
+          struct vm_area_struct **pprev);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+pgprot_t vm_get_page_prot(unsigned long vm_flags);
+struct vm_area_struct *find_extend_vma(struct mm_struct *, unsigned long addr);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+struct page *follow_page(struct vm_area_struct *, unsigned long address,
+   unsigned int foll_flags);
+typedef int (*pte_fn_t)(pte_t *pte, pgtable_t token, unsigned long addr,
+   void *data);
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed function a: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function a: static inline */
+extern struct vm_area_struct *get_gate_vma(struct task_struct *tsk);
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+unsigned long shrink_slab(unsigned long scanned, gfp_t gfp_mask,
+   unsigned long lru_pages);
+/** // supprimed extern extern */
+const char * arch_vma_name(struct vm_area_struct *vma);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+struct page *sparse_mem_map_populate(unsigned long pnum, int nid);
+pgd_t *vmemmap_pgd_populate(unsigned long addr, int node);
+pud_t *vmemmap_pud_populate(pgd_t *pgd, unsigned long addr, int node);
+pmd_t *vmemmap_pmd_populate(pud_t *pud, unsigned long addr, int node);
+pte_t *vmemmap_pte_populate(pmd_t *pmd, unsigned long addr, int node);
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig void */
+/** // supprimed function sig int */
+/** // supprimed function sig int */
+/** // supprimed function sig void */
+enum mf_flags {
+ MF_COUNT_INCREASED = 1 << 0,
+};
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+typedef enum {
+ SS_FREE = 0,
+ SS_UNCONNECTED,
+ SS_CONNECTING,
+ SS_CONNECTED,
+ SS_DISCONNECTING
+} socket_state;
+/** // supprimed extern extern */
+extern struct irq_desc *irq_to_desc(unsigned int irq);
+struct rand_pool_info {
+ int entropy_count;
+ int buf_size;
+ __u32 buf[0];
+};
+struct rnd_state {
+ __u32 s1, s2, s3;
+};
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed function sig void */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+unsigned int get_random_int(void);
+unsigned long randomize_range(unsigned long start, unsigned long end, unsigned long len);
+u32 random32(void);
+/** // supprimed function sig void */
+u32 prandom32(struct rnd_state *);
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct f_owner_ex {
+ int type;
+ pid_t pid;
+};
+struct flock {
+ short l_type;
+ short l_whence;
+ __kernel_off_t l_start;
+ __kernel_off_t l_len;
+ __kernel_pid_t l_pid;
+
+};
+struct flock64 {
+ short l_type;
+ short l_whence;
+ __kernel_loff_t l_start;
+ __kernel_loff_t l_len;
+ __kernel_pid_t l_pid;
+
+};
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+/** // supprimed function b: static inline */
+struct poll_table_struct;
+struct pipe_inode_info;
+struct inode;
+struct net;
+enum sock_type {
+ SOCK_STREAM = 1,
+ SOCK_DGRAM = 2,
+ SOCK_RAW = 3,
+ SOCK_RDM = 4,
+ SOCK_SEQPACKET = 5,
+ SOCK_DCCP = 6,
+ SOCK_PACKET = 10,
+};
+enum sock_shutdown_cmd {
+ SHUT_RD = 0,
+ SHUT_WR = 1,
+ SHUT_RDWR = 2,
+};
+struct socket_wq {
+ wait_queue_head_t wait;
+ struct fasync_struct *fasync_list;
+ struct rcu_head rcu;
+} __attribute__((__aligned__((1 << (6)))));
+struct socket {
+ socket_state state;
+ ;
+ short type;
+ ;
+ unsigned long flags;
+ struct socket_wq *wq;
+ struct file *file;
+ struct sock *sk;
+ const struct proto_ops *ops;
+};
+struct vm_area_struct;
+struct page;
+struct kiocb;
+struct sockaddr;
+struct msghdr;
+struct module;
+struct proto_ops {
+ int family;
+ struct module *owner;
+ int (*release) (struct socket *sock);
+ int (*bind) (struct socket *sock,
+          struct sockaddr *myaddr,
+          int sockaddr_len);
+ int (*connect) (struct socket *sock,
+          struct sockaddr *vaddr,
+          int sockaddr_len, int flags);
+ int (*socketpair)(struct socket *sock1,
+          struct socket *sock2);
+ int (*accept) (struct socket *sock,
+          struct socket *newsock, int flags);
+ int (*getname) (struct socket *sock,
+          struct sockaddr *addr,
+          int *sockaddr_len, int peer);
+ unsigned int (*poll) (struct file *file, struct socket *sock,
+          struct poll_table_struct *wait);
+ int (*ioctl) (struct socket *sock, unsigned int cmd,
+          unsigned long arg);
+ int (*listen) (struct socket *sock, int len);
+ int (*shutdown) (struct socket *sock, int flags);
+ int (*setsockopt)(struct socket *sock, int level,
+          int optname, char *optval, unsigned int optlen);
+ int (*getsockopt)(struct socket *sock, int level,
+          int optname, char *optval, int *optlen);
+ int (*sendmsg) (struct kiocb *iocb, struct socket *sock,
+          struct msghdr *m, size_t total_len);
+ int (*recvmsg) (struct kiocb *iocb, struct socket *sock,
+          struct msghdr *m, size_t total_len,
+          int flags);
+ int (*mmap) (struct file *file, struct socket *sock,
+          struct vm_area_struct * vma);
+ ssize_t (*sendpage) (struct socket *sock, struct page *page,
+          int offset, size_t size, int flags);
+ ssize_t (*splice_read)(struct socket *sock, loff_t *ppos,
+           struct pipe_inode_info *pipe, size_t len, unsigned int flags);
+};
+struct net_proto_family {
+ int family;
+ int (*create)(struct net *net, struct socket *sock,
+      int protocol, int kern);
+ struct module *owner;
+};
+struct iovec;
+struct kvec;
+enum {
+ SOCK_WAKE_IO,
+ SOCK_WAKE_WAITD,
+ SOCK_WAKE_SPACE,
+ SOCK_WAKE_URG,
+};
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+extern struct socket *sockfd_lookup(int fd, int *err);
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+/** // supprimed extern extern */
+struct ratelimit_state {
+ spinlock_t lock;
+ int interval;
+ int burst;
+ int printed;
+ int missed;
+ unsigned long begin;
+};
+/** // supprimed function b: static inline */
+/** // supprimed extern extern */
+extern struct ratelimit_state net_ratelimit_state;
