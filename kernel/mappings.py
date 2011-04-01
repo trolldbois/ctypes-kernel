@@ -3,7 +3,7 @@ import ctypes, struct, mmap, logging
 from haystack.memory_mapping import MemoryDumpMemoryMapping 
 # TODO check ctypes_tools.bytes2array in ptrace
 
-log = logging.getLogger('filememdump')
+log = logging.getLogger('mappings')
 
 
 class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
@@ -22,7 +22,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         ###
         print 'DTB: 0x%lx'%(dtb)
         self.dtb = dtb # __init_end in system.map
-        self.cache = dict()
+        self.cache = None
         self._cache_values() # defines pde_cache
 
     def search(self, bytestr):
@@ -39,7 +39,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         if not self.entry_present(pde_value):
             # Add support for paged out PDE
             # (insert buffalo here!)
-            print ' = pde entry not present'
+            print ' = pde entry not present in pde 0x%s'%(pde_value)
             return None
 
         if self.page_size_flag(pde_value):
@@ -49,7 +49,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         pte_value = self.get_pte(vaddr, pde_value)
         if not self.entry_present(pte_value):
             # Add support for paged out PTE
-            print ' = pte entry not present'
+            print ' = pte entry not present in pte 0x%s'%(pte_value)
             return None
 
         return self.get_phys_addr(vaddr, pte_value)
@@ -60,11 +60,14 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
             return self.pde_cache[self.pde_index(vaddr)]
 
         pde_addr = (self.dtb & 0xfffff000) | ((vaddr & 0xffc00000) >> 20)
-        return self.read_long_phys(pde_addr)
-
+        ret = self.read_long_phys(pde_addr)
+        log.debug('get_pde pde_addr: %lx value: 0x%s'%(pde_addr, ret))
+        return ret
+        
     def pde_index(self, vaddr):
         ''' Returns the Page Directory Entry Index number from the given
             virtual address. The index number is in bits 31:22.   '''
+        log.debug('pde_index: %lx'%(vaddr >> 22))
         return vaddr >> 22
 
     def _cache_values(self):
@@ -74,6 +77,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         holding the four byte PDE. 0x1000 / 4 = 0x400 entries
         '''
         #buf = self.base.read(self.dtb, 0x1000)
+        log.debug('caching DTB values from 0x%lx'%self.dtb)
         buf = self.readBytes(self.dtb, 0x1000) # bstr expected
         if buf is None:
             self.cache = False
@@ -89,6 +93,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
           return None
         word = ctypes.c_ulong.from_buffer_copy(self.local_mmap, addr).value # is non-aligned a pb ?
         return word
+        #return self.readWord(addr)
 
     def entry_present(self, entry):
         '''   Returns whether or not the 'P' (Present) flag is on in the given entry '''

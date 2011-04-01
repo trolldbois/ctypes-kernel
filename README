@@ -55,5 +55,24 @@ schedsockmm ^ schedsockmmnet
 
 have to disable CONFIG_STRICT_DEVMEM
 
+avec volatility :
+init_task = 0xc034e300
+0xc034e300 - 0x34e3d4
+0xbfffff2cL
+
+DTB value : Directory Table Base
+>>> hex(3915776)
+'0x3bc000'
+
+c037f000 T __init_begin
+....
+c03bc000 B __bss_start
+c03bc000 B __init_end
+c03bc000 B swapper_pg_dir
+
+virtual to physical is done by vtop()
+
+
+
 
 
