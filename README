@@ -1,4 +1,14 @@
 
+alpha-software - not working.
+
+
+ctypes-kernel is an extension to haystack, for kernel structures.
+It's purpose is to be a simple 'volatility' for linux kernels.
+It could easily be extended to other system memdump's...
+
+
+( once I make a valid VMM wrapper .. )
+
 
 
   #include <linux/sched.h>
