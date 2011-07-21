@@ -9,20 +9,20 @@ log = logging.getLogger('mappings')
 Shameless steal from volatility/plugins/addrspaces/intel.py
 '''
 
-class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
+class JKIA32PagedMemory(MemoryDumpMemoryMapping):
     """ A memoryMapping wrapper around a memory file dump"""
-    def __init__(self, memdump, start, end, dtb, base_offset):
+    def __init__(self, memdump, start, end, dtb):
         self._process = None
         self.start = start
         self.end = end
-        self.base_offset = base_offset
         self.permissions = 'rwx-'
         self.offset = 0x0
         self.major_device = 0x0
         self.minor_device = 0x0
         self.inode = 0x0
         self.pathname = 'MEMORYDUMP'
-        self.local_mmap = mmap.mmap(memdump.fileno(), end-start, access=mmap.ACCESS_READ)
+        self.memdump = memdump
+        self._local_mmap = mmap.mmap(memdump.fileno(), end-start, access=mmap.ACCESS_READ)
         ###
         #print 'DTB: 0x%lx'%(dtb)
         self.dtb = dtb # __init_end in system.map
@@ -30,7 +30,7 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         self._cache_values() # defines pde_cache
 
     def search(self, bytestr):
-        self.local_mmap.find(bytestr)
+        self._local_mmap.find(bytestr)
 
     def vtop(self, vaddr):
         '''
@@ -43,17 +43,14 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         if not self.entry_present(pde_value):
             # Add support for paged out PDE
             # (insert buffalo here!)
-            print ' = pde entry not present in pde 0x%s'%(pde_value)
             return None
 
         if self.page_size_flag(pde_value):
-            print ' = 4 MB paddr'
             return self.get_four_meg_paddr(vaddr, pde_value)
 
         pte_value = self.get_pte(vaddr, pde_value)
         if not self.entry_present(pte_value):
             # Add support for paged out PTE
-            print ' = pte entry not present in pte 0x%s'%(pte_value)
             return None
 
         return self.get_phys_addr(vaddr, pte_value)
@@ -66,13 +63,13 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         #log.debug('(self.dtb & 0xfffff000):0x%x | ((vaddr & 0xffc00000) >> 20):0x%x'%((self.dtb & 0xfffff000) , ((vaddr & 0xffc00000) >> 20)))
         pde_addr = (self.dtb & 0xfffff000) | ((vaddr & 0xffc00000) >> 20)
         ret = self.read_long_phys(pde_addr)
-        log.debug('get_pde pde_addr: 0x%lx value: 0x%s'%(pde_addr, ret))
+        #log.debug('get_pde pde_addr: 0x%lx value: 0x%s'%(pde_addr, ret))
         return ret
         
     def pde_index(self, vaddr):
         ''' Returns the Page Directory Entry Index number from the given
             virtual address. The index number is in bits 31:22.   '''
-        log.debug('pde_index: %lx'%(vaddr >> 22))
+        #log.debug('pde_index: %lx'%(vaddr >> 22))
         return vaddr >> 22
 
     def _cache_values(self):
@@ -82,9 +79,9 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         holding the four byte PDE. 0x1000 / 4 = 0x400 entries
         '''
         #buf = self.base.read(self.dtb, 0x1000)
-        log.debug('caching DTB values from 0x%lx (real:0x%x)'%(self.dtb, self.dtb-self.base_offset))
-        #buf = self.readBytes(self.dtb-self.base_offset, 0x1000) # bstr expected
-        buf = (ctypes.c_ulong*0x400).from_buffer_copy(self.local_mmap, self.dtb-self.base_offset)#.value 
+        log.debug('caching DTB values from 0x%lx (real:0x%x)'%(self.dtb, self.dtb))
+        #buf = self.readBytes(self.dtb, 0x1000) # bstr expected
+        buf = (ctypes.c_ulong*0x400).from_buffer_copy(self._local_mmap, self.dtb)#.value 
         if buf is None:
             self.cache = False
         else:
@@ -96,10 +93,10 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
         Returns an unsigned 32-bit integer from the address addr in
         physical memory. If unable to read from that location, returns None.
         '''
-        if addr > len(self.local_mmap):
-          log.warning('addr 0x%x > size:0x%x'%(addr,len(self.local_mmap)))
+        if addr > len(self._local_mmap):
+          log.warning('addr 0x%x > size:0x%x'%(addr,len(self._local_mmap)))
           return None
-        word = ctypes.c_ulong.from_buffer_copy(self.local_mmap, addr).value # is non-aligned a pb ?
+        word = ctypes.c_ulong.from_buffer_copy(self._local_mmap, addr).value # is non-aligned a pb ?
         return word
         #return self.readWord(addr)
 
@@ -125,8 +122,8 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
 
     def get_phys_addr(self, vaddr, pte_value):
         ''' Return the offset in a 4KB memory page from the given virtual address and Page Table Entry. '''
-        ret = ((pte_value & 0xfffff000) | (vaddr & 0xfff)) - self.base_offset
-        log.debug( 'phys_addr: 0x%lx'%ret)
+        ret = ((pte_value & 0xfffff000) | (vaddr & 0xfff))
+        #log.debug( 'phys_addr: 0x%lx'%ret)
         return ret
         
 
@@ -157,10 +154,10 @@ class MemdumpFileMemoryMapping(MemoryDumpMemoryMapping):
 
 
 
-class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
+class JKIA32PagedMemoryPae(JKIA32PagedMemory):
     def _cache_values(self):
         ''' Q * 4 ?'''
-        buf = (ctypes.c_ulonglong*4).from_buffer_copy(self.local_mmap, self.dtb-self.base_offset)#.value 
+        buf = (ctypes.c_ulonglong*4).from_buffer_copy(self._local_mmap, self.dtb)#.value 
         #buf = self.base.read(self.dtb, 0x20)
         if buf is None:
             self.cache = False
@@ -237,7 +234,7 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
         Bits 51:12 are from the PTE
         Bits 11:0 are from the original linear address
         '''
-        return ((pte & 0xffffffffff000) | (vaddr & 0xfff) )- self.base_offset
+        return ((pte & 0xffffffffff000) | (vaddr & 0xfff) )
 
 
     def vtop(self, vaddr):
@@ -249,7 +246,7 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
         
         
         pdpte = self.get_pdpte(vaddr)
-        log.debug('pdpte: @0x%x = 0x%x'%(vaddr,pdpte))
+        #log.debug('pdpte: @0x%x = 0x%x'%(vaddr,pdpte))
         if not self.entry_present(pdpte):
             # Add support for paged out PDPTE
             # Insert buffalo here!
@@ -257,7 +254,7 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
             return None
 
         pde = self.get_pde(vaddr, pdpte)
-        log.debug('pde: @0x%x = 0x%x'%(vaddr,pde))
+        #log.debug('pde: @0x%x = 0x%x'%(vaddr,pde))
         if not self.entry_present(pde):
             # Add support for paged out PDE
             raise ValueError('pde is not present')
@@ -279,14 +276,14 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
         Returns an unsigned 64-bit integer from the address addr in
         physical memory. If unable to read from that location, returns None.
         '''
-        raddr = int(addr - self.base_offset)
+        raddr = int(addr)
         #print('_read_long_long_phys(0x%x):'%(raddr))
         #string = self.base.read(addr, 8)
-        if raddr > len(self.local_mmap):
-          log.warning('_read_long_long addr 0x%x > size:0x%x'%(raddr,len(self.local_mmap)))
+        if raddr > len(self._local_mmap):
+          log.warning('_read_long_long addr 0x%x > size:0x%x'%(raddr,len(self._local_mmap)))
           raise ValueError()
           return None
-        word = ctypes.c_ulonglong.from_buffer_copy(self.local_mmap, raddr).value # is non-aligned a pb ?
+        word = ctypes.c_ulonglong.from_buffer_copy(self._local_mmap, raddr).value # is non-aligned a pb ?
         return word
 
     def get_available_pages(self):
@@ -311,6 +308,7 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
                 if not self.entry_present(pde_value):
                     continue
                 if self.page_size_flag(pde_value):
+                    #print '***yield a page size flag'
                     yield (vaddr, 0x200000)
                     continue
 
@@ -319,14 +317,45 @@ class PAEMemdumpFileMemoryMapping(MemdumpFileMemoryMapping):
                     vaddr = tmp | (pte << 12)
                     pte_value = self.get_pte(vaddr, pde_value)
                     if self.entry_present(pte_value):
+                        #print 'pte_value 0x%x'%(pte_value)
                         yield (vaddr, 0x1000)
-
+                    
 
 def readKernelMemoryMappings(kernelMemory):
   maps = []
+  total = 0
+  laststart=-1
+  lastend=-1
   for addr,s in kernelMemory.get_available_pages():
-    m = MemdumpFileMemoryMapping(kernelMemory.memdump, start=addr, end=(addr+s), offset=0x0, preload=False)
-    maps.append(MemdumpFileMemoryMapping())
+    if laststart == -1:
+      laststart = addr
+    elif lastend != addr:
+      if lastend  > addr : # overlapping ?
+        raise ValueError()
+      #gap found, save previous mmap
+      p = kernelMemory.vtop(laststart)
+      if p > len(kernelMemory):
+        #raise ValueError('cant read after end of file... 0x%x'%(p))
+        log.warning('cant read after end of file... 0x%x'%(p))
+      offset = p 
+      maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=False))
+      #log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,p))
+      print('0x%x - 0x%x'%(laststart,lastend))
+      total += (lastend-laststart)
+      # new
+      laststart = addr
+    # next
+    lastend = addr+s
+  # save last
+  p = kernelMemory.vtop(laststart)
+  offset = p # pte_value)
+  maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=False))
+  log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,offset))
+  print('0x%x - 0x%x'%(laststart,lastend))
+  total += (lastend-laststart)
+      
+  log.debug( '%s 0x%x'%(total, total))
+  return maps
 
 
 

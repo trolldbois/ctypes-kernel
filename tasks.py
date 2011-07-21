@@ -7,12 +7,14 @@
 __author__ = "Loic Jaquemet loic.jaquemet+python@gmail.com"
 
 import argparse, os, logging, sys, time, pickle, struct
+import itertools
 
 import ctypes
 import haystack 
 from haystack import abouchet 
+import kernel
 from kernel import ctypes_linux
-from kernel.mappings import PAEMemdumpFileMemoryMapping
+from kernel.mappings import JKIA32PagedMemoryPae,JKIA32PagedMemory
 
 log=logging.getLogger('tasks')
 
@@ -23,13 +25,11 @@ def initMemdump(args):
   base_offset= getBaseOffset(args.system_map_file)
   dtb = getDTB(args.system_map_file)
   fsize = os.fstat(args.memdump.fileno()).st_size
-  mem = PAEMemdumpFileMemoryMapping(args.memdump, 0, fsize, dtb, 0) #base_offset ) ## is that valid ?
-  total=0
-  for addr,s in mem.get_available_pages():
-    print '0x%x-0x%x'%(addr,addr+s)
-    total+=s
-    
-  print total
+  #mem = JKIA32PagedMemoryPae(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
+  mem = JKIA32PagedMemory(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
+  
+  mappings = kernel.mappings.readKernelMemoryMappings(mem)
+
   sys.exit(0)
   mappings=[mem]
   log.debug('memdump initialised %s'%(mappings[0]))
@@ -66,7 +66,7 @@ def getDTB(systemmap):
   for l in systemmap.readlines():
     if name in l:
       addr,d,n = l.split()
-      log.info('found %s @ %s'%(name,addr))
+      log.info('found DTB/%s @ %s'%(name,addr))
       return int(addr,16) - KADDRSPACE 
   return None
 
