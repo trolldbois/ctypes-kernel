@@ -25,13 +25,11 @@ def initMemdump(args):
   base_offset= getBaseOffset(args.system_map_file)
   dtb = getDTB(args.system_map_file)
   fsize = os.fstat(args.memdump.fileno()).st_size
-  #mem = JKIA32PagedMemoryPae(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
-  mem = JKIA32PagedMemory(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
+  mem = JKIA32PagedMemoryPae(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
+  #mem = JKIA32PagedMemory(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
   
-  mappings = kernel.mappings.readKernelMemoryMappings(mem)
+  mappings = kernel.mappings.readKernelMemoryMappings2(mem)
 
-  sys.exit(0)
-  mappings=[mem]
   log.debug('memdump initialised %s'%(mappings[0]))
   return mappings
 
@@ -87,17 +85,26 @@ def search(args):
   mappings = initMemdump(args)
   finder = abouchet.StructFinder(mappings)
   print 'mappings[0] ' ,mappings[0]
-  print 'myread : ', mappings[0].local_mmap[initTaskAddr:initTaskAddr+200]
-  print 'initTaskAddr', hex(initTaskAddr)
-  outs=finder.loadAt( mappings[0] , initTaskAddr , structType)
+  #print 'myread : %s'%(mappings[0]._local_mmap[initTaskAddr:initTaskAddr+200])
+  print 'initTaskAddr vaddr:0x%x paddr:0x%x'%(initTaskAddr, mappings[0].vtop(initTaskAddr))
+  outs = finder.loadAt( mappings[0] , initTaskAddr , structType, depth=10)
 
   print outs
+  
+  swapper = outs[0]
+  print swapper.tasks
+  for m in mappings:
+    if swapper.tasks.next in m:
+      print 'next is in ', m
+    if initTaskAddr in m:
+      print 'inittask in ', m
 
   return 0
 
 
 def main(argv):
   logging.basicConfig(level=logging.DEBUG)
+  logging.getLogger('model').setLevel(logging.INFO)
 
   parser = argparser()
   opts = parser.parse_args(argv)

@@ -321,7 +321,7 @@ class JKIA32PagedMemoryPae(JKIA32PagedMemory):
                         yield (vaddr, 0x1000)
                     
 
-def readKernelMemoryMappings(kernelMemory):
+def readKernelMemoryMappings2(kernelMemory):
   maps = []
   total = 0
   laststart=-1
@@ -338,9 +338,12 @@ def readKernelMemoryMappings(kernelMemory):
         #raise ValueError('cant read after end of file... 0x%x'%(p))
         log.warning('cant read after end of file... 0x%x'%(p))
       offset = p 
-      maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=False))
+      try :
+        maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=True))
+      except ValueError,e:
+        pass
       #log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,p))
-      print('0x%x - 0x%x'%(laststart,lastend))
+      #print('0x%x - 0x%x'%(laststart,lastend))
       total += (lastend-laststart)
       # new
       laststart = addr
@@ -349,14 +352,35 @@ def readKernelMemoryMappings(kernelMemory):
   # save last
   p = kernelMemory.vtop(laststart)
   offset = p # pte_value)
-  maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=False))
-  log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,offset))
-  print('0x%x - 0x%x'%(laststart,lastend))
+  try:
+    maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=True))
+  except ValueError,e:
+    pass
+  #log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,offset))
+  #print('0x%x - 0x%x'%(laststart,lastend))
   total += (lastend-laststart)
       
   log.debug( '%s 0x%x'%(total, total))
   return maps
 
+
+def readKernelMemoryMappings(kernelMemory):
+  maps = []
+  total = 0
+  for addr,s in kernelMemory.get_available_pages():
+    p = kernelMemory.vtop(addr)
+    if p > len(kernelMemory):
+      #raise ValueError('cant read after end of file... 0x%x'%(p))
+      log.warning('cant read after end of file... 0x%x'%(p))
+    offset = p 
+    try:
+      maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=addr, end=addr+s, offset=offset, preload=False))
+    except ValueError,e:
+      #maps.append()
+      pass
+    total += s
+  log.debug( '%s 0x%x'%(total, total))
+  return maps
 
 
 
