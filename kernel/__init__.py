@@ -7,4 +7,4 @@
 __author__ = "Loic Jaquemet loic.jaquemet+python@gmail.com"
 
 
-
+from kernel import ctypes_linux

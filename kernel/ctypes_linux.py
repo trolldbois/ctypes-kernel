@@ -41,11 +41,11 @@ model.registerModule(sys.modules[__name__])
 gen.task_struct.expectedValues={
   'pid': RangeValue(0,65535), #0 for swapper/initTask
   'real_parent' : IgnoreMember, # should be Ignore Loading really
-  #'tgid': RangeValue(1,65535),
-#  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
-#  'files': NotNull, # guessing
-#  'fs': NotNull, # guessing
-#  'comm': NotNull, # process name
+  'tgid': RangeValue(0,65535),
+  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
+  'files': NotNull, # guessing
+  'fs': NotNull, # guessing
+  'comm': NotNull, # process name
 }
 
 # beuargh, k: (pid,name)
