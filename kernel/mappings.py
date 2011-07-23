@@ -327,28 +327,37 @@ def readKernelMemoryMappings2(kernelMemory):
   laststart=-1
   lastend=-1
   for addr,s in kernelMemory.get_available_pages():
+    #print('0x%x - 0x%x'%(addr,addr+s))
     if laststart == -1:
       laststart = addr
-    elif lastend != addr:
-      if lastend  > addr : # overlapping ?
-        raise ValueError()
-      #gap found, save previous mmap
-      p = kernelMemory.vtop(laststart)
-      if p > len(kernelMemory):
-        #raise ValueError('cant read after end of file... 0x%x'%(p))
-        log.warning('cant read after end of file... 0x%x'%(p))
-      offset = p 
-      try :
-        maps.append(MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=True))
-      except ValueError,e:
-        pass
-      #log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,p))
-      #print('0x%x - 0x%x'%(laststart,lastend))
-      total += (lastend-laststart)
-      # new
-      laststart = addr
-    # next
+      lastend = addr+s
+      continue
+    if lastend == addr:
+      # continuous zone, let's see the next one
+      lastend = addr+s
+      continue 
+    # we have a gap between lastend and addr, add laststart-lastend to the pool and see the next one
+    if lastend  > addr : # overlapping ?
+      raise ValueError()
+    #gap found, save previous mmap
+    p = kernelMemory.vtop(laststart)
+    if p > len(kernelMemory):
+      #raise ValueError('cant read after end of file... 0x%x'%(p))
+      log.warning('cant read after end of file... 0x%x'%(p))
+    offset = p 
+    try :
+      m=MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=True)
+      maps.append(m)
+      #m.unmmap()
+    except ValueError,e:
+      pass
+    #log.debug('0x%x-0x%x (0x%x)\t@\t0x%x'%(laststart,lastend,lastend-laststart,p))
+    #print('0x%x - 0x%x'%(laststart,lastend))
+    total += (lastend-laststart)
+    # new
+    laststart = addr
     lastend = addr+s
+    # goto next
   # save last
   p = kernelMemory.vtop(laststart)
   offset = p # pte_value)

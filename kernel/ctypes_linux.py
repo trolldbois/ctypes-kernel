@@ -11,7 +11,7 @@ import logging
 import sys
 
 from haystack import model
-from haystack.model import is_valid_address,is_valid_address_value,pointer2bytes,array2bytes,bytes2array,getaddress
+from haystack.model import is_valid_address,is_valid_address_value,pointer2bytes,array2bytes,bytes2array,getaddress,offsetof
 from haystack.model import LoadableMembers,RangeValue,NotNull,CString, IgnoreMember
 
 import ctypes_linux_generated as gen
@@ -45,54 +45,62 @@ gen.task_struct.expectedValues={
 #  'comm': NotNull, # process name
 }
 
-def task_struct_loadMembers(self, mappings, maxDepth, loadedTasks=set()):
-    #if maxDepth == 0:
-    #  return True
-    if getaddress(self.tasks.next) in loadedTasks:
-      return True # finish
-    log.debug('re-loading tasks from %s 0x%x'%(self.comm, getaddress(self.tasks.next)))
-    field = dict([ (f[0],f[1]) for f in self._fields_])
-    tasks=getattr(self,'tasks')
+def task_struct_loadMembers(self, mappings, maxDepth=99, task_cache=set()):
+    head = False # howto return True
+    if len(task_cache) == 0:
+      head = True
+    if getaddress(self) in task_cache:
+      return task_cache #already in cache task_cache[self.tasks.next] # finish
+    # else load tasks.(list_head).next as a task_struct and get_tasks from it
+    task_cache.add( getaddress(self) )
+    #for t in task_cache:
+    #  print hex(t)
 
     # next and prev
-    next=getattr(tasks,'next')
-    prev=getattr(tasks,'prev')
-    addr_prev=getaddress(prev)
-    addr_next=getaddress(next)
+    addr_prev = getaddress(self.tasks.prev)-offsetof(task_struct,'tasks')
+    addr_next = getaddress(self.tasks.next)-offsetof(task_struct,'tasks')
     if addr_prev == addr_next:
       log.debug('only one element in list')
-      maxDepth=1
-    attr = next
-    # iterative loading 
-    #while getaddress(attr) not in loadedTasks:
+    print hex(addr_prev),hex(addr_next), hex(getaddress(self))
+
+    super(task_struct,self).loadMembers(mappings, maxDepth-1)
+    log.debug("Loaded task_struct for process '%s'"%(self.comm))
+
+    mapp0 = [m for m in mappings if 0xf74701b0 in m]
+    #print ' **** mappings containing initTask.tasks.next : ' ,mapp0[0]
+    #print ' next is ', self.tasks.next
+    
+    log.debug('re-loading task_struct.tasks.next from 0x%x'%(addr_next))
+    field = dict([ (f[0],f[1]) for f in self._fields_])
     # recursive loading
+    attr = self.tasks.next
     attrname = 'tasks.next'
-    attrtype = ctypes.POINTER(gen.task_struct)
-    memoryMap = is_valid_address( attr, mappings, attrtype)
+    attrtype = gen.task_struct
+    memoryMap = is_valid_address_value( addr_next, mappings, attrtype)
     if(not memoryMap):
       # big BUG Badaboum, why did pointer changed validity/value ?
       log.warning("%s %s not loadable 0x%lx but VALID "%(attrname, attr, addr_next ))
-      return True
-    log.debug("%s %s loading from 0x%lx (is_valid_address: %s)"%(attrname,attr,addr_next, memoryMap ))
-    # save the total struct to local memspace
-    tmp = attrtype.from_buffer_copy(memoryMap.readStruct(addr_next, attrtype ))
-    # fake a cast
-    attr.contents = gen.list_head.from_address(getaddress(tmp))
-    #####
-    log.debug("%s %s loaded memcopy from 0x%lx to 0x%lx"%(attrname, attr, addr_next, (getaddress(attr))   ))
-    # recursive validation checks on new struct
-    if not bool(attr):
-      log.warning('Member %s is null after copy: %s'%(attrname,attr))
-      return True
-    #flag it  
-    loadedTasks.add( getaddress(self.tasks.next) )
-    print loadedTasks
-    # go and load the pointed struct members recursively
-    if not tmp.contents.loadMembers(mappings, maxDepth-1,loadedTasks):
-      log.debug('member %s was not loaded'%(attrname))
-      return False
-    return LoadableMembers.loadMembers(self,mappings,maxDepth-1)
-    #return True
+      #attr.contents = 0
+    else:
+      log.debug("self.tasks.next-> 0x%lx (is_valid_address_value: %s)"%(addr_next, memoryMap ))
+      # save the total struct to local memspace
+      #tmp = attrtype.from_buffer_copy(memoryMap.readStruct(addr_next, attrtype ))
+      tmp = memoryMap.readStruct(addr_next, attrtype )
+      log.debug("%s is loaded: '%s'"%(attrname, tmp.comm))
+      # fake a cast
+      attr.contents = gen.list_head.from_address(getaddress(tmp.tasks)) #loadMember is done
+      # be torough and load list members
+      log.debug("%s loaded memcopy from 0x%lx to 0x%lx"%(attrname,  addr_next, (getaddress(attr))   ))
+      # recursive validation checks on new struct
+      if not bool(attr):
+        log.warning('Member %s is null after copy: %s'%(attrname,attr))
+      elif not tmp.loadMembers(mappings, maxDepth-1, task_cache):
+        # go and load the pointed struct members recursively
+        log.debug('member %s was not loaded'%(attrname))
+    if not head:
+      return task_cache
+    return True
+
 
 gen.task_struct.loadMembers = task_struct_loadMembers
 

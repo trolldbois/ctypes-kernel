@@ -83,16 +83,34 @@ def search(args):
   #dtb = getDTB(args.system_map_file)
 
   mappings = initMemdump(args)
-  finder = abouchet.StructFinder(mappings)
-  print 'mappings[0] ' ,mappings[0]
-  #print 'myread : %s'%(mappings[0]._local_mmap[initTaskAddr:initTaskAddr+200])
-  print 'initTaskAddr vaddr:0x%x paddr:0x%x'%(initTaskAddr, mappings[0].vtop(initTaskAddr))
-  outs = finder.loadAt( mappings[0] , initTaskAddr , structType, depth=10)
+  fsize = os.fstat(args.memdump.fileno()).st_size
+  for m in mappings:
+    if m.vtop(m.start) > fsize:
+      print 'ERROR DEPASSEMENT %s m.start:0x%x vtop:0x%x fsize:0x%x'%(m,m.start,m.vtop(m.start),fsize) 
+    if m.vtop(m.end) > fsize:
+      print 'ERROR DEPASSEMENT %s m.end:0x%x vtop:0x%x fsize:0x%x'%(m,m.end,m.vtop(m.end),fsize) 
+  print 'memoryMap %d checked for phys'%( len(mappings) )
 
-  print outs
+
+  finder = abouchet.StructFinder(mappings)
+  #mapp0 = [m for m in mappings if initTaskAddr in m]
+  mapp0 = [m for m in mappings if 0xf74701b0 in m]
+  if len(mapp0) ==1:
+    mapp0 = mapp0[0]
+  else:
+    for m in mappings:
+      print m
+    raise ValueError('0x%x is not in any mappings'%(initTaskAddr))
+  #print 'mappings containing initTaskAdr : ' ,mapp0
+  print 'mappings containing initTask.tasks.next : ' ,mapp0
+  #print 'myread : %s'%(mappings[0]._local_mmap[initTaskAddr:initTaskAddr+200])
+  #print 'initTaskAddr vaddr:0x%x paddr:0x%x'%(initTaskAddr, mapp0.vtop(initTaskAddr))
+  outs = finder.loadAt( mapp0 , initTaskAddr , structType, depth=10)
+
+  #print outs[0]
   
   swapper = outs[0]
-  print swapper.tasks
+  #print swapper.tasks
   for m in mappings:
     if swapper.tasks.next in m:
       print 'next is in ', m
