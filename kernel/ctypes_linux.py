@@ -10,8 +10,10 @@ import ctypes
 import logging
 import sys
 
+import haystack
 from haystack import model
-from haystack.model import is_valid_address,is_valid_address_value,pointer2bytes,array2bytes,bytes2array,getaddress,offsetof
+from haystack.model import is_valid_address,is_valid_address_value,pointer2bytes,array2bytes,bytes2array,getaddress
+from haystack.model import offsetof,container_of, keepRef
 from haystack.model import LoadableMembers,RangeValue,NotNull,CString, IgnoreMember
 
 import ctypes_linux_generated as gen
@@ -38,6 +40,7 @@ model.registerModule(sys.modules[__name__])
 # set expected values 
 gen.task_struct.expectedValues={
   'pid': RangeValue(0,65535), #0 for swapper/initTask
+  'real_parent' : IgnoreMember, # should be Ignore Loading really
   #'tgid': RangeValue(1,65535),
 #  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
 #  'files': NotNull, # guessing
@@ -45,64 +48,67 @@ gen.task_struct.expectedValues={
 #  'comm': NotNull, # process name
 }
 
-def task_struct_loadMembers(self, mappings, maxDepth=99, task_cache=set()):
-    head = False # howto return True
-    if len(task_cache) == 0:
-      head = True
-    if getaddress(self) in task_cache:
-      return task_cache #already in cache task_cache[self.tasks.next] # finish
-    # else load tasks.(list_head).next as a task_struct and get_tasks from it
-    task_cache.add( getaddress(self) )
-    #for t in task_cache:
-    #  print hex(t)
+# beuargh, k: (pid,name)
+''' we need a global tasks cache to keep ref to loaded tasks/pointers.'''
+
+def task_struct_loadMembers(self, mappings, maxDepth=99):
 
     # next and prev
     addr_prev = getaddress(self.tasks.prev)-offsetof(task_struct,'tasks')
     addr_next = getaddress(self.tasks.next)-offsetof(task_struct,'tasks')
     if addr_prev == addr_next:
       log.debug('only one element in list')
-    print hex(addr_prev),hex(addr_next), hex(getaddress(self))
-
-    super(task_struct,self).loadMembers(mappings, maxDepth-1)
+    # INIT\tPID\tUID
+    log.info('%s\t\t%d\t\t%d'%(self.comm,self.pid,0))
+    LoadableMembers.loadMembers(self,mappings, 5)
     log.debug("Loaded task_struct for process '%s'"%(self.comm))
-
-    mapp0 = [m for m in mappings if 0xf74701b0 in m]
-    #print ' **** mappings containing initTask.tasks.next : ' ,mapp0[0]
-    #print ' next is ', self.tasks.next
-    
-    log.debug('re-loading task_struct.tasks.next from 0x%x'%(addr_next))
-    field = dict([ (f[0],f[1]) for f in self._fields_])
-    # recursive loading
+    #check cache and bail
     attr = self.tasks.next
     attrname = 'tasks.next'
     attrtype = gen.task_struct
+    cache = model.getRef(attrtype ,addr_next )
+    if cache:
+      nextTask = cache
+      # get the offset into the buffer and associate the .tasks->next to it
+      attr.contents = gen.list_head.from_address(ctypes.addressof(nextTask.tasks)) #loadMember is done
+      # be torough and load list members
+      log.debug("assigned &nextTask.tasks to self.task.next"%( ))
+      return True
+    # load it
+    log.debug('re-loading task_struct.tasks.next from 0x%x'%(addr_next))
+    field = dict([ (f[0],f[1]) for f in self._fields_])
+    # recursive loading
     memoryMap = is_valid_address_value( addr_next, mappings, attrtype)
     if(not memoryMap):
       # big BUG Badaboum, why did pointer changed validity/value ?
       log.warning("%s %s not loadable 0x%lx but VALID "%(attrname, attr, addr_next ))
-      #attr.contents = 0
+      return True
     else:
       log.debug("self.tasks.next-> 0x%lx (is_valid_address_value: %s)"%(addr_next, memoryMap ))
       # save the total struct to local memspace
-      #tmp = attrtype.from_buffer_copy(memoryMap.readStruct(addr_next, attrtype ))
-      tmp = memoryMap.readStruct(addr_next, attrtype )
-      log.debug("%s is loaded: '%s'"%(attrname, tmp.comm))
-      # fake a cast
-      attr.contents = gen.list_head.from_address(getaddress(tmp.tasks)) #loadMember is done
+      nextTask = memoryMap.readStruct(addr_next, attrtype )
+      log.debug("%s is loaded: '%s'"%(attrname, nextTask.comm))
+      # save the ref and load the task
+      model.keepRef( nextTask, attrtype, addr_next)
+      # get the offset into the buffer and associate the .tasks->next to it
+      attr.contents = gen.list_head.from_address(ctypes.addressof(nextTask.tasks)) #loadMember is done
       # be torough and load list members
-      log.debug("%s loaded memcopy from 0x%lx to 0x%lx"%(attrname,  addr_next, (getaddress(attr))   ))
+      log.debug("assigned &nextTask.tasks to self.task.next"%( ))
       # recursive validation checks on new struct
       if not bool(attr):
         log.warning('Member %s is null after copy: %s'%(attrname,attr))
-      elif not tmp.loadMembers(mappings, maxDepth-1, task_cache):
-        # go and load the pointed struct members recursively
-        log.debug('member %s was not loaded'%(attrname))
-    if not head:
-      return task_cache
+      else:
+        return nextTask.loadMembers(mappings, maxDepth-1)
     return True
 
+def task_struct_getTasksNext(self):
+  ''' once the task_struct is loadMembers(ed), self->tasks.next is loaded to. just a bit hidden'''
+  return container_of(getaddress(self.tasks.next), gen.task_struct, 'tasks')
 
-gen.task_struct.loadMembers = task_struct_loadMembers
+
+task_struct.loadMembers = task_struct_loadMembers
+task_struct.getTasksNext = task_struct_getTasksNext
+#gen.task_struct.getTasksPrev = task_struct_getTasksPrev
 
 
 def list_head_loadMembers(self, mappings, maxDepth):

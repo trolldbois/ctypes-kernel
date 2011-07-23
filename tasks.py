@@ -108,21 +108,28 @@ def search(args):
   outs = finder.loadAt( mapp0 , initTaskAddr , structType, depth=10)
 
   #print outs[0]
-  
+  '''  
   swapper = outs[0]
-  #print swapper.tasks
+  task=swapper
+  print swapper.tasks
+  next = swapper.tasks.next
+  while haystack.model.getaddress(next) :
+    next = task.getTasksNext()
+    print next.comm
+  
   for m in mappings:
     if swapper.tasks.next in m:
       print 'next is in ', m
     if initTaskAddr in m:
       print 'inittask in ', m
-
+'''
   return 0
 
 
 def main(argv):
   logging.basicConfig(level=logging.DEBUG)
   logging.getLogger('model').setLevel(logging.INFO)
+  logging.getLogger('ctypes_linux').setLevel(logging.INFO)
 
   parser = argparser()
   opts = parser.parse_args(argv)
