@@ -343,7 +343,7 @@ def readKernelMemoryMappings2(kernelMemory):
     p = kernelMemory.vtop(laststart)
     if p > len(kernelMemory):
       #raise ValueError('cant read after end of file... 0x%x'%(p))
-      log.warning('cant read after end of file... 0x%x'%(p))
+      continue
     offset = p 
     try :
       m=MemoryDumpMemoryMapping(kernelMemory.memdump, start=laststart, end=lastend, offset=offset, preload=True)
@@ -369,7 +369,7 @@ def readKernelMemoryMappings2(kernelMemory):
   #print('0x%x - 0x%x'%(laststart,lastend))
   total += (lastend-laststart)
       
-  log.debug( '%s 0x%x'%(total, total))
+  #log.debug( '%s 0x%x'%(total, total))
   return maps
 
 

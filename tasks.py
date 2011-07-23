@@ -29,8 +29,6 @@ def initMemdump(args):
   #mem = JKIA32PagedMemory(args.memdump, 0, fsize, dtb) #base_offset ) ## is that valid ?
   
   mappings = kernel.mappings.readKernelMemoryMappings2(mem)
-
-  log.debug('memdump initialised %s'%(mappings[0]))
   return mappings
 
 def getBaseOffset(systemmap):
@@ -83,40 +81,26 @@ def search(args):
   #dtb = getDTB(args.system_map_file)
 
   mappings = initMemdump(args)
-  fsize = os.fstat(args.memdump.fileno()).st_size
-  for m in mappings:
-    if m.vtop(m.start) > fsize:
-      print 'ERROR DEPASSEMENT %s m.start:0x%x vtop:0x%x fsize:0x%x'%(m,m.start,m.vtop(m.start),fsize) 
-    if m.vtop(m.end) > fsize:
-      print 'ERROR DEPASSEMENT %s m.end:0x%x vtop:0x%x fsize:0x%x'%(m,m.end,m.vtop(m.end),fsize) 
-  print 'memoryMap %d checked for phys'%( len(mappings) )
-
-
+  mapp0=None
   finder = abouchet.StructFinder(mappings)
-  #mapp0 = [m for m in mappings if initTaskAddr in m]
-  mapp0 = [m for m in mappings if 0xf74701b0 in m]
-  if len(mapp0) ==1:
-    mapp0 = mapp0[0]
-  else:
-    for m in mappings:
-      print m
+  for m in mappings:
+    if initTaskAddr in m:
+      mapp0=m
+      break
+  if not mapp0:
     raise ValueError('0x%x is not in any mappings'%(initTaskAddr))
-  #print 'mappings containing initTaskAdr : ' ,mapp0
-  print 'mappings containing initTask.tasks.next : ' ,mapp0
-  #print 'myread : %s'%(mappings[0]._local_mmap[initTaskAddr:initTaskAddr+200])
-  #print 'initTaskAddr vaddr:0x%x paddr:0x%x'%(initTaskAddr, mapp0.vtop(initTaskAddr))
   outs = finder.loadAt( mapp0 , initTaskAddr , structType, depth=10)
 
   #print outs[0]
-  return 0  
   swapper = outs[0]
-  '''
+  
   task = swapper.getTasksNext()
-  print '%s\t\t%d\t\t%d'%(swapper.comm,swapper.pid,swapper.cred.contents.uid)
+  print '%s\t\t%d'%(swapper.comm,swapper.pid)
   while task.pid != 0:
-    print '%s\t\t%d\t\t%d'%(task.comm,task.pid,swapper.cred.contents.uid)
+    print '%s\t\t%d'%(task.comm,task.pid)#,swapper.cred.contents.uid)
     task = task.getTasksNext()
-  '''  
+  
+  return 0  
   swapper = swapper.toPyObject()
   task = swapper.tasks.next
   print '%s\t\t%d\t\t%d'%(swapper.comm,swapper.pid,0)#swapper.cred.uid)
@@ -127,7 +111,7 @@ def search(args):
 
 
 def main(argv):
-  logging.basicConfig(level=logging.DEBUG)
+  logging.basicConfig(level=logging.INFO)
   logging.getLogger('model').setLevel(logging.INFO)
   logging.getLogger('ctypes_linux').setLevel(logging.INFO)
 
