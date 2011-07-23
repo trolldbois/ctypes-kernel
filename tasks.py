@@ -108,21 +108,21 @@ def search(args):
   outs = finder.loadAt( mapp0 , initTaskAddr , structType, depth=10)
 
   #print outs[0]
-  '''  
+  return 0  
   swapper = outs[0]
-  task=swapper
-  print swapper.tasks
-  next = swapper.tasks.next
-  while haystack.model.getaddress(next) :
-    next = task.getTasksNext()
-    print next.comm
-  
-  for m in mappings:
-    if swapper.tasks.next in m:
-      print 'next is in ', m
-    if initTaskAddr in m:
-      print 'inittask in ', m
-'''
+  '''
+  task = swapper.getTasksNext()
+  print '%s\t\t%d\t\t%d'%(swapper.comm,swapper.pid,swapper.cred.contents.uid)
+  while task.pid != 0:
+    print '%s\t\t%d\t\t%d'%(task.comm,task.pid,swapper.cred.contents.uid)
+    task = task.getTasksNext()
+  '''  
+  swapper = swapper.toPyObject()
+  task = swapper.tasks.next
+  print '%s\t\t%d\t\t%d'%(swapper.comm,swapper.pid,0)#swapper.cred.uid)
+  while task.pid != 0:
+    print '%s\t\t%d\t\t%d'%(task.comm,task.pid,swapper.cred.uid)
+    task = task.tasks.next
   return 0
 
 

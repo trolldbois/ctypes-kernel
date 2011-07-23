@@ -52,14 +52,9 @@ gen.task_struct.expectedValues={
 ''' we need a global tasks cache to keep ref to loaded tasks/pointers.'''
 
 def task_struct_loadMembers(self, mappings, maxDepth=99):
-
     # next and prev
     addr_prev = getaddress(self.tasks.prev)-offsetof(task_struct,'tasks')
     addr_next = getaddress(self.tasks.next)-offsetof(task_struct,'tasks')
-    if addr_prev == addr_next:
-      log.debug('only one element in list')
-    # INIT\tPID\tUID
-    log.info('%s\t\t%d\t\t%d'%(self.comm,self.pid,0))
     LoadableMembers.loadMembers(self,mappings, 5)
     log.debug("Loaded task_struct for process '%s'"%(self.comm))
     #check cache and bail
@@ -76,7 +71,6 @@ def task_struct_loadMembers(self, mappings, maxDepth=99):
       return True
     # load it
     log.debug('re-loading task_struct.tasks.next from 0x%x'%(addr_next))
-    field = dict([ (f[0],f[1]) for f in self._fields_])
     # recursive loading
     memoryMap = is_valid_address_value( addr_next, mappings, attrtype)
     if(not memoryMap):
@@ -104,11 +98,24 @@ def task_struct_loadMembers(self, mappings, maxDepth=99):
 def task_struct_getTasksNext(self):
   ''' once the task_struct is loadMembers(ed), self->tasks.next is loaded to. just a bit hidden'''
   return container_of(getaddress(self.tasks.next), gen.task_struct, 'tasks')
+def task_struct_getTasksPrev(self):
+  return container_of(getaddress(self.tasks.prev), gen.task_struct, 'tasks')
 
+def task_struct_toPyObject(self):
+  my_class=getattr(sys.modules[self.__class__.__module__],"%s_py"%(self.__class__.__name__) )
+  #keep ref
+  cache = model.getRef(my_class, ctypes.addressof(self) )
+  if cache:
+    return cache
+  obj=model.LoadableMembers.toPyObject(self)
+  # change list_head by task_struct
+  obj.tasks.next = self.getTasksNext().toPyObject()
+  obj.tasks.prev = self.getTasksPrev().toPyObject()
 
 task_struct.loadMembers = task_struct_loadMembers
+task_struct.toPyObject = task_struct_toPyObject
 task_struct.getTasksNext = task_struct_getTasksNext
-#gen.task_struct.getTasksPrev = task_struct_getTasksPrev
+task_struct.getTasksPrev = task_struct_getTasksPrev
 
 
 def list_head_loadMembers(self, mappings, maxDepth):
