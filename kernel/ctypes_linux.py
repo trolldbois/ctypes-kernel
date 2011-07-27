@@ -52,7 +52,7 @@ gen.task_struct.expectedValues={
 ''' we need a global tasks cache to keep ref to loaded tasks/pointers.'''
 
 def task_struct_loadMembers(self, mappings, maxDepth=99):
-  listHeads= [('cg_list',  None),
+  listHeads= [('cg_list',  task_struct),
               ('children', None),
               ('cpu_timers', None),
               ('perf_event_list', None),
