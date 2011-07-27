@@ -53,16 +53,16 @@ gen.task_struct.expectedValues={
 
 def task_struct_loadMembers(self, mappings, maxDepth=99):
   listHeads= [('cg_list',  task_struct),
-              ('children', None),
-              ('cpu_timers', None),
+              ('children', None), # core dump on 'task_struct'
+              ('cpu_timers', None), # array of 3
               ('perf_event_list', None),
               ('pi_state_list', None),
               ('pi_waiters', None),
-              ('preempt_notifiers', None),
+              ('preempt_notifiers', None), # ?
               ('ptraced', None),
               ('ptrace_entry', None),
               ('robust_list', None),
-              ('sibling', None),
+              ('sibling', task_struct),
               ('tasks', task_struct),
               ('thread_group', None),
               ]
