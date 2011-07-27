@@ -96,16 +96,20 @@ def search(args):
   
   task = swapper.getTasksNext()
   print '%s\t\t%d'%(swapper.comm,swapper.pid)
+  print swapper.toString()
   while task.pid != 0:
     print '%s\t\t%d'%(task.comm,task.pid)#,swapper.cred.contents.uid)
+    #print task.toString()
     task = task.getTasksNext()
   
   return 0  
   swapper = swapper.toPyObject()
   task = swapper.tasks.next
   print '%s\t\t%d\t\t%d'%(swapper.comm,swapper.pid,0)#swapper.cred.uid)
+  print swapper.toString()
   while task.pid != 0:
     print '%s\t\t%d\t\t%d'%(task.comm,task.pid,swapper.cred.uid)
+    #print task.toString()
     task = task.tasks.next
   return 0
 
@@ -113,7 +117,7 @@ def search(args):
 def main(argv):
   logging.basicConfig(level=logging.INFO)
   logging.getLogger('model').setLevel(logging.INFO)
-  logging.getLogger('ctypes_linux').setLevel(logging.INFO)
+  #logging.getLogger('ctypes_linux').setLevel(logging.INFO)
 
   parser = argparser()
   opts = parser.parse_args(argv)

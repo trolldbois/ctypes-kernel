@@ -1,13 +1,22 @@
 
-alpha-software - not working.
+Useless proof of concept base on python-haystack.
+Total volatility ripoff and seriously flawed non-cross platform forensic tool.
 
 
 ctypes-kernel is an extension to haystack, for kernel structures.
 It's purpose is to be a simple 'volatility' for linux kernels.
 It could easily be extended to other system memdump's...
 
+Basic Idea :
+  a) convert Kernel headers to ctypes using ctypeslib tools. (kernel config specific)
+  b) get a kernel memdump and a system map.
+  c) map ctypes classes onto the memdump.
+    c2) use them, as-is
+  d) translate ctypes classes to POPOs.
+  e) done, you can play with kernel structures.
 
-( once I make a valid VMM wrapper .. )
+optional f) : You don't have the system.map, you can search for C structures with python-haystack.
+
 
 
 
@@ -84,5 +93,20 @@ virtual to physical is done by vtop()
 
 
 
+TESTS :
+jal@skippy:~/Compil/ctypes-kernel$ haystack --string --memfile 2.6.35-28-generic-pae-kmem.memdump kernel.ctypes_linux.task_struct refresh 0x0008056e0 > out/init_task
+give swapper pid 0
+0x0008056e0 = @initTaskAddr - base_offset 0x0c000000
 
 
+tasks (@0x9f871e8) : {	<kernel.ctypes_linux_generated.list_head object at 0x9e2ddac>
+next (@0x9f871e8) : 0xf74701b0 (FIELD NOT LOADED)
+prev (@0x9f871ec) : 0xf3793470 (FIELD NOT LOADED)
+
+>>> b=0xf74701b0
+>>> hex(0xffffffff-b)
+'0x8b8fe4f'
+0x08b8fe4f
+
+haystack --string --memfile 2.6.35-28-generic-pae-kmem.memdump kernel.ctypes_linux_generated.list_head refresh 0x08b8fe4f > out/next_head
+ NNNNNOOOOOPE
