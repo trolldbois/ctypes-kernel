@@ -39,13 +39,24 @@ model.registerModule(sys.modules[__name__])
 
 # set expected values 
 gen.task_struct.expectedValues={
-  'pid': RangeValue(0,65535), #0 for swapper/initTask
+  'state': RangeValue(-1,2), # sched.h:1177 + empirical
+  #'stack': RangeValue(0xc0000000,0xffffffff), if base kernel addr = 0xc0000000
+  'flags': NotNull, #RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
+  'ptrace': RangeValue(0,0x3f4), # linux/ptrace.h:80
+  'lock_depth': RangeValue(-1,1024), # sysctl.h says 1024 default/ sched.h says 48 default. could be changed...
+  'prio': RangeValue(0,140), #sched.h:1531 shouldnt be too far for 0->120/140
+  'static_prio': RangeValue(0,140),  # 0 exists.. too bad
+  'normal_prio': RangeValue(0,140),
+  'rt_priority': RangeValue(0,100), #sched.h:1515
+  'pid': RangeValue(0,65535), #0 for swapper/initTask 32768 really but hey.. lt's be open minded
+  'tgid': RangeValue(0,65535), #
   'real_parent' : IgnoreMember, # should be Ignore Loading really
-  'tgid': RangeValue(0,65535),
-  'flags': RangeValue(1,0xffffffff), #sched.h:1700 , 1 or 2 bits on each 4 bits group
   'files': NotNull, # guessing
   'fs': NotNull, # guessing
   'comm': NotNull, # process name
+  'policy': [RangeValue(0,5),RangeValue(0x40000000,0x40000005)], #sched.h:35
+  'set_child_tid': IgnoreMember,
+  'clear_child_tid': IgnoreMember,
 }
 
 # beuargh, k: (pid,name)
